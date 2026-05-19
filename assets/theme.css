@@ -172,6 +172,7 @@
 
 :root {
   --page-padding: 1.6rem;
+   --stagger: 0.15s;
 }
 
 @media (min-width: 768px) {
@@ -8399,4 +8400,54 @@ body #insta-feed {
     min-width: 100%;
 }
 
+}
+
+/* ==== Fade in on scroll ==== */
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+  --stagger: 0.15s; /* ADD THIS */
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ITEMS */
+.fade-in-item,
+.fade-in-up,
+.fade-in-left {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform, opacity;
+}
+
+/* Variants */
+.fade-in-left {
+  transform: translateX(-50px) scale(0.96);
+}
+
+.fade-in-up {
+  transform: translateY(50px) scale(0.96);
+}
+
+/* Trigger */
+.fade-in-section.is-visible .fade-in-item,
+.fade-in-section.is-visible .fade-in-up,
+.fade-in-section.is-visible .fade-in-left {
+  opacity: 1;
+  transform: none;
+
+  transition-delay: calc(var(--i) * var(--stagger));
 }

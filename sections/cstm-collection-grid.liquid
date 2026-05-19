@@ -81,6 +81,31 @@
     text-transform: uppercase;
   }
 
+  /* === tablet === */
+
+  @media screen and (min-width: 769px) and (max-width: 1024px){
+
+    .section-{{ section.id }} .collection-blocks {
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+
+    .section-{{ section.id }} .collection-g-block-image {
+        aspect-ratio: 1.8;
+    }
+
+    .section-{{ section.id }} .collection-g-block-image:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: #00000044;
+    }
+
+  }
+
   @media screen and (max-width: 768px) {
     .section-{{ section.id }} {
       padding-top: {{ section.settings.mobile_padding_top }}px;
@@ -120,7 +145,7 @@
   }
 {% endstyle %}
 
-<section class="collection-grid-section section-{{ section.id }}">
+<section class="collection-grid-section fade-in-section section-{{ section.id }}">
   <div class="page-width">
     <div class="collection-grid-wraper">
 
@@ -142,7 +167,7 @@
           {% endif %}
 
           <div
-            class="collection-g-block"
+            class="collection-g-block fade-in-item"
             {{ block.shopify_attributes }}
           >
 

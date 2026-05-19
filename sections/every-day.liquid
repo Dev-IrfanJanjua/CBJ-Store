@@ -221,7 +221,7 @@
   }
 {% endstyle %}
 
-<section class="everyday-section section-{{ section.id }} {% if section.settings.hide_desk %} hide_desk-{{ section.id }} {% endif %} ">
+<section class="everyday-section fade-in-section section-{{ section.id }} {% if section.settings.hide_desk %} hide_desk-{{ section.id }} {% endif %} ">
   <div class="page-width">
     <div class="everyday-wrapper">
 
@@ -229,7 +229,7 @@
         <div class="everyday-head-content">
 
           {% if section.settings.tag_text != blank %}
-            <div class="everyday-head-tag tag_tag">
+            <div class="everyday-head-tag tag_tag fade-in-up">
 
               {% if section.settings.tag_icon != blank %}
                 <div class="everyday-head-tag_icon tag_icon">
@@ -250,7 +250,7 @@
           {% endif %}
 
           {% if section.settings.heading != blank %}
-            <h2 class="everyday-head-title title_title">
+            <h2 class="everyday-head-title title_title fade-in-up">
               {{
                 section.settings.heading
                 | replace: '<p>', ''
@@ -295,7 +295,7 @@
                   <a href="{{ collection.url }}" class="everyday-card-link">
                 {% endif %}
 
-                <div class="everyday-card">
+                <div class="everyday-card fade-in-item">
 
                   {% if primary_image != blank %}
                     <div class="everyday-card_images">

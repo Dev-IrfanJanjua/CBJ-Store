@@ -211,7 +211,7 @@
   }
 {% endstyle %}
 
-<section class="newsletter-section section-{{ section.id }}">
+<section class="newsletter-section fade-in-section section-{{ section.id }}">
   <div class="page-width">
     <div class="news-letter-wrapper">
 
@@ -236,7 +236,7 @@
         {% endif %}
 
       {% if section.settings.tag_text != blank %}
-        <div class="news-letter-tag">
+        <div class="news-letter-tag fade-in-up">
             <div class="tag_tag">
                 {% if section.settings.tag_icon != blank %}
                     <div class="tag_icon">
@@ -256,7 +256,7 @@
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <div class="news-letter_title">
+        <div class="news-letter_title fade-in-up">
           {{
             section.settings.heading
             | replace: '<p>', ''
@@ -266,12 +266,12 @@
       {% endif %}
 
       {% if section.settings.subtitle != blank %}
-        <p class="mews-letter-subtitle">
+        <p class="mews-letter-subtitle fade-in-up">
           {{ section.settings.subtitle }}
         </p>
       {% endif %}
 
-      <div class="news-letter-form">
+      <div class="news-letter-form fade-in-up">
         {% form 'customer', class: 'newsletter-form' %}
           <input type="hidden" name="contact[tags]" value="newsletter">
 
@@ -313,7 +313,7 @@
       </div>
 
       {% if section.settings.description != blank %}
-        <p class="news-letter_desc">
+        <p class="news-letter_desc fade-in-up">
           {{ section.settings.description }}
         </p>
       {% endif %}

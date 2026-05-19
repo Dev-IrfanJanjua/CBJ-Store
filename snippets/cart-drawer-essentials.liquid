@@ -1,0 +1,110 @@
+{% liquid 
+    assign essen_products = block.settings.poducts
+%}
+
+<div class="cstm_cart-blocks">
+    <div class="cstm_cart-head">
+        {% if block.settings.tag_text != blank %}
+            <div class="cstm_cart-blocks_tag tag_tag">
+            <div class="tag_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="10" viewBox="0 0 11 10" fill="none">
+                <path d="M3.3981 6.00606L1.96385 8.91386L3.76953 9.78469L5.20379 6.87689L7.02876 9.55678L8.69568 8.44312L6.87068 5.76323L10.1299 5.53532L9.99118 3.55083L6.73191 3.77874L8.16618 0.870932L6.36049 0.000103964L4.92625 2.90791L3.10126 0.228012L1.43436 1.34167L3.25934 4.02157L0.000101268 4.24948L0.13887 6.23396L3.3981 6.00606Z" fill="#B97AFC"/>
+                </svg>
+            </div>
+            {{ block.settings.tag_text }}
+            </div>
+        {% endif %}
+        {% if block.settings.title != blank %}
+            <h3 class="cstm_cart-blocks_title">{{ block.settings.title }}</h3>
+        {% endif %}
+    </div>
+    <div class="cstm_cart_cards">
+        <div class="swiper cstm_cart_cards-swiper{{ block.id }}">
+        <div class="swiper-wrapper">
+            {% for products in essen_products %}
+                <div class="swiper-slide">
+                    {% render 'essntials-product-card',
+                        product_item: products,
+                        block: block,
+                        section: section,
+                        product_form_id: 'product-form-' | append: card_unique_id
+                    %}
+                </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+</div>
+
+{% style %}
+
+.cstm_cart-blocks {
+    padding-top: 30px;
+}
+
+h3.cstm_cart-blocks_title {
+    color: var(--black-color, #000);
+    font-family: "Faculty Glyphic";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    margin: 6px 0 11px;
+}
+
+.cstm_cart-head{
+    text-align: center;
+}
+
+.cstm_cart-blocks .swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+.cstm_cart-blocks_tag.tag_tag {
+    font-size: 8px;
+    letter-spacing: -0.36px;
+}
+
+.cstm_cart-blocks_tag.tag_tag .tag_icon {
+    width: 10px;
+}
+
+.cstm_cart-blocks a.pdp-essential-image {
+    aspect-ratio: 1;
+    height: auto;
+}
+
+{% endstyle %}
+
+<script>
+(() => {
+
+  const initCartBlocksSwiper = () => {
+
+    const slider = document.querySelector(
+      '.cstm_cart_cards-swiper{{ block.id }}'
+    );
+
+    if (!slider) return;
+
+    if (slider.swiper) {
+      slider.swiper.destroy(true, true);
+    }
+
+    new Swiper(slider, {
+
+      slidesPerView: 3,
+      spaceBetween: 8,
+      speed: 1000,
+
+    });
+
+  };
+
+  document.addEventListener('DOMContentLoaded', initCartBlocksSwiper);
+  document.addEventListener('shopify:section:load', initCartBlocksSwiper);
+
+})();
+</script>

@@ -245,6 +245,36 @@
     border: none !important;
   }
 
+  /* === tablet === */
+
+  @media screen and (min-width: 769px) and (max-width: 1024px){
+
+    .comp-section.section-{{ section.id }} .section-bg-image.desktop-bg {
+      display: none !important;
+    }
+
+    .comp-section.section-{{ section.id }} .section-bg-image.mobile-bg {
+      display: block !important;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-wrapper {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-left {
+      flex: none;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-right {
+      width: 100%;
+      max-width: 100%;
+    }
+
+  }
+
   @media (max-width: 768px) {
     .comp-section.section-{{ section.id }} {
       padding-top: {{ section.settings.padding_top_mobile }}px;
@@ -333,7 +363,7 @@
 {% endstyle %}
 
 <section
-  class="comp-section section-{{ section.id }}"
+  class="comp-section fade-in-section section-{{ section.id }}"
   id="shopify-section-{{ section.id }}"
 >
   <div class="page-width">
@@ -374,7 +404,7 @@
 
             <div class="comp-left-head">
                 {%- if section.settings.tag_text != blank -%}
-                  <div class="tag_tag comp_tag">
+                  <div class="tag_tag comp_tag fade-in-up">
                     {%- if section.settings.tag_icon != blank -%}
                       <img
                         class="tag_icon"
@@ -391,7 +421,7 @@
                 {%- endif -%}
           
                 {%- if section.settings.title != blank -%}
-                  <h2 class="comp-title">
+                  <h2 class="comp-title fade-in-up">
                     {{ section.settings.title | replace: '<p>', '' | replace: '</p>', '' }}
                   </h2>
                 {%- endif -%}
@@ -399,7 +429,7 @@
     
     
           {%- if section.settings.description != blank -%}
-            <p class="comp-desc">{{ section.settings.description }}</p>
+            <p class="comp-desc fade-in-up">{{ section.settings.description }}</p>
           {%- endif -%}
     
         </div>
@@ -418,7 +448,7 @@
           <div class="comp-table" role="table" aria-label="{{ section.settings.table_aria_label | default: 'Comparison table' }}">
     
             {%- comment -%} TABLE HEADER {%- endcomment -%}
-            <div class="comp-table-head" role="row">
+            <div class="comp-table-head fade-in-item" role="row">
               <div class="th-features" role="columnheader">
                 {{ section.settings.col_features_label | default: 'Features' }}
               </div>
@@ -433,7 +463,7 @@
             {%- comment -%} TABLE ROWS — BLOCKS {%- endcomment -%}
             {%- for block in section.blocks -%}
               <div
-                class="comp-table-row"
+                class="comp-table-row fade-in-item"
                 role="row"
                 {{ block.shopify_attributes }}
               >

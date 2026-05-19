@@ -174,7 +174,7 @@
     display: none;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 990px) {
     .section-{{ section.id }} {
       padding-top: {{ section.settings.mobile_padding_top }}px;
       padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
@@ -209,6 +209,7 @@
 
     .section-{{ section.id }} .cstm-footer-subtitle {
         text-align: center;
+        margin: 0 auto;
     }
 
     .section-{{ section.id }} .cstm-footer-socials {
@@ -293,7 +294,7 @@
   }
 {% endstyle %}
 
-<section class="cstm-footer-section section-{{ section.id }}">
+<section class="cstm-footer-section fade-in-section section-{{ section.id }}">
   <div class="page-width">
     <div class="cstm-footer-wrapper">
 
@@ -302,7 +303,7 @@
         <div class="cstm-footer-left">
 
           {% if section.settings.logo != blank %}
-            <a class="cstm-footer-logo" href="/">
+            <a class="cstm-footer-logo fade-in-up" href="/">
               {{
                 section.settings.logo
                 | image_url: width: 600
@@ -315,13 +316,13 @@
           {% endif %}
 
           {% if section.settings.logo_text != blank %}
-            <a class="cstm-footer-text-logo title_title" href="/">
+            <a class="cstm-footer-text-logo title_title fade-in-up" href="/">
               {{ section.settings.logo_text }}
             </a>
           {% endif %}
 
           {% if section.settings.subtitle != blank %}
-            <p class="cstm-footer-subtitle">
+            <p class="cstm-footer-subtitle fade-in-up">
               {{ section.settings.subtitle }}
             </p>
           {% endif %}
@@ -333,7 +334,7 @@
                   {% if block.settings.social_link != blank and block.settings.social_link != blank %}
                     <a
                       href="{{ block.settings.social_link }}"
-                      class="cstm-footer-social-link"
+                      class="cstm-footer-social-link fade-in-up"
                       {% if block.settings.open_new_tab %}
                         target="_blank"
                       {% endif %}
@@ -358,7 +359,7 @@
           {% for block in section.blocks %}
             {% if block.type == 'menu' %}
 
-              <div class="cstm-footer-menu" {{ block.shopify_attributes }}>
+              <div class="cstm-footer-menu fade-in-up" {{ block.shopify_attributes }}>
 
                 <div class="cstm-footer-menu-button">
                   {% if block.settings.menu_title != blank %}
@@ -406,7 +407,7 @@
       <div class="cstm-footer-bottom">
 
         {% if section.settings.copyright_text != blank %}
-          <p class="cstm-footer-copyright">
+          <p class="cstm-footer-copyright fade-in-up">
             {{ section.settings.copyright_text }}
           </p>
         {% endif %}
@@ -416,7 +417,7 @@
                 <span class="visually-hidden">{{ 'general.payment.methods' | t }}</span>
                 <ul class="list list-payment" role="list">
                     {%- for type in shop.enabled_payment_types -%}
-                    <li class="list-payment__item">
+                    <li class="list-payment__item fade-in-up">
                         {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
                     </li>
                     {%- endfor -%}
@@ -473,7 +474,7 @@
 
     if (!section) return;
 
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 990;
 
     const items = section.querySelectorAll('.cstm-footer-menu');
 

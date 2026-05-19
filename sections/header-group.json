@@ -256,7 +256,7 @@
         "menu": "header-dev-menu",
         "menu_mobile": "",
         "header_layout": "logo-left",
-        "menu_trigger": "click",
+        "menu_trigger": "hover",
         "sticky_header": "none",
         "enable_collapse_on_scroll": false,
         "show_sperator_line": false,

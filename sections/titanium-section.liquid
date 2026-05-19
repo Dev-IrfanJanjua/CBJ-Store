@@ -146,6 +146,38 @@
     display: block;
   }
 
+  /* === tablet === */
+
+  @media screen and (min-width: 769px) and (max-width: 1024px){
+
+    .section-{{ section.id }} .titanium-blocks {
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+
+    .section-{{ section.id }} .titanium-blocks_left, 
+    .section-{{ section.id }} .titanium-blocks_right {
+        gap: 11px;
+    }
+
+    .section-{{ section.id }} .titanium-wrapper-main_image {
+      aspect-ratio: 1.5;
+    }
+
+    .section-{{ section.id }} .titanium-block-title {
+        text-align: left;
+    }
+
+    .section-{{ section.id }} .titanium-block-subtext {
+          text-align: left;
+      }
+
+    .section-{{ section.id }} .block__left .titanium-block-icon {
+        margin-left: 0;
+      }
+
+  }
+
   @media screen and (max-width: 768px) {
     .section-{{ section.id }} {
       padding-top: {{ section.settings.mobile_padding_top }}px;
@@ -229,14 +261,14 @@
   }
 {% endstyle %}
 
-<section class="titanium-section section-{{ section.id }}">
+<section class="titanium-section fade-in-section section-{{ section.id }}">
   <div class="page-width">
     <div class="titanium-wrapper">
 
       <div class="titanium-head">
 
         {% if section.settings.tag_text != blank %}
-          <div class="titanium-tag tag_tag">
+          <div class="titanium-tag tag_tag fade-in-up">
 
             {% if section.settings.tag_icon != blank %}
               <div class="tag_icon">
@@ -257,7 +289,7 @@
         {% endif %}
 
         {% if section.settings.heading != blank %}
-          <h2 class="titanium-title title_title">
+          <h2 class="titanium-title title_title fade-in-up">
             {{
               section.settings.heading
               | replace: '<p>', ''
@@ -280,7 +312,7 @@
           {% for block in section.blocks %}
             {% if block.settings.block_position == 'left' %}
               <div
-                class="titanium-block block__left"
+                class="titanium-block block__left fade-in-item"
                 {{ block.shopify_attributes }}
               >
 
@@ -321,7 +353,7 @@
           {% endfor %}
         </div>
 
-        <div class="titanium-wrapper-main_image">
+        <div class="titanium-wrapper-main_image fade-in-item">
 
           {% if section.settings.main_image != blank %}
             {{
@@ -351,7 +383,7 @@
           {% for block in section.blocks %}
             {% if block.settings.block_position == 'right' %}
               <div
-                class="titanium-block block__right"
+                class="titanium-block block__right fade-in-item"
                 {{ block.shopify_attributes }}
               >
 

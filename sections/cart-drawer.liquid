@@ -774,6 +774,14 @@
               -%}
             {%- endif -%}
           </div>
+          {% for block in section.blocks %}
+            {% if block.type == 'after_care' %}
+              {% render 'cart-drawer-essentials',
+                block: block,
+                section: section
+              %}
+            {% endif %}
+          {% endfor %}
         </div>
         <div
           id="CartDrawerFooter-{{ section.id }}"
@@ -1117,6 +1125,45 @@
                     endif
                   -%}
                 </div>
+
+                {% comment %} ==== free delivery note ===== {% endcomment %}
+
+                {% liquid
+                  assign current_timestamp = 'now' | date: '%s'
+
+                  assign delivery_start = current_timestamp | plus: 172800
+                  assign delivery_end = current_timestamp | plus: 259200
+
+                  assign start_day = delivery_start | date: '%-d'
+                  assign end_day = delivery_end | date: '%-d'
+                %}
+
+                {% capture start_suffix %}
+                  {% case start_day %}
+                    {% when '1','21','31' %}st
+                    {% when '2','22' %}nd
+                    {% when '3','23' %}rd
+                    {% else %}th
+                  {% endcase %}
+                {% endcapture %}
+
+                {% capture end_suffix %}
+                  {% case end_day %}
+                    {% when '1','21','31' %}st
+                    {% when '2','22' %}nd
+                    {% when '3','23' %}rd
+                    {% else %}th
+                  {% endcase %}
+                {% endcapture %}
+
+                <p class="cart_drawer_free-delivery">
+                  Free Delivery on
+                  {{ start_day }}{{ start_suffix | strip }}
+                  {{ delivery_start | date: "%B" }}
+                  or
+                  {{ end_day }}{{ end_suffix | strip }}
+                  {{ delivery_end | date: "%B" }}
+                </p>
               </div>
               <form action="{{ routes.cart_url }}" method="POST" novalidate class="drawer__footer-buttons flex gap-2">
                 <a href="{{ routes.cart_url }}" class="btn btn--secondary">
@@ -1263,6 +1310,35 @@
       ],
       "default": "center"
     }
+  ],
+  "blocks":[
+    {
+      "type": "after_care",
+      "name": "After Care",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "cstm_cart__atc",
+          "label": "Custom ATC",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "tag_text",
+          "label": "Tag Text"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "product_list",
+          "id": "poducts",
+          "label": "Add Products"
+        }
+      ]
+    }
   ]
 }
 {% endschema %}
@@ -1382,6 +1458,8 @@ h2.drawer__heading {
 
 cart-items ul.flex {
     padding-top: 24px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 li.cart-item {
@@ -1475,7 +1553,7 @@ span.cart-item__per-hoop-sub {
     line-height: 120%;
 }
 
-.cart-item__options {
+.cart-item__options span {
     color: #000;
     font-family: "Suisse Int'l";
     font-size: 12px;
@@ -1507,6 +1585,70 @@ li.discount.text-sm-extra {
     background: #EBD8FE;
     align-items: center;
 }
+
+quantity-input.cart-quantity {
+    min-width: 94px;
+}
+
+quantity-input.cart-quantity input.quantity__input {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.cart-item__details .cart-item__remove:hover svg {
+    transform: unset !important;
+}
+
+.drawer__footer {
+    padding: 21px 12px;
+    border-radius: 13px 13px 0 0;
+    background: #FFF;
+    box-shadow: 0 -2px 11.6px 0 rgba(0, 0, 0, 0.13);
+}
+
+.drawer__footer-body > div.grid,
+.drawer__footer-body > div.grid > div {
+    gap: 8px;
+}
+
+span.totals__subtotal {
+    color: var(--black-color, #000);
+    font-family: "Suisse Int'l";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+}
+
+span.totals__subtotal-value, span.totals__subtotal-value span.money {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.34px;
+}
+
+.tax-note.text-sm-extra, 
+.tax-note.text-sm-extra a {
+    color: var(--black-color, #000);
+    font-family: "Suisse Int'l";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+}
+
+.tax-note.text-sm-extra a:after{
+  display: none;
+}
+
+
 
 {% endstyle %}
 {% endif %}

@@ -360,7 +360,7 @@
             elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout
               assign button_text = 'products.product.sold_out' | t
 
-            elsif block.settings.cstm_atc
+            elsif block.settings.cstm_atc or block.settings.cstm_cart__atc
               assign show_custom_icon = true
               assign icon_only = true
 

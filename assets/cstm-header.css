@@ -520,7 +520,7 @@ h3.mega_content-title {
 
 /* ===== tablet ==== */
 
-@media screen and (min-width: 769px) and (max-width: 1140px){
+@media screen and (min-width: 769px) and (max-width: 1024px){
 
 .cstm-header__navigation ul.flex{
     flex-wrap: nowrap;
@@ -536,6 +536,13 @@ h3.mega_content-title {
 .cstm_header-mbl-logo {
     min-width: fit-content;
     width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cstm-header button.menu-drawer-button{
+    display: block;
 }
 
 }

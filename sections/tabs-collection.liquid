@@ -203,7 +203,7 @@
   }
 {% endstyle %}
 
-<section class="tabs-collection-section section-{{ section.id }}">
+<section class="tabs-collection-section fade-in-section section-{{ section.id }}">
   <div class="page-width">
 
     <div class="tabs-collection-wrapper">
@@ -213,7 +213,7 @@
         <div class="tabs-collection-head-left">
 
           {% if section.settings.tag_text != blank %}
-            <div class="tabs-collection-tag tag_tag">
+            <div class="tabs-collection-tag tag_tag fade-in-up">
 
               {% if section.settings.tag_icon != blank %}
                 <div class="tag_icon">
@@ -236,7 +236,7 @@
           {% endif %}
 
           {% if section.settings.heading != blank %}
-            <h2 class="tabs-collection-title title_title">
+            <h2 class="tabs-collection-title title_title fade-in-up">
               {{
                 section.settings.heading
                 | replace: '<p>', ''
@@ -252,7 +252,7 @@
         
                         {% if collection != blank %}
                         <button
-                            class="tabs-collection-tab-btn {% if forloop.first %}active{% endif %}"
+                            class="tabs-collection-tab-btn {% if forloop.first %}active{% endif %} fade-in-item"
                             data-tab="{{ section.id }}-{{ block.id }}"
                             {{ block.shopify_attributes }}
                         >
@@ -293,7 +293,7 @@
           {% if collection != blank %}
 
             <div
-              class="tabs-collection-pane {% if forloop.first %}active{% endif %}"
+              class="tabs-collection-pane {% if forloop.first %}active{% endif %} fade-in-item"
               id="{{ section.id }}-{{ block.id }}"
             >
 
@@ -356,7 +356,7 @@
             </div>
 
             {% if section.settings.show_view_all and collection.url != blank %}
-              <div class="tabs-collection-view-all">
+              <div class="tabs-collection-view-all fade-in-left">
                 <a href="{{ collection.url }}">
                   {{ section.settings.view_all_text }}
                 </a>

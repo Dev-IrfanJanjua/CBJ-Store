@@ -3196,3 +3196,32 @@ customElements.define(
   },
   { extends: 'div' }
 );
+
+
+// ===== scroll animation ====
+
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+
+        // Assign index to children dynamically
+        const children = el.querySelectorAll(
+          '.fade-in-item, .fade-in-up, .fade-in-left'
+        );
+
+        children.forEach((child, index) => {
+          child.style.setProperty('--i', index);
+        });
+
+        el.classList.add('is-visible');
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.fade-in-section').forEach(el => {
+    observer.observe(el);
+  });
+});

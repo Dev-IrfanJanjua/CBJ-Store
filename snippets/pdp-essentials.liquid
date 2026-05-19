@@ -64,55 +64,12 @@
 
         <div class="swiper-slide">
 
-          <div class="pdp-essential-card">
-
-            <a
-              href="{{ upsell_product.url }}"
-              class="pdp-essential-image"
-            >
-
-              {% if upsell_product.featured_image != blank %}
-                {{
-                  upsell_product.featured_image
-                  | image_url: width: 500
-                  | image_tag:
-                    loading: 'lazy',
-                    widths: '120,180,250,350,500',
-                    alt: upsell_product.title
-                }}
-              {% endif %}
-
-            </a>
-
-            <div class="pdp-essential-content">
-
-              <h4 class="pdp-essential-title">
-                <a href="{{ upsell_product.url }}">
-                  {{ upsell_product.title }}
-                </a>
-              </h4>
-
-              <div class="pdp-essential-footer">
-
-                <span class="pdp-essential-price">
-                  {{ upsell_product.price | money }}
-                </span>
-
-                <div class="pdp-essential-atc">
-                    {% render 'buy-buttons',
-                        product: upsell_product,
-                        block: block,
-                        product_form_id: 'product-form-' | append: card_unique_id,
-                        section_id: section.id,
-                        section: section
-                    %}
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
+          {% render 'essntials-product-card',
+            product_item: upsell_product,
+            block: block,
+            section: section,
+            product_form_id: 'product-form-' | append: card_unique_id
+          %}
 
         </div>
 
@@ -218,58 +175,6 @@ h3.pdp-essentials-title {
     margin: 0;
 }
 
-.pdp-essential-card {
-    border-radius: 12px;
-    background: #F6F6F6;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    justify-content: space-between;
-}
-
-a.pdp-essential-image {
-    display: block;
-    width: 100%;
-    height: 162px;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #fff;
-}
-
-a.pdp-essential-image img{
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-h4.pdp-essential-title a,
-h4.pdp-essential-title {
-    color: #000;
-    font-family: "Faculty Glyphic";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-span.pdp-essential-price, 
-span.pdp-essential-price span.money {
-    color: #1A1A1A;
-    font-family: "Suisse Int'l";
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 450;
-    line-height: 120%;
-}
-
-.pdp-essential-footer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
-    margin-top: 8px;
-}
 
 .essentials_swip_btn {
     position: static;
@@ -297,31 +202,6 @@ span.pdp-essential-price span.money {
     display: flex;
     align-items: end;
     justify-content: space-between;
-}
-
-.pdp-essential-atc .product-form__submit {
-    background: transparent;
-    padding: 0;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 0;
-    border: none;
-    overflow: visible;
-}
-
-span.pdp-essential-atc_icon {
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-span.pdp-essential-atc_icon svg{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
 }
 
 .pdp-essentials-swiper-{{ block.id }} .swiper-slide {

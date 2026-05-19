@@ -213,7 +213,12 @@
             "tag_icon": "shopify://shop_images/Vector_1.svg",
             "tag_text": "Before Checkout",
             "title": "Add Aftercare <strong>Essentials</strong>",
-            "products": []
+            "products": [
+              "11-cz-segment-hoop-in-silver-titanium",
+              "3-bezel-set-rectangles-cz-threadless-labret-in-silver-titanium",
+              "3-lines-woven-web-v-shape-segment-hoop-in-silver-titanium",
+              "3-star-cz-hinged-belly-in-silver-titanium"
+            ]
           }
         },
         "payment_info": {

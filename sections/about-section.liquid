@@ -164,6 +164,23 @@
     color: {{ section.settings.image_text_color }};
 }
 
+/* ==== tablet ==== */
+
+  @media screen and (min-width: 769px) and (max-width: 1024px){
+
+    .section-{{ section.id }} .about-wrapper {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .section-{{ section.id }} .about-wrapper-image-wrapper {
+        border-radius: 12px;
+        max-width: 100%;
+        aspect-ratio: 1.5;
+    }
+
+  }
+
   @media screen and (max-width: 768px) {
     .section-{{ section.id }} {
       padding-top: {{ section.settings.mobile_padding_top }}px;
@@ -214,16 +231,16 @@
   }
 {% endstyle %}
 
-<section class="about-section section-{{ section.id }}">
+<section class="about-section fade-in-section section-{{ section.id }}">
   <div class="page-width">
     <div class="about-wrapper">
 
-      <div class="about-wrapper-content">
+      <div class="about-wrapper-content fade-in-item">
 
         <div class="about-content-head">
 
           {% if section.settings.tag_icon != blank %}
-            <div class="about-head-tag tag_tag">
+            <div class="about-head-tag tag_tag fade-in-up">
               <div class="tag_icon">
                 {{
                   section.settings.tag_icon
@@ -239,7 +256,7 @@
           {% endif %}
 
           {% if section.settings.heading != blank %}
-            <h2 class="about-head-title title_title">
+            <h2 class="about-head-title title_title fade-in-up">
               {{
                 section.settings.heading
                 | replace: '<p>', ''
@@ -297,7 +314,7 @@
 
       </div>
 
-      <div class="about-wrapper-image-wrapper">
+      <div class="about-wrapper-image-wrapper fade-in-item">
 
         {% if section.settings.main_image != blank %}
           <div class="about-main_image">
