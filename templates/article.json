@@ -1,0 +1,175 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_JgqcwU": {
+      "type": "breadcrumbs",
+      "settings": {
+        "container": "fixed",
+        "text_alignment": "start",
+        "padding_top": 16,
+        "padding_bottom": 20
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "show_related_posts": true,
+        "related_heading_size": "h2",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "card_title_size": "h4",
+        "show_tags": true,
+        "show_excerpt": false,
+        "show_date": true,
+        "show_author": true,
+        "show_button": false,
+        "comments_heading_size": "h2",
+        "padding_top": 16,
+        "padding_bottom": 80
+      }
+    },
+    "custom_blog_design_qgkM4R": {
+      "type": "custom_blog_design",
+      "blocks": {
+        "shop_hypoallergenic_yHadGD": {
+          "type": "Shop_Hypoallergenic",
+          "settings": {
+            "shop_hy_head": "Stop The Reaction Before It Starts",
+            "shop_sbxt": "<p>90% of piercing irritation comes from poor quality metal. Upgrade to ASTM F-136 Implant Grade Titanium-the biocompatible gold standard used by professional piercers worldwide.</p>",
+            "shop_hyp_btn_title": "Shop Hypoallergenic Basics",
+            "shop_hyp_btn_link": "#"
+          }
+        },
+        "myths_vs_reality_cfdLJe": {
+          "type": "myths_vs_reality",
+          "settings": {
+            "myth_real_head": "Myths vs. Reality",
+            "box_head_1": "Myth: \"Itchiness means infection.\"",
+            "box_subtxt_1": "False. Infection usually involves throbbing pain, heat, extreme swelling, and yellow/green pus. Mild itching alone is rarely an infection.",
+            "box_head_2": "Myth: \"Turn the jewelry to scratch the itch.\"",
+            "box_subtxt_2": "Never twist! Twisting breaks the healing seal, introduces bacteria inside the wound, and extends healing time by weeks."
+          }
+        },
+        "shop_feature_Ujc6kn": {
+          "type": "shop_feature",
+          "settings": {
+            "why_shop_head": "Why Shop Camden?",
+            "shop_list_img_1": "shopify://shop_images/shield-check_1.svg",
+            "shop_data_head_1": "Implant Grade Titanium",
+            "shop_data_subhead_1": "ASTM F-136 Compliant",
+            "shop_list_img_2": "shopify://shop_images/truck-side_1.svg",
+            "shop_data_head_2": "Tracked UK Delivery",
+            "shop_data_subhead_2": "Free over £40",
+            "shop_list_img_3": "shopify://shop_images/health-healthcare-medical-medicine-secure-security-svgrepo-com.svg",
+            "shop_data_head_3": "Sterilised Piercing Jewellery",
+            "shop_data_subhead_3": "Keeping your skin safe"
+          }
+        },
+        "trending_product_blog_4XUWFj": {
+          "type": "trending_product_blog",
+          "settings": {
+            "trend_head": "Trending products",
+            "trend_product_1": "bezel-blue-opal-cz-flower-labret-in-silver-titanium",
+            "trend_product_2": "dome-huggie-hoop-in-gold-titanium",
+            "link_title": "View All",
+            "link": "shopify://collections/all-products"
+          }
+        },
+        "shop_by_category_MCJCBW": {
+          "type": "shop_by_category",
+          "settings": {
+            "cat_head": "Shop by Category",
+            "cat_1": "Labret Studs",
+            "cat_1_link": "#",
+            "cat_2": "Clicker Rings",
+            "cat_2_link": "#",
+            "cat_3": "Belly Bars",
+            "cat_3_link": "shopify://collections/belly",
+            "cat_4": "Nose Studs",
+            "cat_4_link": "shopify://collections/nose-studs",
+            "cat_5": "Titanium Chains",
+            "cat_5_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "shop_hypoallergenic_yHadGD",
+        "myths_vs_reality_cfdLJe",
+        "shop_feature_Ujc6kn",
+        "trending_product_blog_4XUWFj",
+        "shop_by_category_MCJCBW"
+      ],
+      "name": "Custom Blog Section",
+      "settings": {}
+    },
+    "scrolling_promotion_hGXDE6": {
+      "type": "scrolling-promotion",
+      "blocks": {
+        "text_gFJd64": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Welcome to our store",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_Y9tbNV": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Welcome to our store",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        },
+        "text_haEh33": {
+          "type": "text",
+          "settings": {
+            "text_link": "",
+            "text": "Welcome to our store",
+            "text_size": "h4",
+            "text_opacity": 100,
+            "use_custom_color": false,
+            "custom_color": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "text_gFJd64",
+        "text_Y9tbNV",
+        "text_haEh33"
+      ],
+      "settings": {
+        "color_scheme": "scheme-14",
+        "direction": "left",
+        "pause_on_hover": true,
+        "speed": 0.3,
+        "h_spacing": 80,
+        "show_section_divider": false,
+        "padding_top": 22,
+        "padding_bottom": 22
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_JgqcwU",
+    "main",
+    "custom_blog_design_qgkM4R",
+    "scrolling_promotion_hGXDE6"
+  ]
+}

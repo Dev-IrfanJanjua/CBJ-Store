@@ -1,0 +1,227 @@
+{% stylesheet %}
+.feature-scroll-container-mf {
+    overflow: hidden;
+    padding: 10px 0;
+    margin: 0;
+    background: #eeeeee;
+}
+
+.feature-scroll-container-mf .page-width{
+    overflow: hidden;
+}
+
+.feature-scroll-wrapper {
+    border-radius: 20px;
+    background: #001116;
+    overflow: hidden;
+}
+
+.feature-scroll-track-mf {
+    display: flex;
+    animation: scroll-seamless 20s linear infinite;
+    width: max-content;
+    will-change: transform;
+        padding: 20px 0;
+border-radius: 20px;
+    background: #001116;
+}
+
+.feature-icon-item-mf {
+    display: flex;
+    align-items: center;
+    margin-right: 48px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.feature-icon-item-mf img {
+    width: 8px;
+    height: 8px;
+    aspect-ratio: 1/1;
+    flex-shrink: 0;
+    margin-right: 48px;
+}
+
+.feature-icon-item-mf span {
+    color: #F9F6F1;
+    font-family: "Faculty Glyphic";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+/* Seamless infinite scroll animation */
+@keyframes scroll-seamless {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-icon-item-mf span {
+        font-size: 15px; 
+    }
+    .pdp-marquee .feature-icon-item-mf span {
+       font-size: 16px;
+    }
+    .feature-scroll-container-mf {
+        padding: 20px 0;
+    }
+    .feature-icon-item-mf img {
+        margin-right: 15px;
+    }
+    .feature-icon-item-mf {
+        margin-right: 15px;
+    }
+}
+
+
+/* newstyle */
+.left-col {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 0 24px;
+}
+.shop-footer .icon {
+    display: inline-block;
+    width: var(--icon-size, 20px);
+    height: var(--icon-size, 20px);
+    vertical-align: middle;
+    fill: none;
+    stroke: white;
+}
+.zz-footer-link.left-con-richtext {
+   padding: 8px 0 0;
+}
+.left-col .zz-footer-title {
+  margin-bottom: 10px;
+}
+.left-col .text-button-large {
+      font-family: "Source Code Pro" !important;
+}
+@media (max-width: 768px) {
+   .left-col .zz-footer-title {
+     font-size: 18px !important; 
+     padding:0px;
+     border: 0px;
+    margin:0 0 10px !important;
+  }
+  .left-col {
+    flex-direction: column;
+    margin:0 0 32px;
+  }
+  .text-button-large {
+     font-size:14px !important;
+  }
+  .zz-footer-link.left-con-richtext {
+     font-size:14px;
+  }
+  .zz-footer-link.left-con-richtext {
+    padding: 0px;
+  }
+  .pdp-marquee .feature-scroll-container-mf {
+     padding: 16px 0 !important;
+  }
+
+  .feature-scroll-wrapper,
+  .feature-scroll-track-mf{
+    border-radius: 12px;
+  }
+
+}
+{% endstylesheet %}
+
+
+<div class="feature-scroll-container-mf sec-{{ section.id }} {% if section.settings.pdp %}pdp-marquee{% endif %}">
+    <div class="page-width">
+        <div class="feature-scroll-wrapper">
+            <div class="feature-scroll-track-mf">
+              {% comment %} Original set {% endcomment %}
+              {% for block in section.blocks %}
+                {% if block.type == 'feature' %}
+                  <div class="feature-icon-item-mf">
+                    {% if block.settings.icon %}
+                      <img src="{{  block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="50" height="39" loading="eager" fetchpriority="high">
+                    {% endif %}
+                    <span>{{ block.settings.title }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+    
+              {% comment %} Duplicate set 1 {% endcomment %}
+              {% for block in section.blocks %}
+                {% if block.type == 'feature' %}
+                  <div class="feature-icon-item-mf">
+                    {% if block.settings.icon %}
+                      <img src="{{  block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="50" height="39" loading="eager" fetchpriority="high">
+                    {% endif %}
+                    <span>{{ block.settings.title }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+    
+              {% comment %} Duplicate set 2 {% endcomment %}
+              {% for block in section.blocks %}
+                {% if block.type == 'feature' %}
+                  <div class="feature-icon-item-mf">
+                    {% if block.settings.icon %}
+                      <img src="{{  block.settings.icon | image_url }}" alt="{{ block.settings.icon.alt }}" width="50" height="39" loading="eager" fetchpriority="high">
+                    {% endif %}
+                    <span>{{ block.settings.title }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Scrolling Feature Icons",
+  "tag": "section",
+  "class": "scrolling-feature-icons",
+  "settings": [
+    {
+          "type": "checkbox",
+          "id": "hide",
+          "label": "Hide Desktop"
+    },
+    {
+          "type": "checkbox",
+          "id": "pdp",
+          "label": "Pdp Styling"
+    },
+    
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Feature Icons",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}      

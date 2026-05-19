@@ -1,0 +1,391 @@
+{% liquid
+  assign position = 'left,center,right' | split: ','
+%}
+
+<div
+  class="topbar section--padding color-{{ section.settings.color_scheme }} page-width page-width--{{ section.settings.container }}{% if section.settings.show_separator_line %} topbar--show-separator-line{% endif %}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: 0px; --mobile-padding-top: {{ section.settings.mobile_padding_top }}px; --mobile-padding-bottom: {{ section.settings.mobile_padding_bottom }}px; margin-bottom: 0px; padding-bottom: 0px !important; border-bottom: none !important; font-size: 0;"
+>
+  <div class="topbar__inner grid items-center" style="margin-bottom: 0; padding-bottom: 0; line-height: 0;">
+    {% for pos in position %}
+      <div class="topbar__column topbar__{{ pos }}{% unless pos == 'center' %} hidden{% else %} flex{% endunless %} lg:flex flex-wrap flex-col lg:flex-row items-center lg:justify-{{ pos | replace: 'left','start' | replace: 'right','end' }} text-center lg:text-{{ pos }}">
+        {% for block in section.blocks %}
+          {% unless block.settings.position == pos %}
+            {% continue %}
+          {% endunless %}
+          {%- case block.type -%}
+            {% when 'link_list' %}
+              <ul class="topbar__menu flex flex-wrap items-center justify-center lg:justify-{{ pos | replace: 'left','start' | replace: 'right','end' }}">
+                {% for link in linklists[block.settings.menu].links %}
+                  <li class="topbar__menu-item">
+                    <a href="{{ link.url }}" class="block reversed-link">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+
+            {% when 'text' %}              
+               <div class="camden-topbar-stack">
+                 
+                 <!-- ROW 1: TRUSTPILOT & STERILISED -->
+                 <div id="camden-trust-bar" class="flex items-center gap-4 justify-center">
+                   <a href="https://uk.trustpilot.com/review/camdenbodyjewellery.co.uk" target="_blank" class="dual-bar-item tp-link">
+                     <svg viewBox="0 0 24 24" class="icon-star"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+                     <span class="desktop-text"><strong>Excellent</strong> 4.8 on Trustpilot</span>
+                     <span class="mobile-text"><strong>4.8</strong> Trustpilot</span>
+                   </a>
+                   
+                   <span class="dual-divider" style="opacity: 0.3;">|</span>
+
+                   <div class="dual-bar-item">
+                     <svg viewBox="0 0 24 24" class="icon-shield" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                     <span class="desktop-text"><strong>Sterilised</strong> Body Jewellery</span>
+                     <span class="mobile-text">Sterilised</span>
+                   </div>
+                 </div>
+
+                 <!-- ROW 2: MULTI-BUY TIERS DESKTOP -->
+                 <div id="camden-tier-desktop" class="hidden lg:flex">
+                   <div class="camden-tier-bubble-desktop">
+                     <div class="tier-box" data-threshold="2">
+                       <svg class="tier-gift-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                       <span class="box-text">Buy 2, Get 25% Off</span>
+                     </div>
+                     <div class="tier-box" data-threshold="3">
+                       <svg class="tier-gift-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                       <span class="box-text">Buy 3+, Get 40% Off</span>
+                     </div>
+                   </div>
+                 </div>
+
+               </div>
+                       
+            {% when 'language_country' %}
+              <div class="topbar__country flex items-center gap-4">
+                {% liquid
+                  if block.settings.show_language_selector
+                    render 'language-selector', plain: true, class: 'flex', form_id: block.id
+                  endif
+                  if block.settings.show_country_selector
+                    render 'country-selector', plain: true, class: 'flex', form_id: block.id
+                  endif
+                %}
+              </div>
+            {% when 'social_links' %}
+              {% liquid
+                assign socials = 'facebook,instagram,youtube,tiktok,twitter,pinterest,snapchat,tumblr,vimeo' | split: ','
+                assign show_social = false
+                for social in socials
+                  assign social_setting = 'show_' | append: social
+                  assign social_link = 'social_' | append: social | append: '_link'
+                  if block.settings[social_setting] and settings[social_link] != blank
+                    assign show_social = true
+                    break
+                  endif
+                endfor
+              %}
+              {% if show_social %}
+                {% render 'social-icons', class: 'topbar__social', size: 'medium', show_facebook: block.settings.show_facebook, show_instagram: block.settings.show_instagram, show_tiktok: block.settings.show_tiktok, show_twitter: block.settings.show_twitter, show_pinterest: block.settings.show_pinterest, show_snapchat: block.settings.show_snapchat, show_tumblr: block.settings.show_tumblr, show_youtube: block.settings.show_youtube, show_vimeo: block.settings.show_vimeo %}
+              {% endif %}
+            {% when 'custom_link' %}
+               <a
+                href="{{ block.settings.link | default: "#" }}"
+                class="cusstom-button flex items-center justify-center gap-2 reversed-link"
+                aria-label="{{ block.settings.label }}"
+              >
+                {%- if block.settings.custom_icon != blank -%}
+                  <span class="icon icon--{{ block.settings.icon_size }}">
+                    {{-
+                      block.settings.custom_icon
+                      | image_url: width: 30
+                      | image_tag: loading: 'lazy', class: 'motion-reduce', is: 'image-lazy'
+                    -}}
+                  </span>
+                {%- elsif block.settings.icon != 'none' -%}
+                  {%- render 'icons', icon: block.settings.icon, size: block.settings.icon_size -%}
+                {%- endif -%}
+                {% if block.settings.label != blank %}
+                  <span class="reversed-link__text whitespace-nowrap">
+                    {{ block.settings.label }}
+                  </span>
+                {% endif %}
+              </a>
+          {%- endcase -%}          
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% comment %} MOBILE STICKY BAR {% endcomment %}
+<div id="camden-tier-mobile" class="lg:hidden">
+  <div class="camden-tier-bubble">
+    <div class="tier-box" data-threshold="2">
+      <svg class="tier-gift-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      <span class="box-text">Buy 2, Get 25% Off</span>
+    </div>
+    <div class="tier-box" data-threshold="3">
+      <svg class="tier-gift-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      <span class="box-text">Buy 3+, Get 40% Off</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ========== LAYOUT ========== */
+  .camden-topbar-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; 
+    padding: 5px 0;
+  }
+
+  /* ========== TRUST BAR ========== */
+  #camden-trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 13px;
+    color: inherit;
+    line-height: normal;
+    width: 100%;
+  }
+  .icon-star { width: 14px; height: 14px; fill: #00b67a; flex-shrink: 0; } 
+  .icon-shield { width: 14px; height: 14px; stroke: currentColor; flex-shrink: 0; } 
+  .dual-bar-item { display: flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
+  .tp-link:hover { text-decoration: underline; }
+
+  .desktop-text { display: inline-block; }
+  .mobile-text { display: none; }
+
+  /* ========== TIER BUBBLES — HEY HARPER PILL STYLE IN SORBET ========== */
+  #camden-tier-desktop {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Container: pale sorbet pill */
+  .camden-tier-bubble-desktop,
+  .camden-tier-bubble {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 4px;
+    background: #FFF4EB; /* Very pale peach (lighter than Sorbet) */
+    border-radius: 999px; /* Fully rounded pill */
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0, 17, 22, 0.04);
+  }
+
+  .camden-tier-bubble-desktop {
+    margin-bottom: 10px;
+  }
+
+  /* Tier pills: Sorbet fill */
+  .tier-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: #FFD8C2; /* Sorbet */
+    border-radius: 999px;
+    padding: 8px 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .tier-box .box-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #001116; /* Midnight Blue */
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .tier-gift-icon {
+    width: 13px;
+    height: 13px;
+    color: #001116;
+    flex-shrink: 0;
+    stroke-width: 2;
+  }
+
+  /* Desktop sizing */
+  .camden-tier-bubble-desktop .tier-box {
+    padding: 8px 16px;
+  }
+  .camden-tier-bubble-desktop .tier-box .box-text {
+    font-size: 12px;
+  }
+
+  /* Active/Unlocked state: deeper sorbet + bold */
+  .tier-box.tier-active {
+    background: #001116; /* Midnight Blue */
+  }
+  .tier-box.tier-active .box-text {
+    color: #FBFAF9; /* Pampas */
+    font-weight: 700;
+  }
+  .tier-box.tier-active .tier-gift-icon {
+    color: #FBFAF9;
+  }
+
+  /* ========== MOBILE ========== */
+  @media (max-width: 1023px) {
+    .desktop-text { display: none; }
+    .mobile-text { display: inline-block; font-weight: 600; font-size: 11px; }
+    
+    #camden-tier-desktop { display: none !important; }
+
+    .camden-topbar-stack {
+      width: 100%;
+      gap: 0;
+      padding-top: var(--mobile-padding-top, 8px);
+      padding-bottom: var(--mobile-padding-bottom, 8px);
+    }
+    
+    #camden-trust-bar { gap: 10px; }
+    
+    .topbar.section--padding {
+      padding-top: var(--mobile-padding-top, 8px) !important;
+      padding-bottom: var(--mobile-padding-bottom, 8px) !important;
+    }
+  }
+
+  /* ========== MOBILE STICKY BAR ========== */
+  #camden-tier-mobile {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 2147483647 !important;
+    padding: 8px 12px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  #camden-tier-mobile .camden-tier-bubble {
+    border-radius: 999px;
+    box-shadow: 0 -2px 12px rgba(0, 17, 22, 0.08), 0 2px 8px rgba(0, 17, 22, 0.04);
+  }
+
+  #camden-tier-mobile .tier-box {
+    flex: 1;
+    padding: 9px 10px;
+  }
+
+  #camden-tier-mobile .tier-box .box-text {
+    font-size: 11px;
+  }
+
+  @media (min-width: 1024px) {
+    #camden-tier-mobile { display: none !important; }
+  }
+
+  @media (max-width: 380px) {
+    .camden-tier-bubble { gap: 3px; padding: 3px; }
+    #camden-tier-mobile .tier-box { padding: 8px 6px; }
+    #camden-tier-mobile .tier-box .box-text { font-size: 10px; }
+    .tier-gift-icon { width: 11px; height: 11px; }
+  }
+</style>
+
+<script>
+(function() {
+  if (window.camdenTierScriptLoaded) return;
+  window.camdenTierScriptLoaded = true;
+
+  const MIN_PRICE = 400; 
+  const EXCLUDED_KEYWORDS = ['accessory', 'exclude', 'spare', 'tool'];
+
+  function updateHeaderTiers() {
+    fetch('/cart.js')
+      .then(res => res.json())
+      .then(cart => {
+        let qualifyingCount = 0;
+
+        cart.items.forEach(item => {
+          const type = item.product_type ? item.product_type.toLowerCase() : '';
+          const price = item.price;
+          const isExcluded = EXCLUDED_KEYWORDS.some(k => type.includes(k));
+          const isTooCheap = price < MIN_PRICE;
+
+          if (!isExcluded && !isTooCheap) {
+            qualifyingCount += item.quantity;
+          }
+        });
+
+        document.querySelectorAll('.tier-box').forEach(box => {
+          const threshold = parseInt(box.getAttribute('data-threshold'));
+          if (qualifyingCount >= threshold) {
+            box.classList.add('tier-active');
+          } else {
+            box.classList.remove('tier-active');
+          }
+        });
+      })
+      .catch(err => console.error('Tier Logic Error:', err));
+  }
+
+  updateHeaderTiers();
+
+  const originalFetch = window.fetch;
+  window.fetch = function() {
+    return originalFetch.apply(this, arguments).then((response) => {
+      if (response.url.includes('/cart/add') || response.url.includes('/cart/change') || response.url.includes('/cart/update')) {
+        setTimeout(updateHeaderTiers, 500);
+      }
+      return response;
+    });
+  };
+})();
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.top-bar.name",
+  "class": "topbar-section z-31",
+  "settings": [
+    { "type": "header", "content": "t:general.general.name" },
+    { "type": "select", "id": "container", "label": "t:general.container.label", "default": "fixed", "options": [{ "value": "fixed", "label": "Fixed" }, { "value": "full", "label": "Full" }] },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:general.colors.label", "default": "scheme-1" },
+    { "type": "checkbox", "id": "show_separator_line", "label": "t:general.show_separator_line.label", "default": false },
+    { "type": "header", "content": "Desktop Padding" },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "min": 0, "max": 120, "step": 2, "default": 12 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "min": 0, "max": 120, "step": 2, "default": 0 },
+    { "type": "header", "content": "Mobile Padding" },
+    { "type": "range", "id": "mobile_padding_top", "label": "Mobile Padding Top", "min": 0, "max": 60, "step": 2, "default": 8 },
+    { "type": "range", "id": "mobile_padding_bottom", "label": "Mobile Padding Bottom", "min": 0, "max": 60, "step": 2, "default": 8 }
+  ],
+  "blocks": [
+    { "type": "link_list", "name": "Link list", "settings": [{ "type": "link_list", "id": "menu", "label": "Menu" }, { "type": "select", "id": "position", "label": "Position", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }] }] },
+    { "type": "text", "name": "Text", "settings": [{ "type": "textarea", "id": "text", "label": "Text" }, { "type": "select", "id": "position", "label": "Position", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "center" }] },
+    { "type": "language_country", "name": "Language/Country", "settings": [{ "type": "checkbox", "id": "show_language_selector", "label": "Show Language" }, { "type": "checkbox", "id": "show_country_selector", "label": "Show Country" }, { "type": "select", "id": "position", "label": "Position", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }] }] },
+    { "type": "social_links", "name": "Social Links", "settings": [{ "type": "checkbox", "id": "show_instagram", "label": "Instagram" }, { "type": "select", "id": "position", "label": "Position", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }] }] },
+    { "type": "header_cart_tag", "name": "Header Cart Tag" },
+    {
+      "type": "custom_link",
+      "name": "t:sections.header.blocks.custom_link.name",
+      "settings": [
+        { "type": "header", "content": "t:general.general.name" },
+        { "type": "text", "id": "label", "label": "t:sections.header.blocks.custom_link.settings.label.label", "default": "Custom link" },
+        { "type": "url", "id": "link", "label": "t:general.link.label" },
+        { "type": "header", "content": "t:general.icon.label" },
+        { "type": "select", "id": "icon", "label": "t:general.icon.label", "options": [ { "value": "none", "label": "t:general.icon.options__1.label" }, { "value": "car-simple", "label": "t:general.icon.options__2.label" }, { "value": "truck", "label": "t:general.icon.options__3.label" } ], "default": "none" },
+        { "type": "image_picker", "id": "custom_icon", "label": "t:general.custom_icon.label" },
+        { "type": "select", "id": "icon_size", "label": "t:general.icon_size.label", "options": [ { "value": "small", "label": "Small" }, { "value": "medium", "label": "Medium" } ], "default": "medium" }
+      ]
+    },
+    {
+      "type": "promotion_banner",
+      "name": "t:sections.header.blocks.promotion_banner.name",
+      "settings": [
+         { "type": "text", "label": "t:sections.header.blocks.all.menu_title.label", "id": "menu_title" },
+         { "type": "range", "id": "menu_columns", "label": "t:sections.header.blocks.all.menu_columns.label", "min": 2, "max": 6, "default": 3, "step": 1 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Top Bar" }]
+}
+{% endschema %}

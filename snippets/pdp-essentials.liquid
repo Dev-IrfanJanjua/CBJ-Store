@@ -1,0 +1,332 @@
+{% liquid
+
+  assign metafield_products = product.metafields.custom.essential_products.value
+  assign fallback_products = block.settings.products
+
+  assign final_products = metafield_products
+
+  if final_products == blank
+    assign final_products = fallback_products
+  endif
+
+%}
+
+{% if final_products != blank %}
+
+<div class="pdp-essentials">
+
+  <div class="pdp-essentials-head">
+  <div class="pdp-essentials-head_content">
+      {% if block.settings.tag_text != blank %}
+          <div class="pdp-essentials-tag tag_tag">
+            {% if block.settings.tag_icon != blank %}
+              <div class="tag_icon">
+                {{
+                  block.settings.tag_icon
+                  | image_url: width: 60
+                  | image_tag: loading: 'lazy'
+                }}
+              </div>
+            {% endif %}
+              {{ block.settings.tag_text }}
+          </div>
+      {% endif %}
+    
+      {% if block.settings.title != blank %}
+        <h3 class="pdp-essentials-title">
+          {{ block.settings.title }}
+        </h3>
+      {% endif %}
+  </div>
+  {% comment %} {% if final_products.count > 3 %} {% endcomment %}
+      <div class="pdp-essentials-navigation">
+            <div class="swiper-button-prev essentials_swip_btn essentials-prev-{{ block.id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                    <path d="M7.21117 0.940585L0.940675 7.21108L7.21117 13.4816" stroke="black" stroke-width="1.88115" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div> 
+            <div class="swiper-button-next essentials_swip_btn essentials-next-{{ block.id }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">
+                    <path d="M0.940689 0.940585L7.21118 7.21108L0.94069 13.4816" stroke="black" stroke-width="1.88115" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+      </div>
+  {% comment %} {% endif %} {% endcomment %}
+
+
+  </div>
+
+  <div class="swiper pdp-essentials-swiper-{{ block.id }}">
+
+    <div class="swiper-wrapper">
+
+      {% for upsell_product in final_products %}
+
+        <div class="swiper-slide">
+
+          <div class="pdp-essential-card">
+
+            <a
+              href="{{ upsell_product.url }}"
+              class="pdp-essential-image"
+            >
+
+              {% if upsell_product.featured_image != blank %}
+                {{
+                  upsell_product.featured_image
+                  | image_url: width: 500
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '120,180,250,350,500',
+                    alt: upsell_product.title
+                }}
+              {% endif %}
+
+            </a>
+
+            <div class="pdp-essential-content">
+
+              <h4 class="pdp-essential-title">
+                <a href="{{ upsell_product.url }}">
+                  {{ upsell_product.title }}
+                </a>
+              </h4>
+
+              <div class="pdp-essential-footer">
+
+                <span class="pdp-essential-price">
+                  {{ upsell_product.price | money }}
+                </span>
+
+                <div class="pdp-essential-atc">
+                    {% render 'buy-buttons',
+                        product: upsell_product,
+                        block: block,
+                        product_form_id: 'product-form-' | append: card_unique_id,
+                        section_id: section.id,
+                        section: section
+                    %}
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% endif %}
+
+
+<script>
+(() => {
+
+  const initEssentialsSwiper = () => {
+
+    const slider = document.querySelector(
+      '.pdp-essentials-swiper-{{ block.id }}'
+    );
+
+    if (!slider) return;
+
+    if (slider.swiper) {
+      slider.swiper.destroy(true, true);
+    }
+
+    new Swiper(slider, {
+
+      slidesPerView: 2.2,
+      spaceBetween: 5,
+      speed: 1000,
+
+      navigation: {
+        nextEl: '.essentials-next-{{ block.id }}',
+        prevEl: '.essentials-prev-{{ block.id }}'
+      },
+
+      breakpoints: {
+
+        0: {
+          slidesPerView: 2.2,
+          spaceBetween: 5
+        },
+
+        1200: {
+          slidesPerView: 3.2,
+          spaceBetween: 16
+        }
+
+      }
+
+    });
+
+  };
+
+  document.addEventListener('DOMContentLoaded', initEssentialsSwiper);
+  document.addEventListener('shopify:section:load', initEssentialsSwiper);
+
+})();
+</script>
+
+
+{% style %}
+
+.pdp_upsell_tag.tag_tag {
+    margin: 10px 0;
+}
+
+h3.pdp_upsell-title {
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.pdp-essentials {
+    border-radius: 20px;
+    background: #FFF;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 11px;
+}
+
+.pdp-essentials-tag.tag_tag {
+    margin: 10px 0;
+}
+
+h3.pdp-essentials-title {
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.pdp-essential-card {
+    border-radius: 12px;
+    background: #F6F6F6;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: space-between;
+}
+
+a.pdp-essential-image {
+    display: block;
+    width: 100%;
+    height: 162px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+}
+
+a.pdp-essential-image img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+h4.pdp-essential-title a,
+h4.pdp-essential-title {
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+span.pdp-essential-price, 
+span.pdp-essential-price span.money {
+    color: #1A1A1A;
+    font-family: "Suisse Int'l";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+}
+
+.pdp-essential-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.essentials_swip_btn {
+    position: static;
+    margin: 0;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.essentials_swip_btn:after{
+    display: none;
+}
+
+.pdp-essentials-navigation {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: fit-content;
+    width: 100%;
+}
+
+.pdp-essentials-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.pdp-essential-atc .product-form__submit {
+    background: transparent;
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 0;
+    border: none;
+    overflow: visible;
+}
+
+span.pdp-essential-atc_icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.pdp-essential-atc_icon svg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.pdp-essentials-swiper-{{ block.id }} .swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+{% endstyle %}

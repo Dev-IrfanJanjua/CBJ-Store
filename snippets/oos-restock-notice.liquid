@@ -1,0 +1,98 @@
+{%- comment -%}
+  CBJ Out-of-Stock Restock Notice
+  Detects variants with inventory_quantity <= 0 (works correctly
+  when "Continue selling when out of stock" is enabled).
+  Shows a banner; does NOT change the Add-to-Cart button.
+{%- endcomment -%}
+ 
+{%- liquid
+  assign cur = product.selected_or_first_available_variant
+  assign current_oos = false
+  if cur.inventory_management != blank and cur.inventory_quantity <= 0
+    assign current_oos = true
+  endif
+-%}
+ 
+<div
+  class="cbj-oos-wrapper"
+  data-cbj-oos
+  data-product-id="{{ product.id }}"
+  {% if current_oos %}data-current-oos="true"{% endif %}
+>
+  <script type="application/json" data-cbj-variant-stock>
+    {
+      {%- for v in product.variants -%}
+        "{{ v.id }}": {{ v.inventory_quantity | default: 0 | json }}
+        {%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    }
+  </script>
+ 
+  <div class="cbj-oos-banner" role="status" aria-live="polite" hidden>
+    <span class="cbj-oos-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"></circle>
+        <polyline points="12 6 12 12 16 14"></polyline>
+      </svg>
+    </span>
+    <div class="cbj-oos-text">
+      <strong>Currently out of stock</strong>
+      <span>You can still order — this item is on its way back and will arrive in approximately <strong>3 working days</strong>. We'll ship to you as soon as it lands.</span>
+    </div>
+  </div>
+</div>
+ 
+<style>
+  .cbj-oos-wrapper { margin: 12px 0; }
+  .cbj-oos-banner {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 14px 16px; border-radius: 8px;
+    background: #fff7ed; border: 1px solid #fed7aa; color: #7c2d12;
+    font-size: 14px; line-height: 1.45;
+  }
+  .cbj-oos-banner[hidden] { display: none; }
+  .cbj-oos-icon {
+    flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; color: #c2410c; margin-top: 1px;
+  }
+  .cbj-oos-text { display: flex; flex-direction: column; gap: 2px; }
+  .cbj-oos-text strong { color: #9a3412; }
+</style>
+ 
+<script>
+(function () {
+  document.querySelectorAll('[data-cbj-oos]').forEach(function (root) {
+    if (root.__cbjInit) return;
+    root.__cbjInit = true;
+ 
+    var banner = root.querySelector('.cbj-oos-banner');
+    var dataEl = root.querySelector('[data-cbj-variant-stock]');
+    var stock = {};
+    try { stock = JSON.parse(dataEl.textContent); } catch (e) {}
+ 
+    function setOOS(isOOS) {
+      if (banner) banner.hidden = !isOOS;
+    }
+ 
+    setOOS(root.getAttribute('data-current-oos') === 'true');
+ 
+    function checkVariantFromURL() {
+      var p = new URLSearchParams(window.location.search);
+      var v = p.get('variant');
+      if (v && stock.hasOwnProperty(v)) {
+        setOOS(Number(stock[v]) <= 0);
+      }
+    }
+    checkVariantFromURL();
+ 
+    document.addEventListener('change', function (e) {
+      if (e.target.closest('form[action*="/cart/add"], [name="id"], [data-variant-id]')) {
+        setTimeout(checkVariantFromURL, 50);
+      }
+    });
+    window.addEventListener('popstate', checkVariantFromURL);
+    var op = history.pushState;
+    history.pushState = function () { op.apply(this, arguments); setTimeout(checkVariantFromURL, 0); };
+  });
+})();
+</script>

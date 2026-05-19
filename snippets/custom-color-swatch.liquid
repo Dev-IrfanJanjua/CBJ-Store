@@ -1,0 +1,21 @@
+{% if product.metafields.custom.choose_product != blank %}
+                {% assign collection_share_icon = product.metafields.custom.choose_product.value %}
+                {% assign collection_color = product.metafields.custom.choose_product_color.value %}
+                <div class="variant_swatch">                  
+                  <div class="color_swatch_block">
+                    {% for artist_icon in collection_share_icon %}
+                           
+                    {% assign title = artist_icon.title %}
+                    {% assign after_in = title | split: ' in ' | last %}
+                    {% assign color = after_in | split: ' - ' | first %}
+                    <a href="{{ artist_icon.url }}" class="tooltip_anchor {% if forloop.first %} active{% endif %}" data-part="{{ color }}">
+                      {% if collection_color != blank -%}
+                        <span class="choosen_color" style="background-color:{{ collection_color[ forloop.index0 ] }}"></span>                     
+                      {% endif %}
+                   <span class="tooltiptext">{{ color }}</span>
+                    </a>
+                  {% endfor %}
+                </div>
+                </div>
+              {% endif %}
+            

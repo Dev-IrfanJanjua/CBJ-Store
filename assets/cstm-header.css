@@ -1,0 +1,541 @@
+.cstm-header{
+    background: #eeeeee;
+    padding-top: 10px;
+}
+
+.cstm-header-wrapper {
+    border-radius: 16px;
+    background: #FFF;
+    backdrop-filter: blur(16px);
+    padding-inline: 40px !important;
+    min-height: 87px;
+    justify-content: space-between !important;
+    display: flex;
+}
+
+.cstm-header__navigation {
+    border-radius: 42px;
+    background: #EEE;
+    padding: 13px 28px;
+}
+
+.cstm-header button.menu-drawer-button {
+    display: none;
+}
+
+.cstm-header a.h3.header__logo--text {
+    color: #000;
+    font-size: 17.624px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.801px;
+}
+
+.cstm-header .mega-menu.v-scrollable {
+    top: 100px;
+    border-radius: 20px;
+    background: #FFF;
+    height: 80vh;
+    padding: 34px 40px;
+}
+
+.cstm-header a.cart-drawer-button {
+    width: 24px;
+    height: 24px;
+}
+
+.cstm-header .header__buttons {
+    gap: 13px;
+}
+
+.cstm-header__navigation ul.flex {
+    gap: 24px;
+}
+
+.cstm-header__navigation ul.flex .menu__item {
+    padding: 10px 15px;
+}
+
+.cstm-header__navigation ul.flex .menu__item .menu__item-text,
+.cstm-header__navigation ul.flex a.menu__item span {
+    color: #000;
+    text-align: center;
+    font-family: "Faculty Glyphic";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: var(--letter-spacing-0_08, 0.08px);
+    gap: 14px;
+}
+
+.cstm-header .header__icons {
+    max-width: fit-content;
+    justify-self: end;
+}
+
+.header__search {
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, 30px);
+    
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        visibility 0.35s ease;
+    z-index: 999;
+    max-width: 100%;
+    width: 100%;
+    justify-content: center;
+    background: #eee;
+    height: 87px;
+    gap: 5px;
+}
+
+/* Active state */
+.header__search.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+/* === search results === */
+
+.predictive-search-open .search__content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 11;
+    max-width: 100%;
+    top: 107px;
+    border-radius: 20px;
+    padding-top: 26px !important;
+}
+
+/* Optional cursor */
+.cstm_search-icon {
+    cursor: pointer;
+    width: 24PX;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1000;
+}
+
+.cstm_search-icon svg{
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+a.account-button span.reversed-link__text {
+    color: #000;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: var(--letter-spacing-0_08, 0.08px);
+}
+
+/* ==== mega menu custom blocks ====== */
+
+.cstm-header .mega-menu__wrapper {
+    flex-wrap: nowrap;
+    border: none;
+    justify-content: space-between;
+    gap: 0;
+    padding: 0 !important;
+}
+
+.cstm-header .mega-menu__list {
+    max-width: 52%;
+    width: 100%;
+}
+
+.cstm-header .mega_right_wrapper {
+    max-width: 38%;
+    width: 100%;
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+.cstm-header .mega_right_wrapper.mega-wrapper-jewellery {
+    max-width: 62%;
+}
+
+.cstm-header .mega_right-opt_image {
+    max-width: 329px;
+    width: 100%;
+    height: auto;
+}
+
+.cstm-header .mega_right_wrapper.mega-wrapper-jewellery .mega-right-body {
+    max-width: 67%;
+    width: 100%;
+}
+
+.mega_right-opt_image {
+    max-width: 37%;
+    width: 100%;
+    height: auto;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.mega_right-opt_image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cstm-header .mega-menu__column a.mega-menu__link.mega-menu__link--top {
+    color: #828282;
+    font-family: Faculty Glyphic !important;
+    font-size: 14px;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 16.8px;
+    letter-spacing: .08px;
+    text-transform: uppercase;
+}
+
+.cstm-header ul.mega-menu__item-child a.mega-menu__link {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0.08px;
+    padding: 0;
+}
+
+.cstm-header .mega-menu__promotions.mega-menu__column {
+    border-right: 1px solid #CBCBCB !important;
+    padding: 0;
+}
+
+.cstm-header .mega-menu__column {
+    border: none !important;
+}
+
+.mega_right_image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.mega_right-content {
+    border-radius: 7px;
+    background: #FFF;
+    padding: 27px 18px;
+    margin-top: 10px;
+}
+
+h3.mega_content-title {
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.08px;
+    margin: 0 0 15px;
+}
+
+p.mega_content-subtitle {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.08px;
+    margin: 0;
+}
+
+a.mega_content-subtitle {
+    border-radius: 6px;
+    background: #FEEF35;
+    padding: 7px 18px;
+    display: inline-flex;
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.08px;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+a.mega_content-subtitle:hover{
+    opacity: 0.7;
+}
+
+
+@media screen and (max-width: 768px){
+
+.cstm-header button.menu-drawer-button {
+    display: block;
+}
+
+.cstm-header-wrapper {
+    border-radius: 12px;
+    padding: 8px!important;
+    min-height: 48px;
+    gap: 40px;
+}
+
+.cstm_header-mbl-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cstm-header .header__icons {
+    flex: 1;
+    max-width: 100%;
+    width: 100%;
+}
+
+.cstm-header .header__buttons {
+    gap: 30px;
+}
+
+.cstm-header a.account-button {
+    display: none;
+}
+
+.cstm-header summary.menu-drawer__item-link {
+    color: var(--black, #1E1E1E);
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 140%;
+}
+
+.cstm-header a.menu-drawer__item-link.menu-drawer__item-link-heading {
+    color: var(--black, #1E1E1E);
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 140%;
+}
+
+.cstm-header button.menu-drawer__item-back-link {
+    color: var(--black, #1E1E1E);
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 140%;
+}
+
+.cstm-header .accordion-details summary.menu-drawer__item-link.menu-drawer__item-link-heading,
+.cstm-header li.menu-drawer__item.menu-drawer__item--product_list > a.menu-drawer__item-link {
+    color: #828282;
+    font-family: "Faculty Glyphic";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16.8px;
+    letter-spacing: 0.08px;
+    text-transform: uppercase;
+}
+
+.cstm-header .accordion-details a.menu-drawer__item-link.text-subtext {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+}
+
+.cstm-header .accordion-details li.menu-drawer__item {
+    padding: 0;
+}
+
+.cstm-header li.menu-drawer__item.menu-drawer__item--product_list {
+    padding: 23px 0 0;
+}
+
+.cstm-header .drawer__content.menu-drawer__content {
+    border-radius: 16px;
+    background: #FFF;
+    padding: 26px 23px 0;
+    margin-top: 12px;
+}
+
+.cstm-header .drawer__inner {
+    background: #eee;
+    padding: 0 10px;
+}
+
+.cstm-header .menu-drawer__menus,
+.cstm-header .menu-drawer__submenu ul.flex.flex-col {
+    padding: 0 !important;
+    scrollbar-width: none;
+}
+
+.cstm-header .menu-drawer__submenu button.menu-drawer__item-back-link {
+    margin: 0;
+    padding: 0;
+}
+
+.header__search {
+    height: 56px;
+    padding: 0;
+}
+
+.predictive-search-open .search__content {
+    top: 67px;
+    border-radius: 12px;
+    padding-top: 26px !important;
+}
+
+button.menu-drawer-button.toggle-navigation-button {
+    display: none;
+}
+
+/* ==== mega menu custom blocks ====== */
+
+.cstm-header .mega_right_wrapper {
+    max-width: 100% !important;
+    gap: 0px;
+}
+
+.cstm-header .mega_right-opt_image {
+    display: none;
+}
+
+.cstm-header .mega_right_wrapper.mega-wrapper-jewellery .mega-right-body {
+    max-width: 100%;
+    width: 100%;
+}
+
+.mega-right-body {
+    border-radius: 10px;
+    background: #F8E8FF;
+    padding: 10px;
+}
+
+.mega_right_image {
+    height: 115px;
+    border-radius: 4px;
+}
+
+.mega_right-content {
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+}
+
+h3.mega_content-title {
+    font-size: 24px;
+    line-height: 23px;
+    margin: 0 0 10px;
+}
+
+.mega_right_wrapper.mega-wrapper-offers {
+    display: none;
+}
+
+
+/* ==== cart mobile ==== */
+
+.cstm-header a.cart-drawer-button {
+    width: unset;
+    height: unset;
+    padding: 6px 8px 6px 12px;
+    border-radius: 9999px;
+    background: var(--color-orange-12, #231D1A);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.cstm-header a.cart-drawer-button svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+    fill: #fff;
+    stroke: #fff;
+}
+
+.cstm-header a.cart-drawer-button svg path {
+    fill: #fff;
+}
+
+.cstm-header span.cart_text_text {
+    color: var(--pixel-to-premium-theme-lovable-app-spring-wood, var(--color-grey-96, #F9F6F1));
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    display: block !important;
+}
+
+.cstm-header cart-count.cart-count.cart-count--absolute {
+    border-radius: 9999px;
+    background: var(--color-yellow-60, #FFD633);
+    position: static;
+    color: var(--pixel-to-premium-theme-lovable-app-cocoa-brown, var(--color-orange-12, #231D1A));
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+}
+
+/* ===== tablet ==== */
+
+@media screen and (min-width: 769px) and (max-width: 1140px){
+
+.cstm-header__navigation ul.flex{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.cstm-header__navigation ul.flex li{
+    min-width: fit-content;
+    width: 100%;
+}
+
+.cstm_header-mbl-logo {
+    min-width: fit-content;
+    width: 100%;
+}
+
+}

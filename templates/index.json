@@ -1,0 +1,1848 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "every_day_GQ39MH": {
+      "type": "every-day",
+      "blocks": {
+        "collection_card_XXnKYq": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_5.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        },
+        "collection_card_VGBqpj": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "black-nose-studs",
+            "custom_title": "Nose Studs",
+            "primary_image": "shopify://shop_images/Container_6.png",
+            "hover_image": "shopify://shop_images/Container_5.png"
+          }
+        },
+        "collection_card_Fedwgt": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "ball-closure-rings-captive-bead-rings",
+            "custom_title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Container_7.png",
+            "hover_image": "shopify://shop_images/Container_9.png"
+          }
+        },
+        "collection_card_mkQJUb": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "belly",
+            "custom_title": "Belly Bars",
+            "primary_image": "shopify://shop_images/Container_8.png",
+            "hover_image": "shopify://shop_images/Container_8.png"
+          }
+        },
+        "collection_card_Nbe3RK": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_9.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        },
+        "collection_card_NWYL7E": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_5.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        },
+        "collection_card_9HHVeb": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "black-nose-studs",
+            "custom_title": "Nose Studs",
+            "primary_image": "shopify://shop_images/Container_6.png",
+            "hover_image": "shopify://shop_images/Container_5.png"
+          }
+        },
+        "collection_card_TdYCgR": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "ball-closure-rings-captive-bead-rings",
+            "custom_title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Container_7.png",
+            "hover_image": "shopify://shop_images/Container_9.png"
+          }
+        },
+        "collection_card_tayiqU": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "belly",
+            "custom_title": "Belly Bars",
+            "primary_image": "shopify://shop_images/Container_8.png",
+            "hover_image": "shopify://shop_images/Container_8.png"
+          }
+        },
+        "collection_card_BjmzYc": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_9.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_XXnKYq",
+        "collection_card_VGBqpj",
+        "collection_card_Fedwgt",
+        "collection_card_mkQJUb",
+        "collection_card_Nbe3RK",
+        "collection_card_NWYL7E",
+        "collection_card_9HHVeb",
+        "collection_card_TdYCgR",
+        "collection_card_tayiqU",
+        "collection_card_BjmzYc"
+      ],
+      "name": "Everyday Collections",
+      "settings": {
+        "hide_desk": true,
+        "tag_text": "Collections",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "heading": "<p><strong>Find Your Everyday</strong><br/>Favorites In Every Category</p>",
+        "collection_icon": "shopify://shop_images/long-arrow_2.svg",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#001116",
+        "tag_text_color": "#001116",
+        "card_bg_color": "rgba(0,0,0,0)",
+        "card_title_color": "#ffffff",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "cjb_hero_f4KABY": {
+      "type": "cjb-hero",
+      "blocks": {
+        "card_E8EwfP": {
+          "type": "card",
+          "settings": {
+            "card_bg_color": "#b97afc",
+            "card_heading_color": "#ffffff",
+            "tag_text_color": "#ffffff",
+            "card_tag": "Buy 2",
+            "card_title": "<p>GET 25% OFF</p>",
+            "card_link": "#",
+            "card_percentage_icon": "shopify://shop_images/Component_1_1.svg",
+            "card_arrow_icon": "shopify://shop_images/download_72_1_1.svg"
+          }
+        },
+        "card_NBALqn": {
+          "type": "card",
+          "settings": {
+            "card_bg_color": "#feef35",
+            "card_heading_color": "#000000",
+            "tag_text_color": "#000000",
+            "card_tag": "Buy 3",
+            "card_title": "<p>GET 40% OFF</p>",
+            "card_link": "#",
+            "card_percentage_icon": "shopify://shop_images/Component_1_2.svg",
+            "card_arrow_icon": "shopify://shop_images/download_72_1_1.svg"
+          }
+        }
+      },
+      "block_order": [
+        "card_E8EwfP",
+        "card_NBALqn"
+      ],
+      "name": "CBJ Hero Section",
+      "settings": {
+        "desktop_bg_image": "shopify://shop_images/Frame_2147243022.png",
+        "mobile_bg_image": "shopify://shop_images/Frame_2147243022_2.png",
+        "review_image": "shopify://shop_images/Frame_2147240982.svg",
+        "review_text": "<strong>4.8</strong> (238+) Reviews",
+        "heading": "<p>Piercing Jewellery, <br/><strong>Better in Titanium</strong></p>",
+        "subtitle": "<p>Safe, lightweight styles for everyday wear, designed to look good, feel comfortable, and work with every kind of style.</p>",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all-products",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#ffffff",
+        "text_color": "#ffffff",
+        "review_text_color": "#ffffff",
+        "desktop_padding_top": 20,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "every_day_jP7QWm": {
+      "type": "every-day",
+      "blocks": {
+        "collection_card_Lg4Ebx": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_5.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        },
+        "collection_card_fbDFHE": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "black-nose-studs",
+            "custom_title": "Nose Studs",
+            "primary_image": "shopify://shop_images/Container_6.png",
+            "hover_image": "shopify://shop_images/Container_5.png"
+          }
+        },
+        "collection_card_h6FVJy": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "ball-closure-rings-captive-bead-rings",
+            "custom_title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Container_7.png",
+            "hover_image": "shopify://shop_images/Container_9.png"
+          }
+        },
+        "collection_card_pLFWzG": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "belly",
+            "custom_title": "Belly Bars",
+            "primary_image": "shopify://shop_images/Container_8.png",
+            "hover_image": "shopify://shop_images/Container_8.png"
+          }
+        },
+        "collection_card_LaC3kc": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_9.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        },
+        "collection_card_dXAhEh": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_5.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        },
+        "collection_card_AndGir": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "black-nose-studs",
+            "custom_title": "Nose Studs",
+            "primary_image": "shopify://shop_images/Container_6.png",
+            "hover_image": "shopify://shop_images/Container_5.png"
+          }
+        },
+        "collection_card_xmqdM3": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "ball-closure-rings-captive-bead-rings",
+            "custom_title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Container_7.png",
+            "hover_image": "shopify://shop_images/Container_9.png"
+          }
+        },
+        "collection_card_RXemNG": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "belly",
+            "custom_title": "Belly Bars",
+            "primary_image": "shopify://shop_images/Container_8.png",
+            "hover_image": "shopify://shop_images/Container_8.png"
+          }
+        },
+        "collection_card_9FcWAD": {
+          "type": "collection_card",
+          "settings": {
+            "collection": "daith-jewellery",
+            "custom_title": "Nose & Septum jewelry",
+            "primary_image": "shopify://shop_images/Container_9.png",
+            "hover_image": "shopify://shop_images/Container_6.png"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_Lg4Ebx",
+        "collection_card_fbDFHE",
+        "collection_card_h6FVJy",
+        "collection_card_pLFWzG",
+        "collection_card_LaC3kc",
+        "collection_card_dXAhEh",
+        "collection_card_AndGir",
+        "collection_card_xmqdM3",
+        "collection_card_RXemNG",
+        "collection_card_9FcWAD"
+      ],
+      "name": "Everyday Collections",
+      "settings": {
+        "hide_desk": false,
+        "tag_text": "Collections",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "heading": "<p><strong>Find Your Everyday</strong><br/>Favorites In Every Category</p>",
+        "collection_icon": "shopify://shop_images/long-arrow_2.svg",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#001116",
+        "tag_text_color": "#001116",
+        "card_bg_color": "rgba(0,0,0,0)",
+        "card_title_color": "#ffffff",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "tabs_collection_6tNpjb": {
+      "type": "tabs-collection",
+      "name": "Tabs Collection Section",
+      "settings": {
+        "use_atc_icon": true,
+        "collection": "barbells",
+        "tag_text": "NEW IN",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "heading": "<p><strong>Top Picks</strong> You'll Wear On Repeat</p>",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "view_all_text": "VIEW ALL",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#001116",
+        "tab_text_color": "#000000",
+        "tab_border_color": "#000000",
+        "active_tab_bg": "#000000",
+        "active_tab_text": "#ffffff",
+        "arrow_border_color": "rgba(0,0,0,0)",
+        "view_all_color": "#000000",
+        "card_bg_color": "#f8e8ff",
+        "desktop_padding_top": 20,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "about_section_RURN7a": {
+      "type": "about-section",
+      "name": "About Section",
+      "settings": {
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "tag_text": "About the Brand",
+        "heading": "<p><strong>Made for people,</strong> <br/>not one type of style.</p>",
+        "text": "<p>From minimal stacks to bolder looks, Camden is built to feel approachable, comfortable, and easy to shop, every piece designed in implant-grade titanium.</p>",
+        "button_label": "Shop Now",
+        "button_link": "#",
+        "button_icon": "shopify://shop_images/long-arrow_1.svg",
+        "content_abs_image": "shopify://shop_images/Vector_2.svg",
+        "main_image": "shopify://shop_images/Customer_wearing_Camden_piercing_jewellery.png",
+        "main_image_mob": "shopify://shop_images/Customer_wearing_Camden_piercing_jewellery_1.png",
+        "review_image": "shopify://shop_images/Img.svg",
+        "review_text": "<strong>4.8</strong> (238+)",
+        "image_text": "50,000+ customers wear Camden Candy",
+        "section_bg_color": "#eeeeee",
+        "content_bg_color": "#f0d1ff",
+        "heading_color": "#001116",
+        "text_color": "#000000",
+        "image_text_color": "#ffffff",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "marquee_kUxprM": {
+      "type": "marquee",
+      "blocks": {
+        "feature_VDKJBX": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Waterproof Wear"
+          }
+        },
+        "feature_UpeFe7": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Titanium Only"
+          }
+        },
+        "feature_LNE4xc": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Lightweight Feel"
+          }
+        },
+        "feature_RFWbwW": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Nickel-Free"
+          }
+        },
+        "feature_WDEj9c": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Everyday Comfort"
+          }
+        },
+        "feature_P8EdE6": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Waterproof Wear"
+          }
+        },
+        "feature_3aUgY8": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Titanium Only"
+          }
+        },
+        "feature_9iGwRM": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Lightweight Feel"
+          }
+        },
+        "feature_4LhEJ9": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Nickel-Free"
+          }
+        },
+        "feature_HBYdnk": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Background_2.svg",
+            "title": "Everyday Comfort"
+          }
+        }
+      },
+      "block_order": [
+        "feature_VDKJBX",
+        "feature_UpeFe7",
+        "feature_LNE4xc",
+        "feature_RFWbwW",
+        "feature_WDEj9c",
+        "feature_P8EdE6",
+        "feature_3aUgY8",
+        "feature_9iGwRM",
+        "feature_4LhEJ9",
+        "feature_HBYdnk"
+      ],
+      "name": "Scrolling Feature Icons",
+      "settings": {
+        "hide": false,
+        "pdp": false
+      }
+    },
+    "tabs_collection_cNGLFA": {
+      "type": "tabs-collection",
+      "blocks": {
+        "tab_collection_8RPPxc": {
+          "type": "tab_collection",
+          "settings": {
+            "collection": "all-products",
+            "tab_title": "All"
+          }
+        },
+        "tab_collection_egkRN9": {
+          "type": "tab_collection",
+          "settings": {
+            "collection": "ball-closure-rings-captive-bead-rings",
+            "tab_title": "Segment Rings"
+          }
+        },
+        "tab_collection_yNDiC4": {
+          "type": "tab_collection",
+          "settings": {
+            "collection": "black-flat-back-earrings",
+            "tab_title": "Labrets"
+          }
+        },
+        "tab_collection_CwbjAL": {
+          "type": "tab_collection",
+          "settings": {
+            "collection": "belly",
+            "tab_title": "Belly Bars"
+          }
+        },
+        "tab_collection_dH6B9U": {
+          "type": "tab_collection",
+          "settings": {
+            "collection": "anti-tragus",
+            "tab_title": "Nose Jewellery"
+          }
+        }
+      },
+      "block_order": [
+        "tab_collection_8RPPxc",
+        "tab_collection_egkRN9",
+        "tab_collection_yNDiC4",
+        "tab_collection_CwbjAL",
+        "tab_collection_dH6B9U"
+      ],
+      "name": "Tabs Collection Section",
+      "settings": {
+        "use_atc_icon": true,
+        "collection": "barbells",
+        "tag_text": "NEW IN",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "heading": "<p><strong>Top Picks</strong> You'll Wear On Repeat</p>",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "view_all_text": "VIEW ALL",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#001116",
+        "tab_text_color": "#000000",
+        "tab_border_color": "#000000",
+        "active_tab_bg": "#000000",
+        "active_tab_text": "#ffffff",
+        "arrow_border_color": "rgba(0,0,0,0)",
+        "view_all_color": "#000000",
+        "card_bg_color": "#f8e8ff",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "titanium_section_MWMA9e": {
+      "type": "titanium-section",
+      "blocks": {
+        "feature_block_YVtWGw": {
+          "type": "feature_block",
+          "settings": {
+            "block_position": "left",
+            "icon": "shopify://shop_images/icon.svg_-_2025-12-12T160758.015_2.png",
+            "title": "Titanium only",
+            "text": "Implant-grade titanium, nothing else."
+          }
+        },
+        "feature_block_ftb9xL": {
+          "type": "feature_block",
+          "settings": {
+            "block_position": "left",
+            "icon": "shopify://shop_images/Frame.png",
+            "title": "Hypoallergenic",
+            "text": "Gentle on sensitive skin."
+          }
+        },
+        "feature_block_4VDirD": {
+          "type": "feature_block",
+          "settings": {
+            "block_position": "right",
+            "icon": "shopify://shop_images/icon.svg_67_2.png",
+            "title": "Light weight",
+            "text": "Comfort you can wear all day."
+          }
+        },
+        "feature_block_bMGbgU": {
+          "type": "feature_block",
+          "settings": {
+            "block_position": "right",
+            "icon": "shopify://shop_images/Frame_2.svg",
+            "title": "Waterproof",
+            "text": "Implant-grade titanium, nothing else."
+          }
+        }
+      },
+      "block_order": [
+        "feature_block_YVtWGw",
+        "feature_block_ftb9xL",
+        "feature_block_4VDirD",
+        "feature_block_bMGbgU"
+      ],
+      "name": "Titanium Features",
+      "settings": {
+        "tag_text": "MADE TO LAST",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "heading": "<p>Why Camden does <strong>titanium only</strong></p>",
+        "subtitle": "We keep it simple: one better material, made for everyday comfort and wear.",
+        "main_image": "shopify://shop_images/image_14.png",
+        "main_image_mob": "shopify://shop_images/image_14_1.png",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#000000",
+        "text_color": "#000000",
+        "tag_text_color": "#111111",
+        "block_bg_color": "#faefff",
+        "block_heading_color": "#001116",
+        "block_text_color": "#000000",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "cstm_collection_grid_zRDK4g": {
+      "type": "cstm-collection-grid",
+      "blocks": {
+        "collection_block_edPeUN": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "ball-closure-rings-captive-bead-rings",
+            "custom_image": "shopify://shop_images/Frame_2147243062.png",
+            "custom_title": "<p>Sale</p>"
+          }
+        },
+        "collection_block_AawD7m": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "anti-tragus",
+            "custom_image": "shopify://shop_images/Frame_2147243060.png",
+            "custom_title": "<p>Best Seller</p>"
+          }
+        },
+        "collection_block_kMcbCF": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "barbells",
+            "custom_image": "shopify://shop_images/Frame_2147243061.png",
+            "custom_title": "<p>New In</p>"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_edPeUN",
+        "collection_block_AawD7m",
+        "collection_block_kMcbCF"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "button_text": "View all",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#ffffff",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "comparison_section_XiVAyq": {
+      "type": "comparison-section",
+      "blocks": {
+        "comparison_row_aDYdfj": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Titanium only",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown.svg",
+            "others_icon_alt": "No"
+          }
+        },
+        "comparison_row_8P7jfj": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Hypoallergenic and nickel-free",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown.svg",
+            "others_icon_alt": "No"
+          }
+        },
+        "comparison_row_wCbHmR": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Waterproof for everyday wear",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown.svg",
+            "others_icon_alt": "No"
+          }
+        },
+        "comparison_row_dACffK": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Lightweight feel",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown_1.svg",
+            "others_icon_alt": "No"
+          }
+        },
+        "comparison_row_f3aRp7": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Better for sensitive skin",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown.svg",
+            "others_icon_alt": "No"
+          }
+        },
+        "comparison_row_p9FAYe": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Clear, simple material focus",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown.svg",
+            "others_icon_alt": "No"
+          }
+        },
+        "comparison_row_jdmkDL": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Affordable quality",
+            "brand_icon": "shopify://shop_images/CheckCircle.svg",
+            "brand_icon_alt": "Yes",
+            "others_icon": "shopify://shop_images/ThumbsDown.svg",
+            "others_icon_alt": "No"
+          }
+        }
+      },
+      "block_order": [
+        "comparison_row_aDYdfj",
+        "comparison_row_8P7jfj",
+        "comparison_row_wCbHmR",
+        "comparison_row_dACffK",
+        "comparison_row_f3aRp7",
+        "comparison_row_p9FAYe",
+        "comparison_row_jdmkDL"
+      ],
+      "name": "Comparison Section",
+      "settings": {
+        "padding_top_desktop": 12,
+        "padding_bottom_desktop": 12,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 48,
+        "bg_color": "#eeeeee",
+        "bg_image_desktop": "shopify://shop_images/us_vs_them_1.png",
+        "tag_text": "US VS THEM",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "title": "<p><strong>Why Camden</strong> Is Different From The Others</p>",
+        "title_font_size_desktop": 42,
+        "title_font_size_mobile": 28,
+        "title_color": "#000116",
+        "description": "Camden keeps it simple with implant-grade titanium styles made for everyday comfort, better wear, and easier shopping. While many brands still use mixed materials and confusing claims, we focus on one better standard across the whole store.",
+        "desc_font_size": 16,
+        "desc_color": "#333333",
+        "table_aria_label": "Brand comparison table",
+        "col_features_label": "FEATURES",
+        "col_brand_label": "CBJ",
+        "col_others_label": "OTHERS",
+        "brand_col_color": "#f5e642",
+        "row_icon_size": 24
+      }
+    },
+    "apps_NJzAnc": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_xrBfFQ": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Follow us on Instagram",
+            "title_color": "",
+            "title_size_v2": 42,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "center",
+            "link_color": "#0b0b0b",
+            "background_color": "#eeeeee",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_xrBfFQ"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "newsletter_section_WhfFgj": {
+      "type": "newsletter-section",
+      "name": "Newsletter Section",
+      "settings": {
+        "top_abs_icon": "shopify://shop_images/Vector_2_5a802e9c-6035-4cf9-9346-4a050e0aa31d.svg",
+        "bottom_abs_icon": "shopify://shop_images/Vector_3.svg",
+        "tag_text": "First order perk",
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "heading": "<p>Subscribe and save 15% on <br/><strong>your first order</strong></p>",
+        "subtitle": "Join our email list for new drops, exclusive offers, and everyday\npiercing inspiration.",
+        "description": "By signing up, you agree to receive Camden Piercing emails with updates, offers, and product news.",
+        "placeholder_text": "Email address",
+        "button_text": "Subscribe",
+        "success_text": "Thanks for subscribing!",
+        "section_bg_color": "#eeeeee",
+        "heading_color": "#000000",
+        "subtitle_color": "#333333",
+        "description_color": "#4d4b4a",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ffffff",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 12,
+        "mobile_padding_top": 12,
+        "mobile_padding_bottom": 12
+      }
+    },
+    "collection_cards_BCB4rm": {
+      "type": "collection-cards",
+      "blocks": {
+        "collection_FXKwQG": {
+          "type": "collection",
+          "settings": {
+            "collection": "ear",
+            "image": "shopify://shop_images/Image2_6b5538d5-45c7-4b32-9f1e-1b0db2f22cd8.jpg",
+            "title": "Ear Jewellery"
+          }
+        },
+        "collection_78nYBw": {
+          "type": "collection",
+          "settings": {
+            "collection": "segment-rings-clicker-rings",
+            "title": ""
+          }
+        },
+        "collection_3CydGb": {
+          "type": "collection",
+          "settings": {
+            "collection": "nose-septum-jewellery",
+            "image": "shopify://shop_images/IMAGE12_1.jpg",
+            "title": ""
+          }
+        },
+        "collection_MVg8t9": {
+          "type": "collection",
+          "settings": {
+            "collection": "nose-studs-rings-screws",
+            "image": "shopify://shop_images/Image_22.jpg",
+            "title": ""
+          }
+        },
+        "collection_JBgF88": {
+          "type": "collection",
+          "settings": {
+            "collection": "belly",
+            "image": "shopify://shop_images/Image_36_77b3232f-be3a-46d0-9797-759eae2db038.jpg",
+            "title": ""
+          }
+        },
+        "collection_bYRL6P": {
+          "type": "collection",
+          "settings": {
+            "collection": "barbells",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_FXKwQG",
+        "collection_78nYBw",
+        "collection_3CydGb",
+        "collection_MVg8t9",
+        "collection_JBgF88",
+        "collection_bYRL6P"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-inverse",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Your Favourite Collections",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-sm",
+        "columns_desktop": 4,
+        "column_gap": "medium",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_color_scheme": "scheme-12",
+        "image_ratio": "1/1",
+        "show_product_count": true,
+        "padding_top": 30,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "favorite_products_HyknHz": {
+      "type": "favorite-products",
+      "blocks": {
+        "product_WVFtqU": {
+          "type": "product",
+          "settings": {
+            "color_scheme": "scheme-14",
+            "product": "segment-ring-gold",
+            "image": "shopify://shop_images/ChatGPT_Image_Oct_22_2025_05_38_03_PM.png",
+            "text": "<p>“A versatile beach staple. Crafted from 100% cotton and perfectly sized for lounging or changing”</p>",
+            "text_size": "h2",
+            "author": "Jenny Wilson",
+            "bio": "New Mexico"
+          }
+        },
+        "product_9FrAhD": {
+          "type": "product",
+          "settings": {
+            "color_scheme": "scheme-14",
+            "product": "captive-bead-ring",
+            "image": "shopify://shop_images/ChatGPT_Image_Oct_30_2025_12_24_03_PM.png",
+            "text": "<p>“Incredibly warm and lightweight—this jacket is perfect for chilly days and looks great too!”</p>",
+            "text_size": "h2",
+            "author": "Cienna Leigh",
+            "bio": "California"
+          }
+        },
+        "product_kyFP4X": {
+          "type": "product",
+          "settings": {
+            "color_scheme": "scheme-14",
+            "product": "classic-huggie-hoop-in-silver-titanium",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_24_2025_12_36_16_PM.png",
+            "text": "<p>“Exceptionally light and comfy—this shirt feels great all day and adds a stylish touch too!”</p>",
+            "text_size": "h2",
+            "author": "John Doe",
+            "bio": "New York"
+          }
+        }
+      },
+      "block_order": [
+        "product_WVFtqU",
+        "product_9FrAhD",
+        "product_kyFP4X"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-inverse",
+        "layout": "content-right",
+        "heading": "Our Favorite Products",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "slide_height": "medium",
+        "pcard_style": "boxed",
+        "pcard_image_ratio": "",
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "testimonials_xGnreW": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_C3gt8G": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ChatGPT_Image_Oct_22_2025_05_38_03_PM.png",
+            "heading": "Testimonials",
+            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool.”</p>",
+            "author": "Melissa H.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_J4AddU": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/coll_2.png",
+            "heading": "Testimonials",
+            "text": "<p>“The denim is strong and of high quality, with just a bit of stretch.”</p>",
+            "author": "Cindy L.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_6HGQhN": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ChatGPT_Image_Nov_11_2025_12_40_37_AM.png",
+            "heading": "Testimonials",
+            "text": "<p>“Hands down one of the best shirts I’ve ever owned.  Fits great, feels amazing, seems to stay cool.”</p>",
+            "author": "Wilson J.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_YY6mij": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ChatGPT_Image_Oct_30_2025_12_24_03_PM.png",
+            "heading": "Testimonials",
+            "text": "<p>\"This shirt is among the top in my collection. It fits excellently.\"</p>",
+            "author": "Samantha T.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_AfpbQ3": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_24_2025_12_36_16_PM.png",
+            "heading": "Testimonials",
+            "text": "<p>“The denim is strong and of high quality, with just a bit of stretch.”</p>",
+            "author": "Martinez D.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        },
+        "testimonial_GNja3g": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "image": "shopify://shop_images/Container.png",
+            "heading": "Testimonials",
+            "text": "<p>Discover the Ultimate Organization Solution for Your Home with Boardman Trunks.</p>",
+            "author": "Lora C.",
+            "bio": "Verified Buyer",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_C3gt8G",
+        "testimonial_J4AddU",
+        "testimonial_6HGQhN",
+        "testimonial_YY6mij",
+        "testimonial_AfpbQ3",
+        "testimonial_GNja3g"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-14",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Clients Love Us",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "layout": "standard",
+        "card_color_scheme": "",
+        "card_content_color_scheme": "",
+        "card_image_ratio": "adapt",
+        "card_heading_size": "h4",
+        "card_text_size": "text-inherit",
+        "author_info_layout": "horizontal",
+        "card_trigger_behavior": "click",
+        "show_image": true,
+        "show_author_image": false,
+        "columns_desktop": 3,
+        "column_gap": "2xs",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "show_progress_bar": false,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "17634676633e64dbd4": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_videos_carousel_3XCL9Y": {
+          "type": "shopify://apps/judge-me-reviews/blocks/videos_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "all",
+            "review_type": "photo_and_video",
+            "max_reviews": 20,
+            "show_reviewer_name": true,
+            "stars_size": "large",
+            "text_size": "medium",
+            "arrows_position": "bottom",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#ffffff",
+            "card_color": "#e5e5e5",
+            "stars_color": "",
+            "text_color": "#ffffff",
+            "arrows_color": "#ffffff",
+            "show_drop_shadow": false,
+            "show_border": false,
+            "border_color": "#108474",
+            "autoplay_media": true,
+            "transition_speed": 5,
+            "carousel_style": "highlight",
+            "header_text": "Our Community",
+            "show_average_rating": true
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_videos_carousel_3XCL9Y"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "custom_content_AfVg7f": {
+      "type": "custom-content",
+      "blocks": {
+        "image_card_zgaRKd": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/ChatGPT_Image_Sep_16_2025_03_10_36_PM.png",
+            "image_ratio": "1/1",
+            "image_overlay_opacity": 20,
+            "content_position": "middle-center",
+            "content_alignment": "center",
+            "content_spacing": "medium",
+            "content_gap": "fitted",
+            "card_link": "shopify://collections/nose-septum-jewellery",
+            "subheading": "Trending Now",
+            "subheading_style": "",
+            "heading": "Nose & Septum Jewellery",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "hd2",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "",
+            "button_label": "Shop Collection",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-1",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-inverse",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "width": "50%",
+            "alignment": "start",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "collections_ePWWnG": {
+          "type": "collections",
+          "settings": {
+            "collection_list": [
+              "nose-septum-jewellery"
+            ],
+            "product_limit": 12,
+            "columns_desktop": 3,
+            "column_gap": "medium",
+            "row_gap": "inherit",
+            "enable_slider": true,
+            "pcard_image_ratio": "",
+            "columns_mobile": "2",
+            "swipe_on_mobile": true,
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_card_zgaRKd",
+        "collections_ePWWnG"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".card-media__heading {max-width: 40rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-inverse",
+        "enable_sticky_column": true,
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "column_gap": "large",
+        "row_gap": "extra-large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "custom_content_kFmQWx": {
+      "type": "custom-content",
+      "blocks": {
+        "lookbook_card_8gU6nM": {
+          "type": "lookbook_card",
+          "settings": {
+            "product_list": [
+              "segment-ring-gold"
+            ],
+            "pcard_image_ratio": "",
+            "image": "shopify://shop_images/ChatGPT_Image_Oct_22_2025_05_38_03_PM.png",
+            "image_ratio": "3/4",
+            "heading": "Shop this look",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        },
+        "image_card_JjeF83": {
+          "type": "image_card",
+          "settings": {
+            "color_scheme": "scheme-inverse",
+            "image": "shopify://shop_images/ChatGPT_Image_Nov_7_2025_05_41_47_PM.png",
+            "image_ratio": "3/4",
+            "image_overlay_opacity": 30,
+            "content_position": "split-middle-content",
+            "content_alignment": "center",
+            "content_spacing": "small",
+            "content_gap": "fitted",
+            "card_link": "#",
+            "subheading": "Exclusion Apply",
+            "subheading_style": "thick-border",
+            "heading": "30% OFF Accessories",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h1",
+            "heading_size_mobile": "inherit",
+            "heading_size_custom": 18,
+            "description": "<p>Nose & Septum Jewellery, Earrings, Belly Bars</p>",
+            "button_label": "Shop Accessories",
+            "button_style": "btn--primary",
+            "button_icon": "none",
+            "show_badge": false,
+            "badge_color_scheme": "scheme-1",
+            "badge_shape": "circle",
+            "badge_position": "top-right",
+            "badge_subtext": "Save",
+            "badge_text": "99$",
+            "color_scheme_mobile": "scheme-inverse",
+            "show_text_below": false,
+            "content_alignment_mobile": "center",
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "enable_preload_image": false
+          }
+        },
+        "lookbook_card_hcNT3E": {
+          "type": "lookbook_card",
+          "settings": {
+            "product_list": [
+              "11-cz-segment-hoop-in-silver-titanium",
+              "bumped-cut-3-leaves-with-cz-dangle"
+            ],
+            "pcard_image_ratio": "",
+            "image": "shopify://shop_images/ChatGPT_Image_Oct_28_2025_04_24_06_PM.png",
+            "image_ratio": "3/4",
+            "heading": "The Cult Favorite",
+            "highlight_style": "none",
+            "highlight_font_style": "italic",
+            "highlight_style_color": "",
+            "highlight_text_color": "",
+            "heading_size": "h5",
+            "width": "33%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "lookbook_card_8gU6nM",
+        "image_card_JjeF83",
+        "lookbook_card_hcNT3E"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".card-media__content-wrapper .rich-text__heading,.card-media__content-wrapper .rich-text__text {max-width: 32rem;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-inverse",
+        "enable_sticky_column": false,
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Our Favorite",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "column_gap": "medium",
+        "row_gap": "large",
+        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": true,
+        "divider_width": "full"
+      }
+    },
+    "buttons_with_icon_b7gMjP": {
+      "type": "buttons-with-icon",
+      "blocks": {
+        "button_item_qh6wt6": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Barbells",
+            "button_link": "shopify://collections/barbells",
+            "icon": "none"
+          }
+        },
+        "button_item_ggYdRg": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Belly Bar",
+            "button_link": "shopify://collections/belly",
+            "icon": "check"
+          }
+        },
+        "button_item_AK6q44": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Earrings",
+            "button_link": "shopify://collections/earrings",
+            "icon": "check"
+          }
+        },
+        "button_item_cXCiP4": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Hoops & Segments",
+            "button_link": "shopify://collections/hoops-segments",
+            "icon": "check"
+          }
+        },
+        "button_item_Fyz3KM": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Eyebrow",
+            "button_link": "shopify://collections/eye-brow-piercing",
+            "icon": "check"
+          }
+        },
+        "button_item_G3D9W9": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Labret Piercing",
+            "button_link": "shopify://collections/labret-piercing",
+            "icon": "check"
+          }
+        },
+        "button_item_UyHb9j": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Jestrum",
+            "button_link": "shopify://collections/jestrum-piercing",
+            "icon": "check"
+          }
+        },
+        "button_item_Vfiegz": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Medusa Piercings",
+            "button_link": "shopify://collections/medusa-piercings",
+            "icon": "check"
+          }
+        },
+        "button_item_HrGNkT": {
+          "type": "button_item",
+          "settings": {
+            "button_label": "Nose & Septum Jewellery",
+            "button_link": "shopify://collections/nose-septum-jewellery",
+            "icon": "check"
+          }
+        }
+      },
+      "block_order": [
+        "button_item_qh6wt6",
+        "button_item_ggYdRg",
+        "button_item_AK6q44",
+        "button_item_cXCiP4",
+        "button_item_Fyz3KM",
+        "button_item_G3D9W9",
+        "button_item_UyHb9j",
+        "button_item_Vfiegz",
+        "button_item_HrGNkT"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-inverse",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Explore Popular Search",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "item_alignment": "left",
+        "item_button_style": "btn--icon",
+        "item_button_font": "button",
+        "enable_slider": true,
+        "swipe_on_mobile": true,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "products_bundle_rpRPiN": {
+      "type": "products-bundle",
+      "blocks": {
+        "product_HNKpi8": {
+          "type": "product",
+          "settings": {
+            "product": "clicker-pin-segment-ring-front-face-clear-cz-in-silver-titanium",
+            "color_scheme": "scheme-1",
+            "horizontal_position": 11,
+            "vertical_position": 65,
+            "horizontal_position_mobile": 38,
+            "vertical_position_mobile": 96
+          }
+        },
+        "product_j7Ba6Y": {
+          "type": "product",
+          "settings": {
+            "product": "captive-bead-ring",
+            "color_scheme": "scheme-1",
+            "horizontal_position": 59,
+            "vertical_position": 46,
+            "horizontal_position_mobile": 44,
+            "vertical_position_mobile": 45
+          }
+        },
+        "product_8tcNzb": {
+          "type": "product",
+          "settings": {
+            "product": "classic-huggie-hoop-in-silver-titanium",
+            "color_scheme": "",
+            "horizontal_position": 85,
+            "vertical_position": 50,
+            "horizontal_position_mobile": 51,
+            "vertical_position_mobile": 65
+          }
+        }
+      },
+      "block_order": [
+        "product_HNKpi8",
+        "product_j7Ba6Y",
+        "product_8tcNzb"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "full",
+        "color_scheme": "scheme-inverse",
+        "image": "shopify://shop_images/ChatGPT_Image_Oct_20_2025_11_03_31_AM.png",
+        "image_position": "right",
+        "image_ratio": "full",
+        "show_hotspot": true,
+        "subheading": "Shop This Look",
+        "heading": "Iconic Autumn Set",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "columns": 3,
+        "column_gap": "2xs",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "brand_logos_VbwYCF": {
+      "type": "brand-logos",
+      "blocks": {
+        "logo_abYRPk": {
+          "type": "logo",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "logo_kAbf43": {
+          "type": "logo",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "logo_dn9ayF": {
+          "type": "logo",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "logo_gCEte7": {
+          "type": "logo",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "logo_xaVL4z": {
+          "type": "logo",
+          "settings": {
+            "image_link": ""
+          }
+        },
+        "logo_hBNt79": {
+          "type": "logo",
+          "settings": {
+            "image_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_abYRPk",
+        "logo_kAbf43",
+        "logo_dn9ayF",
+        "logo_gCEte7",
+        "logo_xaVL4z",
+        "logo_hBNt79"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".section__wrapper {max-width: 1140px; margin: 0 auto;}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "section_header_alignment": "center",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "Shop By Brands",
+        "heading": "",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h5",
+        "description": "",
+        "text_size": "text-sm",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "image_padding": "none",
+        "image_width": "large",
+        "columns_desktop": 6,
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "grid_bordered": false,
+        "columns_mobile": "3",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "newsletter_wJQK3J": {
+      "type": "newsletter",
+      "disabled": true,
+      "custom_css": [
+        ".newsletter__form-wrapper {max-width: 1140px; margin: 0 auto;}",
+        ".rich-text__heading {max-width: 50rem;}",
+        "@media (max-width: 1023.98px) {.rich-text__heading {max-width: 40rem; }}",
+        "@media (max-width: 767.98px) {.rich-text__heading {max-width: 32rem; }}"
+      ],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-14",
+        "layout": "horizontal",
+        "subheading": "",
+        "heading": "Sign up to our newsletter for <em>10% off   </em>your first order.",
+        "highlight_style": "hand_drawn_circle",
+        "highlight_font_style": "normal",
+        "highlight_style_color": "#ffe093",
+        "highlight_text_color": "#ffe093",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "alignment": "left",
+        "alignment_mobile": "center",
+        "width_settings": "custom",
+        "form_width": 565,
+        "newsletter_term": "<p>By subscribing you agree to the <a href=\"/policies/terms-of-service\" title=\"Terms of Service\">Terms of Use</a> & <a href=\"/policies/privacy-policy\" title=\"Privacy Policy\">Privacy Policy.</a></p>",
+        "newsletter_term_size": "text-base",
+        "button_style": "btn--primary",
+        "button_icon": "none",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "scrolling_gallery_image_TarajD": {
+      "type": "scrolling-gallery-image",
+      "blocks": {
+        "gallery_Yw7qwx": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "thisisaaccount"
+          }
+        },
+        "gallery_b4aDr7": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "thisisaaccount"
+          }
+        },
+        "gallery_EBa3aM": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "furniturelover"
+          }
+        },
+        "gallery_N9zFLh": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "baddyjam"
+          }
+        },
+        "gallery_JT3pQC": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "liamwealthy"
+          }
+        },
+        "gallery_BEDDzD": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "baddyjam"
+          }
+        },
+        "gallery_dTtjep": {
+          "type": "gallery",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "image_link": "",
+            "social_media": "instagram",
+            "heading": "furniturelover"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_Yw7qwx",
+        "gallery_b4aDr7",
+        "gallery_EBa3aM",
+        "gallery_N9zFLh",
+        "gallery_JT3pQC",
+        "gallery_BEDDzD",
+        "gallery_dTtjep"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-9",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "center",
+        "subheading": "",
+        "heading": "We’re on Gram",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h1",
+        "description": "",
+        "text_size": "text-base",
+        "show_button_on_top": true,
+        "button_label": "@camdenbodyjewellery",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "direction": "left",
+        "speed": 0.2,
+        "pause_on_hover": true,
+        "column_gap": "medium",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "padding_top": 60,
+        "padding_bottom": 80
+      }
+    },
+    "featured_blog_XkUaYA": {
+      "type": "featured-blog",
+      "disabled": true,
+      "name": "t:sections.featured-blog.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-inverse",
+        "section_header_alignment": "left",
+        "section_header_alignment_mobile": "inherit",
+        "subheading": "",
+        "heading": "Blog posts",
+        "highlight_style": "none",
+        "highlight_font_style": "italic",
+        "highlight_style_color": "",
+        "highlight_text_color": "",
+        "heading_size": "h2",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--underline",
+        "button_icon": "none",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "column_gap": "medium",
+        "row_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "card_title_size": "h4",
+        "show_tags": true,
+        "show_excerpt": false,
+        "show_date": true,
+        "show_author": true,
+        "show_button": false,
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "1763460151048f5fd4": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_jLPmre": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Follow us @camdenbodyjewellery",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_jLPmre"
+      ],
+      "disabled": true,
+      "settings": {
+        "include_margins": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "every_day_GQ39MH",
+    "cjb_hero_f4KABY",
+    "every_day_jP7QWm",
+    "tabs_collection_6tNpjb",
+    "about_section_RURN7a",
+    "marquee_kUxprM",
+    "tabs_collection_cNGLFA",
+    "titanium_section_MWMA9e",
+    "cstm_collection_grid_zRDK4g",
+    "comparison_section_XiVAyq",
+    "apps_NJzAnc",
+    "newsletter_section_WhfFgj",
+    "collection_cards_BCB4rm",
+    "favorite_products_HyknHz",
+    "testimonials_xGnreW",
+    "17634676633e64dbd4",
+    "custom_content_AfVg7f",
+    "custom_content_kFmQWx",
+    "buttons_with_icon_b7gMjP",
+    "products_bundle_rpRPiN",
+    "brand_logos_VbwYCF",
+    "newsletter_wJQK3J",
+    "scrolling_gallery_image_TarajD",
+    "featured_blog_XkUaYA",
+    "1763460151048f5fd4"
+  ]
+}

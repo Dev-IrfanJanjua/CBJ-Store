@@ -1,0 +1,353 @@
+{% liquid
+  assign current_product = product_card_product
+
+  if current_product == blank
+    assign current_product = product
+  endif
+
+  assign card_unique_id = unique_id | append: '-' | append: current_product.id
+
+%}
+
+<div class="cstm-pd-card card-{{ card_unique_id }}">
+
+  <div class="cstm-pd-media">
+
+    <div class="swiper pd-media-swiper-{{ card_unique_id }}">
+      <div class="swiper-wrapper">
+
+        {% for image in current_product.images limit: 3 %}
+          <div class="swiper-slide">
+
+            {{
+              image
+              | image_url: width: 1000
+              | image_tag:
+                widths: '200,300,400,500,600,700,800,900',
+                loading: 'eager',
+                alt: current_product.title
+            }}
+
+          </div>
+        {% endfor %}
+
+      </div>
+
+      <div class="swiper-pagination pd-pagination"></div>
+    </div>
+
+  </div>
+
+  <div
+    class="cstm-pd-content"
+    {% if card_bg != blank %}
+      style="background-color: {{ card_bg }};"
+    {% endif %}
+  >
+
+    {% if current_product.title != blank %}
+      <h3 class="pd_title">
+        <a href="{{ current_product.url }}">
+          {{ current_product.title }}
+        </a>
+      </h3>
+    {% endif %}
+
+    <div class="pd-content-footer">
+
+      <div class="pd-prices">
+
+        {% if current_product.compare_at_price > current_product.price %}
+          <span class="pd-comp-price">
+            {{ current_product.compare_at_price | money }}
+          </span>
+        {% endif %}
+
+        {% if current_product.price != blank %}
+          <span class="pd-org-price">
+            {{ current_product.price | money }}
+          </span>
+        {% endif %}
+
+      </div>
+
+      <div class="pd-buttons">
+        {% assign original_price = current_product.selected_or_first_available_variant.price %}
+        {% assign discounted_price = original_price | times: 40 | divided_by: 100 %}
+        {% assign sidcountedprice = original_price | minus: discounted_price %}
+
+        <p class="pd-message">
+            {{ sidcountedprice | money }} with 3 items
+        </p>
+
+        <div class="pd-button">
+            {% render 'buy-buttons',
+                product: current_product,
+                block: block,
+                product_form_id: 'product-form-' | append: card_unique_id,
+                section_id: section.id,
+                section: section
+            %}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+{% comment %} <script>
+  (() => {
+
+    const initProductCardSwiper = () => {
+
+      const sliders = document.querySelectorAll(
+        '.card-{{ card_unique_id }} .swiper[class*="pd-media-swiper-"]'
+      );
+
+      if (!sliders.length) return;
+
+      sliders.forEach((slider) => {
+
+        if (slider.swiper) {
+          slider.swiper.destroy(true, true);
+        }
+
+        new Swiper(slider, {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          speed: 800,
+
+          pagination: {
+            el: slider.querySelector('.pd-pagination'),
+            clickable: true
+          }
+        });
+
+      });
+
+    };
+
+    document.addEventListener('DOMContentLoaded', initProductCardSwiper);
+    document.addEventListener('shopify:section:load', initProductCardSwiper);
+    document.addEventListener('shopify:block:select', initProductCardSwiper);
+
+  })();
+</script> {% endcomment %}
+
+<script>
+(() => {
+
+  const initProductCardSwiper = () => {
+
+    const sliders = document.querySelectorAll(
+      '.card-{{ card_unique_id }} .swiper'
+    );
+
+    if (!sliders.length) return;
+
+    sliders.forEach((slider) => {
+
+      if (slider.swiper) {
+        slider.swiper.destroy(true, true);
+      }
+
+      new Swiper(slider, {
+
+        nested: true,
+
+        slidesPerView: 1,
+        spaceBetween: 0,
+        speed: 800,
+
+        pagination: {
+          el: slider.querySelector('.pd-pagination'),
+          clickable: true
+        }
+
+      });
+
+    });
+
+  };
+
+  document.addEventListener('DOMContentLoaded', initProductCardSwiper);
+  document.addEventListener('shopify:section:load', initProductCardSwiper);
+  document.addEventListener('shopify:block:select', initProductCardSwiper);
+
+})();
+</script>
+
+
+{% style %}
+
+.card-{{ card_unique_id }}.cstm-pd-card {
+    height: 100%;
+}
+
+.card-{{ card_unique_id }} .cstm-pd-media {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.card-{{ card_unique_id }} .swiper-pagination.pd-pagination {
+    bottom: 10px;
+    left: 32px;
+    position: absolute;
+    max-width: fit-content;
+}
+
+.card-{{ card_unique_id }} .swiper-pagination.pd-pagination span.swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 100px;
+    border: 0.5px solid #000;
+    background: transparent;
+    opacity: 1;
+    margin: 0 3px;
+}
+
+.card-{{ card_unique_id }} .swiper-pagination.pd-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    border-radius: 100px;
+    background: #000;
+    width: 18px;
+}
+
+.card-{{ card_unique_id }} .cstm-pd-content {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 12px 15px;
+}
+
+.card-{{ card_unique_id }} h3.pd_title a,
+.card-{{ card_unique_id }} h3.pd_title {
+    color: #001116;
+    font-family: "Suisse Int'l";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 22px;
+    text-transform: capitalize;
+}
+
+.card-{{ card_unique_id }} .pd-content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.card-{{ card_unique_id }} .pd-prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pd-comp-price,
+.card-{{ card_unique_id }} .pd-comp-price span {
+    color: #606060;
+    font-family: "Suisse Int'l";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-decoration-line: line-through;
+}
+
+.card-{{ card_unique_id }} span.pd-org-price, 
+.card-{{ card_unique_id }} span.pd-org-price span {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.card-{{ card_unique_id }} p.pd-message {
+    color: #7C00FF;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: var(--line-height-14_56, 14.56px);
+    margin: 0;
+}
+
+.card-{{ card_unique_id }} .pd-buttons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+    background: #FFF;
+    padding: 2px 2px 2px 10px;
+}
+
+.card-{{ card_unique_id }} .pd-button .product-form__submit {
+    padding: 5px 8px 5px 6px !important;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #000;
+    border-radius: 5px;
+    min-height: unset;
+    height: unset;
+}
+
+.card-{{ card_unique_id }} .pd-button span.btn__text {
+    display: flex;
+    gap: 4px;
+}
+
+.card-{{ card_unique_id }} .pd-button span.pd-atc--icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.card-{{ card_unique_id }} .pd-button span.pd-atc--icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.card-{{ card_unique_id }} .pd-button .product-form__submit:before{
+    display: none;
+}
+
+.card-{{ card_unique_id }} .pd-button .product-form__submit span.btn__text {
+    color: #FFF;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px){
+    
+.card-{{ card_unique_id }} h3.pd_title a,
+.card-{{ card_unique_id }} h3.pd_title {
+    color: #001116;
+    font-family: "Suisse Int'l";
+    font-size: 15px !important;
+}
+
+.card-{{ card_unique_id }} span.pd-org-price, 
+.card-{{ card_unique_id }} span.pd-org-price span {
+    font-size: 14px !important;
+}
+
+.card-{{ card_unique_id }} p.pd-message {
+    font-size: 12px !important;
+}
+
+}
+
+{% endstyle %}

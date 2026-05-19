@@ -1,0 +1,761 @@
+{% style %}
+  .comp-section.section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    position: relative;
+    overflow: hidden;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .comp-section.section-{{ section.id }} .comp-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: stretch;
+    gap: 100px;
+    border-radius: 20px;
+    background: #F0D1FF;
+    padding: 40px 30px;
+    overflow: hidden;
+  }
+
+  .comp-section.section-{{ section.id }} .comp_abs-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+  .comp-section.section-{{ section.id }} .comp_abs-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+  .comp-section.section-{{ section.id }} .comp-left {
+    max-width: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .comp_tag {
+        margin-bottom: 20px;
+    }
+
+  .comp-section.section-{{ section.id }} .comp-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: {{ section.settings.tag_bg_color }};
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-tag .tag-icon {
+    width: {{ section.settings.tag_icon_size }}px;
+    height: {{ section.settings.tag_icon_size }}px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-tag .tag-label {
+    font-size: {{ section.settings.tag_font_size }}px;
+    font-weight: {{ section.settings.tag_font_weight }};
+    color: {{ section.settings.tag_text_color }};
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-title {
+    font-size: {{ section.settings.title_font_size_desktop }}px;
+    color: {{ section.settings.title_color }};
+    margin: 0;
+    font-family: "Faculty Glyphic";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 54.6px;
+    letter-spacing: -0.9px;
+    text-transform: capitalize;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-desc {
+    font-size: {{ section.settings.desc_font_size }}px;
+    color: {{ section.settings.desc_color }};
+    margin: 0;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 22px;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-right {
+    position: relative;
+    z-index: 2;
+    max-width: calc(100% - (40% + 100px));
+    width: 100%;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-abs-image {
+    position: absolute;
+    left: {{ section.settings.abs_image_left_desktop }}px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: {{ section.settings.abs_image_width_desktop }}px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table {
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    border-radius: 24px;
+    border: 1px solid #FFF;
+    background: linear-gradient(114deg, rgba(255, 255, 255, 0.45) 13.39%, rgba(255, 135, 192, 0.22) 39.28%, rgba(189, 127, 255, 0.30) 70.34%, rgba(255, 255, 255, 0.45) 102.51%);
+    backdrop-filter: blur(38.5px);
+    padding-left: 40px;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-head {
+    display: flex;
+    min-height: 66px;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-head .th-features {
+    padding: 13px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    max-width: 54%;
+    width: 100%;
+    border-bottom: 0.56px solid #000;
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 17.865px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-head .th-brand {
+    background-color: {{ section.settings.brand_col_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px;
+    max-width: 23%;
+    width: 100%;
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 37.746px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border-bottom: 0.56px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-head .th-others {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 8px;
+    max-width: 23%;
+    width: 100%;
+    border-bottom: 1.117px solid #E0E0E0;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-head .th-others-label {
+    text-transform: uppercase;
+    color: #000;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 17.865px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-row {
+    display: flex;
+    min-height: 66px;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-row:last-child {
+    border-bottom: none;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-row .td-feature {
+    padding: 13px;
+    display: flex;
+    align-items: center;
+    max-width: 54%;
+    width: 100%;
+    border-bottom: 0.56px solid #000;
+    color: #333;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-row .td-brand {
+    background-color: {{ section.settings.brand_col_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px;
+    max-width: 23%;
+    width: 100%;
+    border-bottom: 0.56px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-row .td-others {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 23%;
+    width: 100%;
+    border-bottom: 0.558px solid #B4B4B4;
+    padding: 13px;
+  }
+
+  .comp-section.section-{{ section.id }} .comp-table-row .td-brand img,
+  .comp-section.section-{{ section.id }} .comp-table-row .td-others img {
+    width: {{ section.settings.row_icon_size }}px;
+    height: {{ section.settings.row_icon_size }}px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .comp-section.section-{{ section.id }} .td-feature_last,
+  .comp-section.section-{{ section.id }} .td-brand_last,
+  .comp-section.section-{{ section.id }} .td-others_last{
+    border: none !important;
+  }
+
+  @media (max-width: 768px) {
+    .comp-section.section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .comp-section.section-{{ section.id }} .section-bg-image.desktop-bg {
+      display: none !important;
+    }
+
+    .comp-section.section-{{ section.id }} .section-bg-image.mobile-bg {
+      display: block !important;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-wrapper {
+        flex-direction: column;
+        gap: 32px;
+        padding: 30px 13px;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-left {
+      flex: none;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+      line-height: 32px;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-desc {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        text-align: center;
+        display: none;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-table {
+        border-radius: 16px;
+        padding: 0px;
+    }
+
+    .comp-section.section-{{ section.id }} .comp_tag {
+        margin-bottom: 10px;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-left-head {
+        text-align: center;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-table-head .th-features {
+        justify-content: start;
+        max-width: 50%;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-table-head .th-brand,
+    .comp-section.section-{{ section.id }} .comp-table-head .th-others,
+    .comp-section.section-{{ section.id }} .comp-table-row .td-brand,
+    .comp-section.section-{{ section.id }} .comp-table-row .td-others {
+        max-width: 25%;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-table-head .th-others-label {
+        font-size: 16px;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-table-row .td-feature {
+        max-width: 50%;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-right {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .comp-section.section-{{ section.id }} .comp-abs-image {
+      display: none;
+    }
+  }
+
+  .comp-section.section-{{ section.id }} .section-bg-image.mobile-bg {
+    display: none;
+  }
+{% endstyle %}
+
+<section
+  class="comp-section section-{{ section.id }}"
+  id="shopify-section-{{ section.id }}"
+>
+  <div class="page-width">
+
+    <div class="comp-wrapper">
+
+        {%- if section.settings.bg_image_desktop != blank or section.settings.bg_image_mobile != blank -%}
+            <div class="comp_abs-image">
+                {%- if section.settings.bg_image_desktop != blank -%}
+                    <img
+                    class="section-bg-image desktop-bg"
+                    src="{{ section.settings.bg_image_desktop | image_url: width: 2000 }}"
+                    alt=""
+                    width="{{ section.settings.bg_image_desktop.width }}"
+                    height="{{ section.settings.bg_image_desktop.height }}"
+                    loading="lazy"
+                    aria-hidden="true"
+                    >
+                {%- endif -%}
+        
+                {%- if section.settings.bg_image_mobile != blank -%}
+                    <img
+                    class="section-bg-image mobile-bg"
+                    src="{{ section.settings.bg_image_mobile | image_url: width: 800 }}"
+                    alt=""
+                    width="{{ section.settings.bg_image_mobile.width }}"
+                    height="{{ section.settings.bg_image_mobile.height }}"
+                    loading="lazy"
+                    aria-hidden="true"
+                    style="display: none;"
+                    >
+                {%- endif -%}
+            </div>
+        {% endif %}
+
+        {%- comment -%} LEFT SIDE {%- endcomment -%}
+        <div class="comp-left">
+
+            <div class="comp-left-head">
+                {%- if section.settings.tag_text != blank -%}
+                  <div class="tag_tag comp_tag">
+                    {%- if section.settings.tag_icon != blank -%}
+                      <img
+                        class="tag_icon"
+                        src="{{ section.settings.tag_icon | image_url: width: 40 }}"
+                        alt=""
+                        width="{{ section.settings.tag_icon_size }}"
+                        height="{{ section.settings.tag_icon_size }}"
+                        loading="lazy"
+                        aria-hidden="true"
+                      >
+                    {%- endif -%}
+                    <span>{{ section.settings.tag_text }}</span>
+                  </div>
+                {%- endif -%}
+          
+                {%- if section.settings.title != blank -%}
+                  <h2 class="comp-title">
+                    {{ section.settings.title | replace: '<p>', '' | replace: '</p>', '' }}
+                  </h2>
+                {%- endif -%}
+            </div>
+    
+    
+          {%- if section.settings.description != blank -%}
+            <p class="comp-desc">{{ section.settings.description }}</p>
+          {%- endif -%}
+    
+        </div>
+    
+        {%- comment -%} RIGHT SIDE — COMPARISON TABLE {%- endcomment -%}
+        <div class="comp-right">
+    
+          {%- if section.settings.abs_image != blank -%}
+            {{ section.settings.abs_image | image_url: width: 1600 | image_tag:
+                widths: '300, 400, 500,600,1440',
+                alt: "image",
+                loading: "lazy"
+            }}
+          {%- endif -%}
+    
+          <div class="comp-table" role="table" aria-label="{{ section.settings.table_aria_label | default: 'Comparison table' }}">
+    
+            {%- comment -%} TABLE HEADER {%- endcomment -%}
+            <div class="comp-table-head" role="row">
+              <div class="th-features" role="columnheader">
+                {{ section.settings.col_features_label | default: 'Features' }}
+              </div>
+              <div class="th-brand" role="columnheader">
+                <span class="th-brand-label">{{ section.settings.col_brand_label | default: 'Us' }}</span>
+              </div>
+              <div class="th-others" role="columnheader">
+                <span class="th-others-label">{{ section.settings.col_others_label | default: 'Others' }}</span>
+              </div>
+            </div>
+    
+            {%- comment -%} TABLE ROWS — BLOCKS {%- endcomment -%}
+            {%- for block in section.blocks -%}
+              <div
+                class="comp-table-row"
+                role="row"
+                {{ block.shopify_attributes }}
+              >
+                <div class="td-feature {% if forloop.last %} td-feature_last {% endif %}" role="cell">
+                  {{ block.settings.feature_text }}
+                </div>
+                <div class="td-brand {% if forloop.last %} td-brand_last {% endif %}" role="cell">
+                  {%- if block.settings.brand_icon != blank -%}
+                    <img
+                      src="{{ block.settings.brand_icon | image_url: width: 60 }}"
+                      alt="{{ block.settings.brand_icon_alt | default: 'Yes' | escape }}"
+                      width="{{ section.settings.row_icon_size }}"
+                      height="{{ section.settings.row_icon_size }}"
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                </div>
+                <div class="td-others {% if forloop.last %} td-others_last {% endif %}" role="cell">
+                  {%- if block.settings.others_icon != blank -%}
+                    <img
+                      src="{{ block.settings.others_icon | image_url: width: 60 }}"
+                      alt="{{ block.settings.others_icon_alt | default: 'No' | escape }}"
+                      width="{{ section.settings.row_icon_size }}"
+                      height="{{ section.settings.row_icon_size }}"
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+    
+          </div>{%- comment -%} /comp-table {%- endcomment -%}
+        </div>{%- comment -%} /comp-right {%- endcomment -%}
+    </div>
+
+  </div>{%- comment -%} /comp-wrapper {%- endcomment -%}
+</section>
+
+{% schema %}
+{
+  "name": "Comparison Section",
+  "tag": "section",
+  "class": "comp-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Padding — Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Section Padding — Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f3e8f7"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Background Image — Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background Image — Mobile"
+    },
+    {
+      "type": "header",
+      "content": "Tag / Badge"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+      "default": "US VS THEM"
+    },
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon Image"
+    },
+    {
+      "type": "header",
+      "content": "Left — Title & Description"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (Rich Text)",
+      "default": "<p><strong>Why Camden</strong> Is Different From The Others</p>"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title Font Size — Desktop",
+      "min": 20,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title Font Size — Mobile",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#111111"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Camden keeps it simple with implant-grade titanium styles made for everyday comfort, better wear, and easier shopping. While many brands still use mixed materials and confusing claims, we focus on one better standard across the whole store."
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size",
+      "label": "Description Font Size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description Color",
+      "default": "#444444"
+    },
+    {
+      "type": "header",
+      "content": "Table — Header Settings"
+    },
+    {
+      "type": "text",
+      "id": "table_aria_label",
+      "label": "Table ARIA Label",
+      "default": "Brand comparison table"
+    },
+    {
+      "type": "text",
+      "id": "col_features_label",
+      "label": "Features Column Heading",
+      "default": "FEATURES"
+    },
+    {
+      "type": "text",
+      "id": "col_brand_label",
+      "label": "Brand Column Heading",
+      "default": "CBJ"
+    },
+    {
+      "type": "text",
+      "id": "col_others_label",
+      "label": "Others Column Heading",
+      "default": "OTHERS"
+    },
+    {
+      "type": "header",
+      "content": "Table — Brand Column"
+    },
+    {
+      "type": "color",
+      "id": "brand_col_color",
+      "label": "Brand Column Background",
+      "default": "#f5e642"
+    },
+    {
+      "type": "header",
+      "content": "Table — Row Settings"
+    },
+    {
+      "type": "range",
+      "id": "row_icon_size",
+      "label": "Row Icon Size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_row",
+      "name": "Comparison Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature Text",
+          "default": "Feature name"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_icon",
+          "label": "Brand Icon (e.g. checkmark)"
+        },
+        {
+          "type": "text",
+          "id": "brand_icon_alt",
+          "label": "Brand Icon Alt Text",
+          "default": "Yes"
+        },
+        {
+          "type": "image_picker",
+          "id": "others_icon",
+          "label": "Others Icon (e.g. thumbs down)"
+        },
+        {
+          "type": "text",
+          "id": "others_icon_alt",
+          "label": "Others Icon Alt Text",
+          "default": "No"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison Section",
+      "blocks": [
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Titanium only"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Hypoallergenic and nickel-free"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Waterproof for everyday wear"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Lightweight feel"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Better for sensitive skin"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Clear, simple material focus"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "feature_text": "Affordable quality"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

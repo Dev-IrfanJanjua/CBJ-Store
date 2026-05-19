@@ -1,0 +1,236 @@
+{%- if block.settings.visibility != 'hide' -%}
+  {%- liquid
+    assign wrap_class = ''
+    assign visibility = block.settings.visibility
+    assign style = block.settings.style
+  -%}
+  {%- if style == 'minimalist' -%}
+    {%- liquid
+      assign wrap_class = ' flex'
+      case visibility
+        when 'desktop'
+          assign wrap_class = ' hidden md:flex'
+        when 'mobile'
+          assign wrap_class = ' flex md:hidden'
+      endcase
+    -%}
+    <link rel="stylesheet" href="{{ 'section-sticky-atc-bar-minimalist.css' | asset_url }}">
+    <script src="{{ 'sticky-atc-bar-minimalist.js' | asset_url }}" defer="defer"></script>
+    <sticky-atc-bar-minimalist
+      class="sticky-atc-bar blocks-radius items-center justify-between gap-2{{ wrap_class }}"
+      data-product-id="{{ product.id }}"
+      data-section="{{ section.id }}"
+    >
+      <div class="sticky-atc-bar__product flex items-center gap-3 md:gap-4">
+        <div
+          class="sticky-atc-bar__product-image media-wrapper shrink-0 blocks-radius-md{% if section.settings.show_image_border %} border-thin{% endif %}"
+          style="--aspect-ratio: 1"
+        >
+          {%- if product.featured_image -%}
+            {{
+              product.featured_media
+              | image_url: width: 180
+              | image_tag:
+                loading: 'lazy',
+                fetchpriority: 'low',
+                class: 'motion-reduce',
+                widths: '70, 140',
+                sizes: '70px',
+                is: 'image-lazy'
+            }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        <div class="sticky-atc-bar__product-info flex flex-col gap-0d5">
+          <h3 class="sticky-atc-bar__product-title text-pcard-title text-limit-2-lines">
+            {{ product.title }}
+          </h3>
+          {%- render 'price', product: product, use_variant: true -%}
+        </div>
+      </div>
+      <div class="product-form__buttons flex items-center">
+        <button
+          type="submit"
+          name="add"
+          form="{{ product_form_id }}"
+          class="product-form__submit btn btn--primary btn--small w-full"
+          {% if product.selected_or_first_available_variant.available == false %}
+            disabled
+          {% endif %}
+        >
+          <span class="btn__text">
+            {% comment %} {{ 'products.product.add_to_cart_short' | t }} {% endcomment %}
+             Add to cart
+             <span class="stickt_atc-btn-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.34382 7.41418H6.3075C5.4754 7.41418 4.91309 7.41499 4.48301 7.45053C4.06277 7.48525 3.86879 7.54738 3.74686 7.61306C3.42268 7.78769 3.17007 8.06422 3.03097 8.39672C2.97866 8.52177 2.93893 8.71548 2.95543 9.12272C2.97232 9.53948 3.04129 10.0787 3.14456 10.8765L4.05598 17.9165C4.13859 18.5548 4.19438 18.9803 4.26345 19.3071C4.33009 19.6222 4.39577 19.7739 4.46145 19.8754C4.62878 20.1343 4.87047 20.3403 5.15704 20.4687C5.26953 20.5191 5.43325 20.5632 5.76522 20.588C6.10929 20.6136 6.5533 20.6143 7.21891 20.6143H16.7822C17.4478 20.6143 17.8918 20.6136 18.236 20.588C18.568 20.5632 18.7317 20.5191 18.8442 20.4687C19.1308 20.3403 19.3724 20.1342 19.5397 19.8753C19.6054 19.7737 19.6712 19.6221 19.7378 19.307C19.8069 18.9802 19.8625 18.5545 19.9452 17.9163L20.8556 10.8762C20.9588 10.0784 21.0278 9.53925 21.0445 9.12253C21.0611 8.71534 21.0212 8.52166 20.9689 8.39661C20.8299 8.06414 20.5772 7.78764 20.2531 7.61304C20.1312 7.54736 19.9372 7.48525 19.517 7.45053C19.087 7.41499 18.5247 7.41418 17.6926 7.41418H16.6569L16.2189 10.3762C16.1427 10.8918 15.6484 11.25 15.115 11.1763C14.5814 11.1028 14.2108 10.6252 14.287 10.1096L14.6855 7.41418H9.3152L9.7137 10.1096C9.78994 10.6252 9.41927 11.1028 8.88572 11.1763C8.35223 11.25 7.85796 10.8918 7.78175 10.3762L7.34382 7.41418ZM9.03978 5.52845H14.961C15.1262 3.85358 13.762 2.38573 12.0003 2.38573C10.2387 2.38573 8.87453 3.85358 9.03978 5.52845ZM16.918 5.52845H17.6926H17.7351C18.514 5.52843 19.1601 5.52842 19.6833 5.57164C20.2257 5.61646 20.7345 5.71342 21.2033 5.96592C21.9165 6.35007 22.4722 6.95836 22.7783 7.68979C22.9795 8.17056 23.0159 8.67048 22.9947 9.1961C22.9741 9.70303 22.894 10.3226 22.7974 11.0694L22.7921 11.11L21.8816 18.1501L21.8771 18.1853C21.8002 18.7792 21.7358 19.2775 21.6499 19.6842C21.5599 20.1103 21.4333 20.5058 21.1951 20.8742C20.827 21.4437 20.2953 21.8973 19.6648 22.1797C19.2568 22.3623 18.835 22.4346 18.3862 22.4681C17.9581 22.5001 17.4382 22.5 16.8189 22.5H16.7822H7.21891H7.1822C6.56287 22.5 6.04311 22.5001 5.61496 22.4681C5.16625 22.4346 4.74448 22.3623 4.33657 22.1797C3.70612 21.8974 3.17437 21.4439 2.80627 20.8745C2.56808 20.506 2.44145 20.1107 2.35137 19.6846C2.26542 19.278 2.20091 18.7797 2.12405 18.1858L2.11949 18.1506L1.20808 11.1105L1.20283 11.0699C1.10613 10.3231 1.0259 9.70341 1.00535 9.19649C0.984054 8.67082 1.02047 8.17088 1.22161 7.69005C1.52762 6.95854 2.08336 6.35017 2.79659 5.96599C3.26538 5.71345 3.77427 5.61647 4.31672 5.57166C4.83988 5.52842 5.48616 5.52843 6.26512 5.52845H6.3075H7.08269C6.91964 2.82869 9.14456 0.5 12.0003 0.5C14.8561 0.5 17.081 2.82869 16.918 5.52845Z" fill="white"/>
+              </svg>
+             </span>
+          </span>
+          {% render 'loading-spinner' %}
+        </button>
+      </div>
+    </sticky-atc-bar-minimalist>
+  {%- else -%}
+    {%- liquid
+      assign show_dynamic_checkout_buttons = block.settings.show_dynamic_checkout_buttons
+      case visibility
+        when 'desktop'
+          assign wrap_class = ' hidden md:block'
+        when 'mobile'
+          assign wrap_class = ' block md:hidden'
+      endcase
+    -%}
+    <link rel="stylesheet" href="{{ 'section-sticky-atc-bar.css' | asset_url }}">
+    <script src="{{ 'sticky-atc-bar.js' | asset_url }}" defer="defer"></script>
+    <div class="sticky-atc-bar{{ wrap_class }}{% if show_dynamic_checkout_buttons %} sticky-atc-bar--with-dynamic-buttons{% endif %} page-width page-width--{{ block.settings.container }}">
+      <sticky-atc-bar
+        class="sticky-atc-bar__inner flex items-center justify-center lg:justify-between"
+        data-product-id="{{ product.id }}"
+        data-section="{{ section.id }}"
+      >
+        <div class="sticky-atc-bar__product hidden lg:flex items-center gap-4">
+          <div
+            class="sticky-atc-bar__product-image media-wrapper blocks-radius-md{% if section.settings.show_image_border %} border-thin{% endif %}"
+            style="--aspect-ratio: 1"
+          >
+            {%- if product.featured_image -%}
+              {{
+                product.featured_media
+                | image_url: width: 180
+                | image_tag:
+                  loading: 'lazy',
+                  fetchpriority: 'low',
+                  class: 'motion-reduce',
+                  widths: '70, 140',
+                  sizes: '70px',
+                  is: 'image-lazy'
+              }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          <div class="sticky-atc-bar__product-info flex flex-col gap-1">
+            <h3 class="sticky-atc-bar__product-title text-pcard-title text-limit-2-lines">
+              {{ product.title }}
+            </h3>
+            {%- render 'price', product: product, use_variant: true -%}
+          </div>
+        </div>
+        {%- assign product_form_id = 'product-form-' | append: block.id -%}
+        {%- form 'product',
+          product,
+          id: product_form_id,
+          class: 'sticky-atc-bar__form flex items-center justify-center md:justify-start gap-2',
+          data-type: 'add-to-cart-form',
+          is: 'product-form'
+        -%}
+          <div class="select{% if product.has_only_default_variant %} hidden{% endif %}">
+            <select
+              name="id"
+              class="sticky-atc-bar__variant-select form-control form-control--select"
+              aria-label="{{ 'accessibility.select_variant' | t }}"
+            >
+              {%- for variant in product.variants -%}
+                {%- liquid
+                  assign selected = false
+                  if variant.id == product.selected_or_first_available_variant.id
+                    assign selected = true
+                  endif
+                -%}
+                <option
+                  value="{{ variant.id }}"
+                  {% if selected %}
+                    selected="true"
+                  {% endif %}
+                >
+                  {{ variant.title }}
+                </option>
+              {%- endfor -%}
+            </select>
+            {%- render 'icon-caret-down', size: '2xs' -%}
+          </div>
+          {%- if block.settings.show_quantity -%}
+            <div id="QuantityForm-{{ section.id }}">
+              {%- liquid
+                assign qty_class = ''
+                unless product.has_only_default_variant
+                  assign qty_class = 'hidden md:flex'
+                endunless
+
+                assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id
+              -%}
+              <quantity-input
+                class="quantity {{ qty_class }}"
+                data-section-id="{{ section.id }}"
+                data-product-id="{{ product.id }}"
+              >
+                <button class="quantity__button" name="minus" type="button">
+                  <span class="visually-hidden">
+                    {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                  </span>
+                  {% render 'icon-minus' %}
+                </button>
+                <input
+                  class="quantity__input"
+                  type="number"
+                  name="quantity"
+                  id="Quantity-{{ section.id }}"
+                  data-cart-quantity="{{ cart_qty }}"
+                  step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                  value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  data-quantity-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                  data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                  {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                    data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                    max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  {% endif %}
+                  inputmode="numeric"
+                  autocomplete="off"
+                  form="{{ product_form_id }}"
+                >
+                <button class="quantity__button" name="plus" type="button">
+                  <span class="visually-hidden">
+                    {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                  </span>
+                  {% render 'icon-plus' %}
+                </button>
+              </quantity-input>
+            </div>
+          {% endif %}
+          <div class="product-form__buttons flex items-center gap-2">
+            {%- if block.settings.show_atc_button -%}
+              <button
+                type="submit"
+                name="add"
+                class="product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--secondary{% else %}btn--primary{% endif %} w-full"
+                {% if product.selected_or_first_available_variant.available == false %}
+                  disabled
+                {% endif %}
+              >
+                <span class="btn__text">
+                  {%- if product.selected_or_first_available_variant.available -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                {% render 'loading-spinner' %}
+              </button>
+            {% endif %}
+            {%- if show_dynamic_checkout_buttons -%}
+              <div class="product-form__button-dynamic hidden md:block">
+                {{ form | payment_button }}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endform -%}
+      </sticky-atc-bar>
+      <script type="application/json">
+        {{ product.variants | json }}
+      </script>
+    </div>
+  {%- endif -%}
+{%- endif -%}

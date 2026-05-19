@@ -1,0 +1,709 @@
+<style>
+  .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background-color: {{ section.settings.back_color }};
+  }
+  .trust-by .head-text {
+      color: var(--Black, #000);
+      text-align: center;
+      font-family: "Acumin Pro";
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 120%;
+      letter-spacing: -0.96px;
+      padding: 17px 0 12px;
+  }
+  .pdp-video  .head-text {
+       padding: 12px 0 0px;
+  }
+  .trust-by .head-text strong{
+      color: var(--Black, #000);
+      font-family: "IvyPresto Display";
+      font-size: 48px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 120%;
+      letter-spacing: -0.96px;
+  }
+  .trust-by .head-text strong {
+  position: relative;
+  display: inline-block;
+  font-style: normal;
+}
+  .trust-by .des-text {
+    color: #000;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 24px;
+  }
+.trust-by .top-sec {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .trust-by .star-text {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+  }
+  .trust-by .star-img {
+      width: 100%;
+      max-width: 110px;
+      height: auto;
+  }
+  .trust-by .s-text {
+      color: var(--black, #333);
+      font-family: Poppins;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: auto;
+      text-decoration-thickness: auto;
+      text-underline-offset: auto;
+      text-underline-position: from-font;
+      min-width:max-content;
+  }
+  .trust-by .f-img {
+      width: 28px;
+      height: 28px;
+      border-radius: 28px;
+      object-fit: cover;
+  }
+  .trust-by .f-text {
+      color: var(--Black, #000);
+      font-family: "Acumin Pro";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      max-width: 279px;
+  }
+  .trust-by .f-img-text {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 17px;
+  }
+  .trust-by .vedio-container {
+      position: relative;
+      width: 100%;
+      height: 530px;
+      overflow: hidden;
+      background: #000;
+      margin: 0;
+      border-radius: 22px;
+      z-index: 2;
+  }
+  video.dental-video-slider {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+  .trust-by video.custom-video-slider {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      cursor:pointer;
+  }
+  .trust-by .vedio-des {
+      color: var(--Black, #000);
+      font-family: "Acumin Pro";
+      font-size: 16px;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 140%;
+      padding: 17px;
+      max-width: 349px;
+      margin: 16px 0 0;
+      border-radius: 4px;
+      border: 0.2px solid var(--light-gray-20, #E0E0E0);
+      background: var(--light-gray-30, #FCFCFC);
+  }
+  .trust-by .main-btnn {
+    justify-content: center;
+    display: flex;
+    gap: 6px;
+    padding: 40px 0 0px;
+    flex-direction: row-reverse;
+  } 
+  .trust-by .play-img-s {
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      z-index: 10;
+      transition: opacity 0.3s ease;
+      display: block;
+  }
+.trust-by .play-img-c {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+  .trust-by .swiper-slide {
+      display: flex;
+      flex-direction: column;
+  }
+img.swip-img-c {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.bottom-sec {
+    overflow: hidden;
+    width: 100%;
+}
+
+.trust-by-wrapper {
+    border-radius: 20px;
+    background: #FFF;
+    padding: 60px 8px;
+}
+
+.live-heading.csp-img {
+    color: #0B0B0B;
+    font-family: "Faculty Glyphic";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    margin: 0 0 16px;
+    text-align: center;
+}
+
+.swip__btnn {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.video_slider-eye-icon {
+    max-width: 30px;
+    height: 20px;
+    width: 100%;
+    position: absolute;
+    right: 14px;
+    bottom: 18px;
+}
+
+.video_slider-eye-icon img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+  
+@media screen and (max-width:768px){
+
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mbl_padding_top }}px;
+    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+}    
+
+.trust-by-wrapper {
+    border-radius: 16px;
+    padding: 30px 13px;
+}
+
+.trust-by .head-text {
+    padding: 10px 0 12px;
+    color: var(--Black, #000);
+    text-align: center;
+    font-family: "Acumin Pro";
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.56px;
+}
+.trust-by .des-text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 125% */
+}
+
+.trust-by .head-text strong {
+    font-family: "IvyPresto Display";
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 120%;
+    letter-spacing: -0.56px;
+}
+.trust-by .f-text {
+  font-size:14px;
+}
+.trust-by .vedio-des {
+    color: var(--Black, #000);
+    font-family: "Acumin Pro";
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 140%; /* 19.6px */
+}
+
+.trust-by .s-text {
+    color: var(--black, #333);
+    font-family: Poppins;
+    font-size: 16px;
+}
+.trust-by .des-text {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    line-height: normal;
+}
+
+
+
+.swip-img-c {
+  width: 36.364px;
+  height: 36.364px;
+  aspect-ratio: 1/1;
+}
+.trust-by .top-sec {
+  margin-bottom: 30px;
+}
+
+.trust-by .des-text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 16.8px */
+}
+
+.trust-by .live-heading {
+    font-size: 28px;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    margin-bottom: 10px;
+}
+.trust-by .live-heading em {
+  font-family: "Playfair Display" !important;
+}
+.trust-by .main-btnn {
+  display:none;
+}
+
+.trust-by .vedio-container {
+    border-radius: 13px;
+}
+
+.bottom-sec {
+    margin-right: -13px;
+    width: unset;
+}
+
+.trust-by .head-text {
+    font-size:26px;
+}
+.trust-by .vedio-des {
+    font-size:13px;    
+}
+
+.vp-modal {
+    height: 100%;
+}
+
+
+}
+
+  {% comment %} ==== popup css ==== {% endcomment %}
+
+  /* ── Video Popup Overlay ── */
+.vp-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 14px 20px;
+}
+
+.vp-modal {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 0.8;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 100;
+}
+
+.vp-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.vp-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 101;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+}
+
+.section-{{ section.id }}-padding:has(.vp-overlay[style*="display: flex"]) .bottom-sec {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+</style>
+
+<section class="trust-by section-{{ section.id }}-padding {% if section.settings.pdp %}pdp-video{% endif %} pdp-section" id="trust">
+  <div class="page-width">
+    <div class="trust-by-wrapper">
+        <div class="top-sec">
+          {% if section.settings.head_text %}
+            <div class="live-heading csp-img">{{ section.settings.head_text | replace: '<p>', '' |replace: '</p>', '' }}</div>
+          {% endif %}
+          {% if section.settings.des_text %}
+            <div class="des-text csp-img">{{ section.settings.des_text }}</div>
+          {% endif %}
+        </div>
+        <div class="bottom-sec csp-img">
+          <div class="swiper mySwiper-{{ section.id }}">
+            <div class="swiper-wrapper">
+              {% for block in section.blocks %}
+                <div class="swiper-slide" data-slide-index="{{ forloop.index0 }}">
+                  <div class="vedio-container" data-video-index="{{ forloop.index0 }}">
+                    {% comment %} {% render 'play' %} {% endcomment %}
+                     {% comment %} {% if section.settings.eye_icon != blank %} {% endcomment %}
+                         <div class="video_slider-eye-icon">
+                            {{ section.settings.eye_icon 
+                                | image_url: width: 100 
+                                | image_tag:
+                                widths: '50, 100',
+                                alt: section.settings.eye_icon.alt | default: "Eye Icon",
+                                loading: "lazy",
+                                class: "eye-icon-img"
+                            }}
+                         </div>
+                     {% comment %} {% endif %} {% endcomment %}
+                    {% if block.settings.video != blank %}
+                     {% assign video_poster = section.settings.video.preview_image | image_url: width: 1200 %}
+                      {{
+                          block.settings.video
+                          | video_tag:
+                            class: 'dental-video-slider',
+                            autoplay: true,
+                            loop: true,
+                            controls: false,
+                            playsinline: true,
+                            poster: video_poster,
+                            muted:true,
+                            preload: 'auto'
+                        }}
+                    {% endif %}
+                  </div>
+                 
+                </div>
+              {% endfor %}
+            </div>
+            <div class="main-btnn">
+              <div class="button-next-{{ section.id }} swip__btnn swip__btn-next">
+                  <img class="swip-img-c" src="{{ section.settings.next | image_url }}" width="50" height="50" alt="pause" data-action="pause">
+              </div>
+              <div class="button-prev-{{ section.id }} swip__btnn swip__btn-prev">
+                  <img class="swip-img-c" src="{{ section.settings.prev | image_url }}" width="50" height="50" alt="pause" data-action="pause">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- VIDEO POPUP -->
+    <div class="vp-overlay" id="vpOverlay-{{ section.id }}" style="display:none;">
+        <div class="vp-modal">
+            <button class="vp-close" id="vpClose-{{ section.id }}">&#x2715;</button>
+            <video 
+            class="vp-video" 
+            id="vpVideo-{{ section.id }}" 
+            controls 
+            playsinline 
+            preload="metadata">
+            </video>
+        </div>
+    </div>
+
+</section>
+
+{% comment %} <script>
+    (function() {
+    // Wait for DOM to be fully loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initVideoSlider);
+    } else {
+        initVideoSlider();
+    }
+
+    function initVideoSlider() {
+        // Initialize Swiper
+        var swiper = new Swiper('.mySwiper-{{ section.id }}', {
+        navigation: {
+            nextEl: '.button-next-{{ section.id }}',
+            prevEl: '.button-prev-{{ section.id }}',
+        },
+        slidesPerView: 1.1,
+        spaceBetween: 6,
+        speed:1000,
+        breakpoints: {
+            0: {
+            slidesPerView: 1.1,
+            spaceBetween: 6,
+            },
+            768: {
+            slidesPerView: 2.2,
+            spaceBetween: 8,
+            },
+            1024: {
+            slidesPerView: 3.4,
+            spaceBetween: 8,
+            },
+        },
+        on: {
+            slideChange: function() {
+            stopAllVideos();
+            }
+        }
+        });
+
+    }
+    })();
+    const containers = document.querySelectorAll('.vedio-container');
+</script> {% endcomment %}
+
+<script>
+(function () {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  function init() {
+    // ── Swiper ──
+    new Swiper('.mySwiper-{{ section.id }}', {
+      navigation: {
+        nextEl: '.button-next-{{ section.id }}',
+        prevEl: '.button-prev-{{ section.id }}',
+      },
+      slidesPerView: 1.1,
+      spaceBetween: 6,
+      speed: 1000,
+      breakpoints: {
+        0:    { slidesPerView: 1.1, spaceBetween: 6 },
+        768:  { slidesPerView: 2.2, spaceBetween: 8 },
+        1024: { slidesPerView: 3.4, spaceBetween: 8 },
+      }
+    });
+
+    // ── Popup elements ──
+    var overlay  = document.getElementById('vpOverlay-{{ section.id }}');
+    var popVideo = document.getElementById('vpVideo-{{ section.id }}');
+    var closeBtn = document.getElementById('vpClose-{{ section.id }}');
+
+    // ── Click on any slide card → open popup ──
+    var containers = document.querySelectorAll(
+      '.mySwiper-{{ section.id }} .vedio-container'
+    );
+
+    containers.forEach(function (card) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function () {
+        // Get the <video> inside this card
+        var inlineVideo = card.querySelector('video');
+        if (!inlineVideo) return;
+
+        // Copy the video source into the popup player
+        var src = inlineVideo.currentSrc || inlineVideo.src;
+        if (!src && inlineVideo.querySelector('source')) {
+          src = inlineVideo.querySelector('source').src;
+        }
+
+        popVideo.src = src;
+        overlay.style.display = 'flex';
+        popVideo.play();
+      });
+    });
+
+    // ── Close popup ──
+    function closePopup() {
+      popVideo.pause();
+      popVideo.src = '';
+      overlay.style.display = 'none';
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+
+    // Click outside modal also closes
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closePopup();
+    });
+
+    // ESC key closes
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.style.display === 'flex') {
+        closePopup();
+      }
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "trust by Name",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "back_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "image_picker",
+      "id": "eye_icon",
+      "label": "Eye Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "head_text",
+      "label": "Heading Text"
+    },
+    {
+      "type": "textarea",
+      "id": "des_text",
+      "label": "Description Text",
+      "default": "Your description goes here."
+    },
+    {
+      "type": "image_picker",
+      "id": "prev",
+      "label": "Previous Slider Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "next",
+      "label": "Next Slider Image"
+    },
+    {
+       "type":"checkbox",
+       "id": "pdp",
+       "label": "Pdp Styling"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "f_img",
+          "label": "Feature Image"
+        },
+        {
+          "type": "text",
+          "id": "f_text",
+          "label": "Feature Text",
+          "default": "Feature description"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "trust by Name"
+    }
+  ]
+}
+{% endschema %}

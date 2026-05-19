@@ -1,0 +1,282 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement_bar_UbQwDX": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_bar_ezJb8x": {
+          "type": "announcement_bar",
+          "settings": {
+            "text": "Free UK Delivery On All Orders Over £40",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_bar_ezJb8x"
+      ],
+      "disabled": true,
+      "name": "t:sections.announcement-bar.name",
+      "settings": {
+        "color_scheme": "scheme-14",
+        "content_width": 30,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
+    "topbar_3YD96h": {
+      "type": "topbar",
+      "blocks": {
+        "link_list_En8dpz": {
+          "type": "link_list",
+          "settings": {
+            "menu": "secondary-menu-2",
+            "position": "left"
+          }
+        },
+        "text_Ahn3nP": {
+          "type": "text",
+          "settings": {
+            "text": "✌🏼 Free Express Shipping on orders $120!",
+            "position": "center"
+          }
+        },
+        "language_country_MyFf6D": {
+          "type": "language_country",
+          "settings": {
+            "show_language_selector": true,
+            "show_country_selector": true,
+            "position": "right"
+          }
+        },
+        "social_links_BcFqP9": {
+          "type": "social_links",
+          "settings": {
+            "show_instagram": true,
+            "position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_En8dpz",
+        "text_Ahn3nP",
+        "language_country_MyFf6D",
+        "social_links_BcFqP9"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "scheme-inverse",
+        "show_separator_line": true,
+        "padding_top": 12,
+        "padding_bottom": 12,
+        "mobile_padding_top": 4,
+        "mobile_padding_bottom": 8
+      }
+    },
+    "ann_bar_hV3Nha": {
+      "type": "ann-bar",
+      "blocks": {
+        "card_DcAY8p": {
+          "type": "card",
+          "settings": {
+            "card_icon": "shopify://shop_images/Component_1_3.svg",
+            "card_text": "<p>25% off</p>"
+          }
+        },
+        "card_PNbQ7G": {
+          "type": "card",
+          "settings": {
+            "card_icon": "shopify://shop_images/Component_1_3.svg",
+            "card_text": "<p>40% off</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_DcAY8p",
+        "card_PNbQ7G"
+      ],
+      "name": "Announcement Bar",
+      "settings": {
+        "left_text": "<p>Add 2+ items to unlock 25% off</p>",
+        "left_icon": "shopify://shop_images/Component_1_3.svg",
+        "section_bg_color": "#eeeeee",
+        "inner_bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "tag_color": "#000000",
+        "card_bg_color": "#ebd8fe",
+        "desktop_padding_top": 12,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 20,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "product_list_Y6YFpH": {
+          "type": "product_list",
+          "settings": {
+            "menu_title": "Jewellery Type",
+            "menu_columns": 2,
+            "show_menu_column_divider": false,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "heading": "pd heading",
+            "promotions_width": 38,
+            "number_of_columns": 3,
+            "product_list": [],
+            "show_product_vendor": false,
+            "show_product_type": false,
+            "show_progress_bar": true
+          }
+        },
+        "new_card_gn4GVX": {
+          "type": "new_card",
+          "settings": {
+            "hide_mob": false,
+            "opt_img_menu": "jewellery type",
+            "new_class": "jewellery",
+            "opt_img": "shopify://shop_images/Rectangle_3467791_1.png",
+            "card_img": "shopify://shop_images/Rectangle_3467791.png",
+            "title": "Titanium Only",
+            "sub_title": "Lightweight, waterproof, everyday-ready styles.",
+            "btn_text": "Shop All",
+            "btn_link": "#"
+          }
+        },
+        "product_list_R3xmKP": {
+          "type": "product_list",
+          "settings": {
+            "menu_title": "Piercing Type",
+            "menu_columns": 3,
+            "show_menu_column_divider": false,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "heading": "",
+            "promotions_width": 38,
+            "number_of_columns": 3,
+            "product_list": [],
+            "show_product_vendor": false,
+            "show_product_type": false,
+            "show_progress_bar": true
+          }
+        },
+        "new_card_WU4nnj": {
+          "type": "new_card",
+          "settings": {
+            "hide_mob": false,
+            "opt_img_menu": "piercing type",
+            "new_class": "piercing",
+            "card_img": "shopify://shop_images/Rectangle_3467791_2.png",
+            "title": "Not sure where to start?",
+            "sub_title": "Shop by piercing placement and find the right style faster.",
+            "btn_text": "Explore Piercing Types",
+            "btn_link": "#"
+          }
+        },
+        "product_list_qwQYL9": {
+          "type": "product_list",
+          "settings": {
+            "menu_title": "Offers",
+            "menu_columns": 0,
+            "show_menu_column_divider": false,
+            "enable_hl_link": false,
+            "hl_link_style": "text_color",
+            "hl_link_color": "",
+            "heading": "",
+            "promotions_width": 20,
+            "number_of_columns": 1,
+            "product_list": [],
+            "show_product_vendor": false,
+            "show_product_type": false,
+            "show_progress_bar": true
+          }
+        },
+        "mega_collection_slider_ECdVeH": {
+          "type": "mega_collection_slider",
+          "settings": {
+            "menu": "Offers",
+            "collections": [
+              "aftercare",
+              "anti-tragus",
+              "anti-tragus-jewellery",
+              "back-in-stock",
+              "barbells",
+              "belly"
+            ]
+          }
+        },
+        "new_card_U9HABL": {
+          "type": "new_card",
+          "settings": {
+            "hide_mob": true,
+            "opt_img_menu": "offers",
+            "new_class": "offers",
+            "card_img": "shopify://shop_images/Rectangle_3467791.png",
+            "title": "Build your stack, save more",
+            "sub_title": "Add more favorites and unlock better value.",
+            "btn_text": "Shop the Offer",
+            "btn_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "product_list_Y6YFpH",
+        "new_card_gn4GVX",
+        "product_list_R3xmKP",
+        "new_card_WU4nnj",
+        "product_list_qwQYL9",
+        "mega_collection_slider_ECdVeH",
+        "new_card_U9HABL"
+      ],
+      "custom_css": [
+        ".search__form {--search-form-width: 63rem;}",
+        "@media (min-width: 1024px) {.header__top--logo-left .header__search {padding-inline: 1.8rem; }}"
+      ],
+      "settings": {
+        "cstm_style": true,
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "menu": "header-dev-menu",
+        "menu_mobile": "",
+        "header_layout": "logo-left",
+        "menu_trigger": "click",
+        "sticky_header": "none",
+        "enable_collapse_on_scroll": false,
+        "show_sperator_line": false,
+        "customer_account_style": "icon-with-text",
+        "show_social_media_icons": true,
+        "enable_language_selector": false,
+        "enable_country_selector": false,
+        "header_top_padding_top": 10,
+        "header_top_padding_bottom": 10,
+        "navigation_color_scheme": "scheme-inverse",
+        "navigation_content_alignment": "start",
+        "navigation_padding_top": 0,
+        "navigation_padding_bottom": 12
+      }
+    }
+  },
+  "order": [
+    "announcement_bar_UbQwDX",
+    "topbar_3YD96h",
+    "ann_bar_hV3Nha",
+    "header"
+  ]
+}

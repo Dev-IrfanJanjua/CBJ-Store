@@ -1,0 +1,558 @@
+{%- liquid
+  unless enable_color_swatch
+    assign enable_color_swatch = section.settings.enable_color_swatch
+  endunless
+-%}
+
+{%- if results.filters != empty -%}
+  <form
+    class="face-form"
+    method="GET"
+    action="{{ request.path }}"
+    is="facet-form"
+    data-section-id="{{ section.id }}"
+    data-history
+    update-on-change
+  >
+    <div data-filter data-index="{{ context }}-page" hidden>
+      <input type="hidden" name="page" value="">
+
+      {%- if results.current_type != blank or results.current_vendor != blank -%}
+        <input type="hidden" name="q" value="{{ results.current_vendor | default: results.current_type | escape }}">
+      {%- endif -%}
+
+      {%- if request.page_type == 'search' -%}
+        <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      {%- endif -%}
+
+      {%- if show_sort_by == blank and results.sort_by != blank -%}
+        <input type="hidden" name="sort_by" value="{{ results.sort_by }}">
+      {%- endif -%}
+    </div>
+    {%- for filter in results.filters -%}
+      {%- assign filter_id = context | append: '-' | append: filter.param_name -%}
+      {% liquid
+        if filter.presentation == 'image'
+          assign show_more_number = 12
+        else
+          assign show_more_number = 14
+        endif
+
+        assign downcase_label = filter.label | downcase
+
+        assign expand = false
+        if section.settings.expand_filter_groups != blank
+          assign expand_filter_groups = section.settings.expand_filter_groups | downcase
+          if expand_filter_groups contains downcase_label
+            assign expand = true
+          endif
+        endif
+      %}
+      {%- case filter.type -%}
+        {%- when 'list', 'boolean' -%}
+          {%- liquid
+            assign is_color = false
+
+            if settings.color_swatch_trigger != blank and enable_color_swatch
+              assign swatch_trigger = settings.color_swatch_trigger | downcase
+              if swatch_trigger contains downcase_label
+                assign is_color = true
+              elsif swatch_trigger contains 'color' and downcase_label contains 'colour'
+                assign is_color = true
+              endif
+            endif
+
+            assign sorted_values = filter.values
+            # Keep the selected values grouped together when operator is AND
+            if filter.operator == 'AND'
+              assign active_filter_values = filter.values | where: 'active', true
+              assign inactive_filter_values = filter.values | where: 'active', false
+              assign sorted_values = active_filter_values | concat: inactive_filter_values
+            endif
+
+            # --- CUSTOM GROUPING CONFIG ---
+            assign needs_grouping = false
+            assign category_config = ''
+            
+            if downcase_label contains 'jewellery type' or downcase_label contains 'jewelry type'
+              assign needs_grouping = true
+              assign category_config = settings.jewellery_type_categories
+            elsif downcase_label contains 'body part' or downcase_label contains 'piercing type' or downcase_label contains 'piercing location'
+              assign needs_grouping = true
+              assign category_config = settings.body_part_categories
+            endif
+          -%}
+          <details
+            class="accordion-details facet-accordion-details"
+            is="accordion-details"
+            data-filter
+            data-index="{{ filter_id }}"
+            {% if expand %}
+              open
+            {% endif %}
+          >
+            <summary class="accordion-details__summary flex items-center justify-between">
+              <span class="h6">
+                {{- filter.label | escape -}}
+                {%- if filter.operator == 'AND' -%}
+                  <small class="accordion-details__helptext block text-subtext text-sm overflow-hidden">
+                    {{- 'products.facets.filter_and_operator_subtitle' | t -}}
+                  </small>
+                {%- endif -%}
+              </span>
+              {%- render 'icon-plus-toggle', size: 'small' -%}
+            </summary>
+            <div class="accordion-details__content parent-display flex flex-col gap-3">
+              {%- if is_color or filter.presentation == 'swatch' -%}
+                <ul class="swatches grid gap-3">
+                  {%- for filter_value in sorted_values -%}
+                    {%- liquid
+                      assign filter_value_id = filter_id | append: '-' | append: forloop.index
+                      assign is_disabled = false
+                      if filter_value.count == 0 and filter_value.active == false
+                        assign is_disabled = true
+                      endif
+                    -%}
+                    <li
+                      data-tooltip
+                      class="filter-item{% if forloop.index > show_more_number %} show-more-item hidden{% endif %}"
+                    >
+                      {%- liquid
+                        if filter.presentation == 'swatch'
+                          render 'swatch', allow_multiple: true, value: filter_value.value, name: filter_value.param_name, id: filter_value_id, selected: filter_value.active, disabled: is_disabled, swatch: filter_value.swatch, filter_label: filter_value.label, filter_count: filter_value.count
+                        else
+                          render 'swatch', allow_multiple: true, value: filter_value.value, name: filter_value.param_name, id: filter_value_id, selected: filter_value.active, disabled: is_disabled, file_extension: 'png', filter_label: filter_value.label, filter_count: filter_value.count
+                        endif
+                      -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- elsif filter.presentation == 'image' -%}
+                <ul class="swatches grid gap-3">
+                  {%- for filter_value in sorted_values -%}
+                    {%- liquid
+                      assign filter_value_id = filter_id | append: '-' | append: forloop.index
+                      assign is_disabled = false
+                      if filter_value.count == 0 and filter_value.active == false
+                        assign is_disabled = true
+                      endif
+
+                      assign swatch_image = blank
+                      assign swatch_fallback = filter_value.value | split: ' ' | last | handle
+                      assign swatch_focal_point = null
+                      if filter_value.image
+                        assign swatch_image = filter_value.image | image_url: width: 144
+                        assign swatch_focal_point = filter_value.image.presentation.focal_point
+                      endif
+                    -%}
+                    <li
+                      data-tooltip
+                      class="filter-item{% if forloop.index > show_more_number %} show-more-item hidden{% endif %}"
+                    >
+                      <input
+                        class="visually-hidden"
+                        name="{{ filter_value.param_name }}"
+                        value="{{ filter_value.value | escape }}"
+                        type="checkbox"
+                        id="{{ filter_value_id }}"
+                        {% if is_disabled %}
+                          disabled
+                        {% endif -%}
+                        {% if filter_value.active %}
+                          checked
+                        {% endif %}
+                      >
+                      <label
+                        class="flex items-center gap-2 reversed-link{% if class != blank %} {{ class }}{% endif %}"
+                        for="{{ filter_value_id | escape }}"
+                      >
+                        <div
+                          class="swatch-color swatch-image block relative no-empty"
+                          style="--swatch-background: {{ swatch_fallback }};{% if swatch_image != blank %} background-image: url({{ swatch_image }});{% endif %}{% if swatch_focal_point %} --swatch-focal-point: {{ swatch_focal_point }}{% endif %}"
+                        ></div>
+                        <div class="flex flex-grow justify-between items-center gap-1 text-subtext">
+                          <span class="reversed-link__text">{{ filter_value.label | escape }}</span>
+                          <span class="count">{{ filter_value.count }}</span>
+                        </div>
+                      </label>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- else -%}
+                
+                {% comment %} --- HIERARCHICAL GROUPING LAYOUT --- {% endcomment %}
+                {% if needs_grouping and category_config != blank %}
+                  <ul class="grid gap-3 grouped-filters-container">
+                    {% assign categories = category_config | split: '|' %}
+                    {% for category in categories %}
+                      {% assign category_parts = category | split: ':' %}
+                      {% assign category_name = category_parts[0] | strip %}
+                      {% assign category_items_string = category_parts[1] | strip %}
+                      {% assign category_items = category_items_string | split: ',' %}
+                      
+                      {% comment %} 1. Check if this group has ANY matches {% endcomment %}
+                      {% assign has_items = false %}
+                      {% for filter_value in sorted_values %}
+                        {% assign value_label = filter_value.label | strip %}
+                        {% for item in category_items %}
+                          {% assign item_clean = item | strip %}
+                          {% if value_label == item_clean %}
+                            {% assign has_items = true %}
+                            {% break %}
+                          {% endif %}
+                        {% endfor %}
+                        {% if has_items %}{% break %}{% endif %}
+                      {% endfor %}
+
+                      {% if has_items %}
+                        {% comment %} 2. Find Parent Object (Case-Insensitive) {% endcomment %}
+                        {% assign parent_filter = nil %}
+                        {% assign category_name_down = category_name | downcase %}
+                        {% for filter_value in sorted_values %}
+                           {% assign f_label_down = filter_value.label | downcase %}
+                           {% if f_label_down == category_name_down %}
+                             {% assign parent_filter = filter_value %}
+                             {% break %}
+                           {% endif %}
+                        {% endfor %}
+
+                        {% comment %} 3. Render Group {% endcomment %}
+                        <li class="group-parent-wrapper">
+                           
+                           {% comment %} PARENT HEADER {% endcomment %}
+                           <div class="parent-row flex items-center gap-2" style="margin-bottom: 8px;">
+                             {% assign parent_id = filter_id | append: '-parent-' | append: category_name | handle %}
+                             
+                             {% if parent_filter %}
+                               <input
+                                  name="{{ parent_filter.param_name }}"
+                                  value="{{ parent_filter.value | escape }}"
+                                  class="checkbox js-parent-checkbox"
+                                  id="{{ parent_id }}"
+                                  type="checkbox"
+                                  {% if parent_filter.active %}checked{% endif %}
+                                >
+                                <label for="{{ parent_id }}" class="flex flex-grow justify-between items-center gap-1 text-subtext reversed-link">
+                                  <span class="reversed-link__text" style="font-weight: bold; text-transform: uppercase;">{{ parent_filter.label }}</span>
+                                  <span class="count">{{ parent_filter.count }}</span>
+                                </label>
+                             {% else %}
+                               {% comment %} Fake Parent {% endcomment %}
+                               <input
+                                  class="checkbox js-parent-checkbox"
+                                  id="{{ parent_id }}"
+                                  type="checkbox"
+                                >
+                                <label for="{{ parent_id }}" class="flex flex-grow justify-between items-center gap-1 text-subtext reversed-link">
+                                  <span class="reversed-link__text" style="font-weight: bold; text-transform: uppercase;">{{ category_name }}</span>
+                                </label>
+                             {% endif %}
+                           </div>
+
+                           {% comment %} CHILDREN LIST {% endcomment %}
+                           <ul class="js-child-list grid gap-2" style="padding-left: 26px;">
+                            {% for filter_value in sorted_values %}
+                              {% assign value_label = filter_value.label | strip %}
+                              {% assign value_label_down = value_label | downcase %}
+                              
+                              {% if value_label_down == category_name_down %}{% continue %}{% endif %}
+
+                              {% assign is_match = false %}
+                              {% for item in category_items %}
+                                {% assign item_clean = item | strip %}
+                                {% if value_label == item_clean %}
+                                  {% assign is_match = true %}
+                                  {% break %}
+                                {% endif %}
+                              {% endfor %}
+
+                              {% if is_match %}
+                                 {%- liquid
+                                  assign filter_value_id = filter_id | append: '-' | append: filter_value.label | handle
+                                  assign is_disabled = false
+                                  if filter_value.count == 0 and filter_value.active == false
+                                    assign is_disabled = true
+                                  endif
+                                -%}
+                                <li class="flex items-center gap-2">
+                                  <input
+                                    name="{{ filter_value.param_name }}"
+                                    value="{{ filter_value.value | escape }}"
+                                    class="checkbox js-child-checkbox"
+                                    id="{{ filter_value_id | escape }}"
+                                    type="checkbox"
+                                    {% if filter_value.active %}
+                                      checked
+                                    {% endif -%}
+                                    {% if is_disabled %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  <label
+                                    for="{{ filter_value_id }}"
+                                    class="flex flex-grow justify-between items-center gap-1 text-subtext reversed-link"
+                                  >
+                                    <span class="reversed-link__text">{{- filter_value.label | escape -}}</span>
+                                    <span class="count">{{ filter_value.count }}</span>
+                                  </label>
+                                </li>
+                              {% endif %}
+                            {% endfor %}
+                           </ul>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+
+                {% else %}
+                  {% comment %} --- Standard Pillar Layout (No Grouping) --- {% endcomment %}
+                  <ul class="grid gap-3">
+                    {%- for filter_value in sorted_values -%}
+                      {%- liquid
+                        assign filter_value_id = filter_id | append: '-' | append: forloop.index
+                        assign is_disabled = false
+                        if filter_value.count == 0 and filter_value.active == false
+                          assign is_disabled = true
+                        endif
+                      -%}
+                      <li class="flex items-center gap-2{% if forloop.index > show_more_number %} show-more-item hidden{% endif %}">
+                        <input
+                          name="{{ filter_value.param_name }}"
+                          value="{{ filter_value.value | escape }}"
+                          class="checkbox"
+                          id="{{ filter_value_id | escape }}"
+                          type="checkbox"
+                          {% if filter_value.active %}
+                            checked
+                          {% endif -%}
+                          {% if is_disabled %}
+                            disabled
+                          {% endif %}
+                        >
+                        <label
+                          for="{{ filter_value_id }}"
+                          class="flex flex-grow justify-between items-center gap-1 text-subtext reversed-link"
+                        >
+                          <span class="reversed-link__text">{{- filter_value.label | escape -}}</span>
+                          <span class="count">{{ filter_value.count }}</span>
+                        </label>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                  {%- if filter.values.size > show_more_number -%}
+                    <show-more-button>
+                      <button
+                        class="button-show-more btn--link"
+                        id="Show-More-{{ forloop.index }}-{{ section.id }}"
+                        type="button"
+                      >
+                        <span class="label-show-more label-text">{{ 'products.facets.show_more' | t -}}</span>
+                        <span class="label-show-less label-text hidden">{{ 'products.facets.show_less' | t -}}</span>
+                      </button>
+                    </show-more-button>
+                  {%- endif %}
+                {% endif %}
+                
+              {%- endif -%}
+            </div>
+          </details>
+        {%- when 'price_range' -%}
+          {%- liquid
+            assign min_value = filter.min_value.value | default: 0.0 | divided_by: 100.0
+            assign max_value = filter.max_value.value | default: filter.range_max | divided_by: 100.0
+            assign range_max = filter.range_max | divided_by: 100.0 | ceil
+            assign step_value = max_value | minus: min_value | divided_by: 100.0 | ceil | at_most: 1
+            assign lower_progress_limit = min_value | divided_by: range_max | times: 100.0
+            assign higher_progress_limit = max_value | divided_by: range_max | times: 100.0
+            assign highest_price = filter.range_max | money
+          -%}
+          <details
+            is="accordion-details"
+            class="accordion-details facet-accordion-details"
+            data-filter
+            data-index="{{ filter_id }}"
+            {% if expand %}
+              open
+            {% endif %}
+          >
+            <summary class="accordion-details__summary flex items-center justify-between">
+              <span class="h6">{{- filter.label | escape -}}</span>
+              {%- render 'icon-plus-toggle', size: 'small' -%}
+            </summary>
+            <div class="accordion-details__content accordion-details__content--price">
+              <price-range class="grid">
+                {%- if range_max > 0 -%}
+                  {%- liquid
+                    # Use replace instead translate key {{ price }} to keep html.
+                    assign highest_price_html = 'products.facets.max_price' | t
+                    assign highest_price_html = highest_price_html | replace: '{{ price }}', highest_price
+                  -%}
+                  <span class="text-subtext">{{- highest_price_html -}}</span>
+                  <label class="visually-hidden" for="FacetFormRangeFromPrice-{{ context }}">
+                    {{- 'products.facets.from' | t -}}
+                  </label>
+                  <label class="visually-hidden" for="FacetFormRangeToPrice-{{ context }}">
+                    {{- 'products.facets.to' | t -}}
+                  </label>
+                  <div
+                    class="facet-range-wrapper relative"
+                    style="--range-min: {{ lower_progress_limit }}%; --range-max: {{ higher_progress_limit }}%;"
+                  >
+                    <input
+                      class="facet-range facet-range__min w-full pointer-events-none"
+                      type="range"
+                      min="0"
+                      max="{{ range_max | ceil }}"
+                      step="{{ step_value }}"
+                      value="{{ min_value | ceil }}"
+                      id="FacetFormRangeFromPrice-{{ context }}"
+                    >
+                    <input
+                      class="facet-range facet-range__max w-full pointer-events-none absolute"
+                      type="range"
+                      min="0"
+                      max="{{ range_max | ceil }}"
+                      step="{{ step_value }}"
+                      value="{{ max_value | ceil }}"
+                      id="FacetFormRangeToPrice-{{ context }}"
+                    >
+                  </div>
+                {%- endif -%}
+                <div class="facet-input-wrapper flex items-center gap-4">
+                  <div class="flex items-center flex-grow relative gap-2">
+                    <label class="visually-hidden" for="FacetFormInputFromPrice-{{ context }}">
+                      {{- 'products.facets.from' | t -}}
+                    </label>
+                    <span class="facet-range__symbol">{{ cart.currency.symbol }}</span>
+                    <input
+                      class="form-control facet-range__input"
+                      type="number"
+                      inputmode="numeric"
+                      name="{{ filter.min_value.param_name }}"
+                      id="FacetFormInputFromPrice-{{ context }}"
+                      autocomplete="off"
+                      placeholder="0"
+                      min="0"
+                      max="{{ max_value | ceil }}"
+                      step="{{ step_value }}"
+                      {% if filter.min_value.value %}
+                        value="{{ min_value | ceil }}"
+                      {% endif %}
+                    >
+                  </div>
+                  <div class="flex items-center flex-grow relative gap-2">
+                    <label class="visually-hidden" for="FacetFormInputToPrice-{{ context }}">
+                      {{- 'products.facets.to' | t -}}
+                    </label>
+                    <span class="facet-range__symbol">{{ cart.currency.symbol }}</span>
+                    <input
+                      class="form-control facet-range__input"
+                      type="number"
+                      inputmode="numeric"
+                      name="{{ filter.max_value.param_name }}"
+                      id="FacetFormInputToPrice-{{ context }}"
+                      autocomplete="off"
+                      placeholder="{{ range_max | ceil }}"
+                      min="{{ min_value | ceil }}"
+                      max="{{ range_max | ceil }}"
+                      step="{{ step_value }}"
+                      {% if filter.max_value.value %}
+                        value="{{ max_value | ceil }}"
+                      {% endif %}
+                    >
+                  </div>
+                </div>
+              </price-range>
+            </div>
+          </details>
+      {%- endcase -%}
+    {%- endfor -%}
+  </form>
+{%- endif -%}
+
+{% comment %} --- MUTATION OBSERVER & EVENT DELEGATION SCRIPT --- {% endcomment %}
+<script>
+(function() {
+  // Prevent duplicate initialization
+  if (window.groupedFiltersObserverInit) return;
+  window.groupedFiltersObserverInit = true;
+
+  // --- 1. FUNCTION TO SYNC PARENT STATE ---
+  function syncParentState(wrapper) {
+    if (!wrapper) return;
+    const parent = wrapper.querySelector('.js-parent-checkbox');
+    const children = wrapper.querySelectorAll('.js-child-checkbox');
+    if (!parent || children.length === 0) return;
+
+    // Logic: If any child is checked, parent "could" be checked visually (user preference).
+    // Or stricter: If ALL children are checked.
+    // Based on user request "Select All", we usually don't auto-check parent unless all are checked, 
+    // BUT we must allow unchecking parent to uncheck all.
+    
+    // Current implementation: Visual sync is tricky with AJAX. 
+    // We will stick to the click logic below for interaction.
+    // For initial load, we can check if the "Fake Parent" needs to be checked based on children.
+    
+    const allChecked = Array.from(children).every(c => c.checked);
+    const someChecked = Array.from(children).some(c => c.checked);
+    
+    // If it's a "Fake Parent" (no name attribute), we can toggle it for visual consistency
+    if (!parent.hasAttribute('name')) {
+        if (allChecked && children.length > 0) {
+            parent.checked = true;
+        } else if (!someChecked) {
+            parent.checked = false;
+        }
+    }
+  }
+
+  // --- 2. GLOBAL CLICK LISTENER (Delegation) ---
+  document.addEventListener('change', function(e) {
+    // A. Handle Parent Click
+    if (e.target.matches('.js-parent-checkbox')) {
+      const parent = e.target;
+      const wrapper = parent.closest('.group-parent-wrapper');
+      if (wrapper) {
+        const children = wrapper.querySelectorAll('.js-child-checkbox');
+        children.forEach(child => {
+          child.checked = parent.checked;
+        });
+        // Trigger Form Submit
+        parent.closest('form').dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+
+    // B. Handle Child Click
+    if (e.target.matches('.js-child-checkbox')) {
+      const child = e.target;
+      const wrapper = child.closest('.group-parent-wrapper');
+      if (wrapper) {
+        const parent = wrapper.querySelector('.js-parent-checkbox');
+        // If unchecking a child, uncheck parent
+        if (!child.checked && parent && parent.checked) {
+          parent.checked = false;
+        }
+      }
+    }
+  });
+
+  // --- 3. MUTATION OBSERVER (Watches for AJAX updates) ---
+  const observer = new MutationObserver(function(mutations) {
+    // When Shopify updates the DOM, re-scan to sync visual states
+    document.querySelectorAll('.group-parent-wrapper').forEach(wrapper => {
+      syncParentState(wrapper);
+    });
+  });
+
+  // Start observing the body for replaced nodes (broad but safe for Shopify themes)
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Initial Sync
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.group-parent-wrapper').forEach(wrapper => {
+      syncParentState(wrapper);
+    });
+  });
+
+})();
+</script>

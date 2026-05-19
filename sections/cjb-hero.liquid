@@ -1,0 +1,576 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .cbj-hero-wrapper {
+    position: relative;
+    border-radius: 17px;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+    padding: 40px 30px 120px;
+    min-height: 614px;
+    justify-content: space-between;
+  }
+
+  .section-{{ section.id }} .cbj-hero-wrapper-abs_image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .section-{{ section.id }} .cbj-hero-wrapper-abs_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-{{ section.id }} .cbj-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .section-{{ section.id }} .cbj-hero-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 2px 0;
+  }
+
+  .section-{{ section.id }} .cbj-hero-review_image {
+    display: flex;
+    align-items: center;
+    max-width: 174px;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-{{ section.id }} .cbj-hero-review_image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .section-{{ section.id }} .cbj-hero-review_text {
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15.11px;
+    color: {{ section.settings.review_text_color }};
+  }
+
+  .section-{{ section.id }} .cbj-hero-title {
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+    font-family: "Faculty Glyphic";
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 56px;
+    letter-spacing: -0.9px;
+  }
+
+  .section-{{ section.id }} .cbj-hero-subtitle {
+    margin: 0;
+    color: #FFF;
+    font-family: "Suisse Int'l";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 24px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-cards {
+    text-decoration: none;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    max-width: fit-content;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card {
+    border-radius: 8px;
+    box-shadow: 1.987px 1.987px 0 0 #000;
+    padding: 17px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card:hover{
+    transform: scale(1.02);
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card_tag {
+    display: inline-flex;
+    margin-bottom: 4px;
+    font-family: "Suisse Int'l";
+    font-size: 17.036px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card-title {
+    margin: 0 0 6px;
+    font-family: "Suisse Int'l";
+    font-size: 23.66px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+    text-decoration: none;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card_icon_perc img,
+  .section-{{ section.id }} .cbj-wrapper-card_icon_arrow img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card_icon_perc {
+    max-width: 45px;
+    width: 100%;
+    height: 45px;
+  }
+
+  .section-{{ section.id }} .cbj-wrapper-card_icon_arrow {
+    width: 24px;
+    height: 24px;
+  }
+
+  .section-{{ section.id }} .cbj-hero-title strong {
+        font-family: "Clash Display";
+        font-weight: 600;
+    }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .cbj-hero-wrapper {
+        padding: 0px 13px 40px;
+        align-items: end;
+        flex-direction: column;
+        border-radius: 12px;
+        min-height: 654px;
+        justify-content: end;
+    }
+
+    .section-{{ section.id }} .cbj-hero-title {
+        font-size: 35px !important;
+        line-height: 39px !important;
+    }
+
+    .section-{{ section.id }} .cbj-hero-content {
+      max-width: 100%;
+    }
+
+    .section-{{ section.id }} .cbj-hero-subtitle {
+      font-size: 16px;
+      display: none;
+    }
+
+    .section-{{ section.id }} .cbj-wrapper-cards {
+      margin-top: 49px;
+      max-width: 100%;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .section-{{ section.id }} .cbj-wrapper-card {
+        padding: 13px;
+        border-radius: 7px;
+        min-width: 147px;
+    }
+
+    .section-{{ section.id }} .cbj-wrapper-card_tag{
+        font-size: 13px;
+    }
+
+    .section-{{ section.id }} .cbj-wrapper-card-title {
+      font-size: 16px;
+      line-height: normal;
+      margin-bottom: 3px;
+    }
+
+    .section-{{ section.id }} .cbj-wrapper-card_icon_perc {
+        max-width: 32px;
+        width: 100%;
+        height: 32px;
+    }
+
+    .section-{{ section.id }} .cbj-wrapper-card_icon_arrow {
+        width: 20px;
+        height: 20px;
+    }
+
+    .section-{{ section.id }} .cbj-hero-image-desktop{
+        display: none !important;
+    }
+
+    .section-{{ section.id }} .cbj-hero-image-mobile{
+        display: block !important;
+    }
+
+  }
+{% endstyle %}
+
+<section class="cbj-hero-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="cbj-hero-wrapper">
+
+      <div class="cbj-hero-wrapper-abs_image">
+        {% if section.settings.desktop_bg_image != blank %}
+            {{
+              section.settings.desktop_bg_image
+              | image_url: width: 1600
+              | image_tag:
+                widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                loading: 'eager',
+                alt: 'desktop hero image',
+                class: 'cbj-hero-image-desktop'
+            }}
+        {% endif %}
+        {% if section.settings.mobile_bg_image != blank %}
+            {{
+              section.settings.mobile_bg_image
+              | image_url: width: 1000
+              | image_tag:
+                widths: '50,100,150,200,300,400,500,600,800',
+                loading: 'eager',
+                alt: 'mobile hero image',
+                class: 'cbj-hero-image-mobile',
+                style: 'display: none'
+            }}
+        {% endif %}
+      </div>
+
+      <div class="cbj-hero-content">
+
+        {% if section.settings.review_text != blank or section.settings.review_image != blank %}
+          <div class="cbj-hero-reviews">
+
+            {% if section.settings.review_image != blank %}
+              <div class="cbj-hero-review_image">
+                {{
+                  section.settings.review_image
+                  | image_url: width: 300
+                  | image_tag:
+                    widths: '50,100,150,200,300',
+                    loading: 'lazy',
+                    alt: 'review image'
+                }}
+              </div>
+            {% endif %}
+
+            {% if section.settings.review_text != blank %}
+              <span class="cbj-hero-review_text">
+                {{ section.settings.review_text }}
+              </span>
+            {% endif %}
+
+          </div>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h1 class="cbj-hero-title title_title">
+            {{
+              section.settings.heading
+              | replace: '<p>', ''
+              | replace: '</p>', ''
+            }}
+          </h1>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <div class="cbj-hero-subtitle">
+            {{ section.settings.subtitle  
+                | replace: '<p>', ''
+                | replace: '</p>', ''
+            }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="cbj-hero-btn btn_btn">
+            {{ section.settings.button_label }}
+            <span class="btn_btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16" viewBox="0 0 24 16" fill="none">
+                    <g clip-path="url(#clip0_337_72)">
+                        <path d="M16.3621 15.1044C16.3621 12.1116 18.4606 9.48987 22.6563 7.23715C18.4595 5.36205 16.3621 2.94859 16.3621 0" stroke="black" stroke-width="1.48886" stroke-linejoin="round"/>
+                        <path d="M20.7672 7.55225H-0.000244141" stroke="black" stroke-width="1.48886"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_337_72">
+                        <rect width="23.7355" height="15.1044" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </span>
+          </a>
+        {% endif %}
+
+      </div>
+
+      {% if section.blocks != blank %}
+        <div
+          class="cbj-wrapper-cards"
+        >
+            {% for block in section.blocks %}
+                {% if block.type == 'card' %}
+                    <a class="cbj-wrapper-card" style="background: {{ block.settings.card_bg_color }};" href="{{ block.settings.card_link }}">
+          
+                      {% if block.settings.card_tag != blank %}
+                        <span class="cbj-wrapper-card_tag" style="color: {{ block.settings.tag_text_color }};">
+                          {{ block.settings.card_tag }}
+                        </span>
+                      {% endif %}
+          
+                      {% if block.settings.card_title != blank %}
+                        <h3 class="cbj-wrapper-card-title" style="color: {{ block.settings.card_heading_color }};">
+                          {{
+                            block.settings.card_title
+                            | replace: '<p>', ''
+                            | replace: '</p>', ''
+                          }}
+                        </h3>
+                      {% endif %}
+          
+                      {% if block.settings.card_percentage_icon != blank or block.settings.card_arrow_icon != blank %}
+                        <div class="cbj-wrapper-card-btns">
+          
+                          {% if block.settings.card_percentage_icon != blank %}
+                            <div class="cbj-wrapper-card_icon_perc">
+                              {{
+                                block.settings.card_percentage_icon
+                                | image_url: width: 200
+                                | image_tag:
+                                  widths: '50,100,150,200',
+                                  loading: 'lazy',
+                                  alt: 'percentage icon'
+                              }}
+                            </div>
+                          {% endif %}
+          
+                          {% if block.settings.card_arrow_icon != blank %}
+                            <div class="cbj-wrapper-card_icon_arrow">
+                              {{
+                                block.settings.card_arrow_icon
+                                | image_url: width: 100
+                                | image_tag:
+                                  widths: '50,100',
+                                  loading: 'lazy',
+                                  alt: 'arrow icon'
+                              }}
+                            </div>
+                          {% endif %}
+          
+                        </div>
+                      {% endif %}
+          
+                    </a>
+                {%endif %}
+            {% endfor %}
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CBJ Hero Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_bg_image",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_bg_image",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image",
+      "label": "Review Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "review_text",
+      "label": "Review Text"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Your Hero Heading Here</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<p>Your hero subtitle content goes here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "review_text_color",
+      "label": "Review Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+        "type": "card",
+        "name": "Add Card",
+        "settings": [
+            {
+                "type": "color",
+                "id": "card_bg_color",
+                "label": "Card Background Color",
+                "default": "#ffffff"
+            },
+            {
+                "type": "color",
+                "id": "card_heading_color",
+                "label": "Card Heading Color",
+                "default": "#000000"
+            },
+            {
+                "type": "color",
+                "id": "tag_text_color",
+                "label": "Tag Text Color",
+                "default": "#000000"
+            },
+            {
+                "type": "text",
+                "id": "card_tag",
+                "label": "Card Tag",
+                "default": "New Launch"
+            },
+            {
+                "type": "richtext",
+                "id": "card_title",
+                "label": "Card Title",
+                "default": "<p>Discover Our Latest Collection</p>"
+            },
+            {
+                "type": "url",
+                "id": "card_link",
+                "label": "Card Link"
+            },
+            {
+                "type": "image_picker",
+                "id": "card_percentage_icon",
+                "label": "Card Percentage Icon"
+            },
+            {
+                "type": "image_picker",
+                "id": "card_arrow_icon",
+                "label": "Card Arrow Icon"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CBJ Hero Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

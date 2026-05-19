@@ -1,0 +1,303 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .collection-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+  }
+
+  .collection-grid-wraper {
+        border-radius: 20px;
+        background: #FFF;
+        padding: 30px;
+    }
+
+  .section-{{ section.id }} .collection-g-block {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .section-{{ section.id }} .collection-g-block:hover{
+    transform: scale(1.01);
+  }
+
+  .section-{{ section.id }} .collection-g-block-image {
+    position: relative;
+    aspect-ratio: 0.8;
+  }
+
+  .section-{{ section.id }} .collection-g-block-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-{{ section.id }} .collection-g-block-content {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 100%;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .section-{{ section.id }} .collection-g-name {
+    margin: 0 0 12px;
+    text-align: center;
+    font-family: "Faculty Glyphic";
+    font-size: clamp(40px, 4.9vw, 63.17px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-{{ section.id }} .collection-g-view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+    color: #FFF;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .collection-grid-wraper {
+        border-radius: 12px;
+        padding: 12px;
+    }
+
+    .section-{{ section.id }} .collection-blocks {
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+
+    .section-{{ section.id }} .collection-g-block {
+        border-radius: 12px;
+    }
+
+    .section-{{ section.id }} .collection-g-block-image {
+        aspect-ratio: 1;
+    }
+
+    .section-{{ section.id }} .collection-g-block-content {
+      bottom: 40px;
+    }
+
+    .section-{{ section.id }} .collection-g-name {
+        margin: 0 0 5px;
+    }
+
+    .section-{{ section.id }} .collection-g-view-all-btn {
+        font-size: 12px;
+        line-height: 12px;
+    }
+  }
+{% endstyle %}
+
+<section class="collection-grid-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="collection-grid-wraper">
+
+      <div class="collection-blocks">
+
+        {% for block in section.blocks %}
+          {% assign collection = block.settings.collection %}
+
+          {% assign collection_image = block.settings.custom_image %}
+
+          {% if collection_image == blank and collection != blank %}
+            {% assign collection_image = collection.featured_image %}
+          {% endif %}
+
+          {% assign collection_title = block.settings.custom_title %}
+
+          {% if collection_title == blank and collection != blank %}
+            {% assign collection_title = collection.title %}
+          {% endif %}
+
+          <div
+            class="collection-g-block"
+            {{ block.shopify_attributes }}
+          >
+
+            {% if collection != blank %}
+              <a href="{{ collection.url }}">
+            {% endif %}
+
+            {% if collection_image != blank %}
+              <div class="collection-g-block-image">
+                {{
+                  collection_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    widths: '200,300,400,500,600,700,800,900,1000,1200',
+                    loading: 'lazy',
+                    alt: collection_title
+                }}
+              </div>
+            {% endif %}
+
+            <div class="collection-g-block-content">
+
+              {% if collection_title != blank %}
+                <h3 class="collection-g-name">
+                  {{
+                    collection_title
+                    | replace: '<p>', ''
+                    | replace: '</p>', ''
+                  }}
+                </h3>
+              {% endif %}
+
+              {% if section.settings.button_text != blank %}
+                <span class="collection-g-view-all-btn">
+                  {{ section.settings.button_text }}
+                </span>
+              {% endif %}
+
+            </div>
+
+            {% if collection != blank %}
+              </a>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "View Collection"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_block",
+      "name": "Collection Block",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "richtext",
+          "id": "custom_title",
+          "label": "Custom Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Grid",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "collection_block"
+        },
+        {
+          "type": "collection_block"
+        },
+        {
+          "type": "collection_block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

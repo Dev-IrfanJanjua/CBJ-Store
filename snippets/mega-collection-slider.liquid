@@ -1,0 +1,253 @@
+{% style %}
+
+.mega_collection-slider {
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    margin-right: 30px;
+    border-right: 1px solid #CBCBCB;
+}
+
+.swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
+.mega-col-card-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 7px;
+}
+
+.mega-col-card-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.mega-col-card-content {
+    border-radius: 7px;
+    background: #FFF;
+    padding: 20px 18px 16px;
+}
+
+h4.mega_col_content-title {
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.08px;
+    margin: 0 0 15px;
+}
+
+p.mega_col_content-subtitle {
+    color: #3F3F3F;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0.08px;
+    margin: 0;
+}
+
+a.mega_col_content-btn {
+    padding: 5px;
+    display: flex;
+    align-items: start;
+    gap: 5px;
+    color: #000;
+    font-family: "Faculty Glyphic";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 148%;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+span.mega_col_content-btn_icon {
+    width: 18px;
+    height: 12px;
+    display: block;
+}
+
+.mega_coll-prev, 
+.mega_coll-next {
+    position: static;
+    margin: 0;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mega_coll-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 5px;
+    padding-right: 30px;
+    margin-top: 20px;
+}
+
+.mega_coll-prev:after, 
+.mega_coll-next:after{
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+    
+.mega_collection-slider{
+    overflow: visible;
+    border: none;
+    margin: 0;
+    scrollbar-width: none;
+}
+
+.mega_coll-navigation {
+    display: none;
+}
+
+.mega-collection-swiper-{{ block.id }} .swiper-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.mega-col-card-img {
+    aspect-ratio: 1.415 !important;
+}
+
+.mega-col-card-content {
+    padding-inline: 10px;
+}
+
+}
+
+{% endstyle %}
+
+<div class="mega_collection-slider">
+  <div class="swiper mega-collection-swiper-{{ block.id }}">
+    <div class="swiper-wrapper">
+      {% for collection in mega_collections %}
+        {% assign mega_menu_image = collection.metafields.custom.mega_menu_image.value %}
+        {% assign mega_menu_title = collection.metafields.custom.mega_menu_title %}
+        {% assign mega_menu_subtitle = collection.metafields.custom.mega_menu_sub_title %}
+
+        {% assign final_image = mega_menu_image %}
+        {% assign final_title = mega_menu_title %}
+        {% assign final_subtitle = mega_menu_subtitle %}
+
+        {% if final_image == blank %}
+          {% assign final_image = collection.featured_image %}
+        {% endif %}
+
+        {% if final_title == blank %}
+          {% assign final_title = collection.title %}
+        {% endif %}
+
+        {% if final_subtitle == blank %}
+          {% assign final_subtitle = collection.description | strip_html | truncate: 80 %}
+        {% endif %}
+
+        <div class="swiper-slide">
+          <div class="mege_collection-card">
+            <div class="mega-col-card-img">
+              {% if final_image != blank %}
+                {{
+                  final_image
+                  | image_url: width: 800
+                  | image_tag: loading: 'lazy', widths: '200,300,400,500,600,700,800', alt: final_title
+                }}
+              {% endif %}
+            </div>
+
+            <div class="mega-col-card-content">
+              <h4 class="mega_col_content-title">
+                {{ final_title }}
+              </h4>
+
+              {% if final_subtitle != blank %}
+                <p class="mega_col_content-subtitle">
+                  {{ final_subtitle }}
+                </p>
+              {% endif %}
+
+              <a class="mega_col_content-btn" href="{{ collection.url }}">
+                Shop Now
+
+                <span class="mega_col_content-btn_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <g clip-path="url(#clip0_662_2640)">
+                        <path d="M15.2052 16.9775C13.0878 14.86 12.7175 11.5204 14.0923 6.95793C9.79625 8.60062 6.60475 8.37697 4.51855 6.29077" stroke="black" stroke-width="1.48974" stroke-linejoin="round"/>
+                        <path d="M13.6286 7.86831L4.15918 17.3378" stroke="black" stroke-width="1.19594"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_662_2640">
+                        <rect width="18.9302" height="12.0465" fill="white" transform="translate(0 13.3857) rotate(-45)"/>
+                        </clipPath>
+                    </defs>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="mega_coll-navigation">
+        <div class="swiper-button-prev mega_coll-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 8 16" fill="none">
+                <path d="M7.20409 1.12616e-06C7.20409 3.0633 5.05669 5.74658 0.763182 8.05242C5.05669 9.97181 7.20409 12.4413 7.20409 15.4608" stroke="black" stroke-width="1.52632" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="swiper-button-next mega_coll-next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="16" viewBox="0 0 8 16" fill="none">
+                <path d="M0.763196 1.12616e-06C0.763196 3.0633 2.91059 5.74658 7.2041 8.05242C2.9106 9.97181 0.763198 12.4413 0.763198 15.4608" stroke="black" stroke-width="1.52632" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.mega-collection-swiper-{{ block_id }}', {
+      slidesPerView: 3.1,
+      spaceBetween: 20,
+      loop: false,
+      navigation: {
+            nextEl: '.mega_coll-next',
+            prevEl: '.mega_coll-prev'
+        },
+
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 0
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 16
+        },
+        1200: {
+          slidesPerView: 3.1,
+          spaceBetween: 20
+        },
+      },
+    });
+  });
+</script>

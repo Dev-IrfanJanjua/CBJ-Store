@@ -1,0 +1,538 @@
+{% liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif 
+  endif
+%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+  {% render 'elevateab' %}
+ {%- render 'ecom_header' -%}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
+
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+
+      if settings.enable_product_compare
+        echo 'compare.css' | asset_url | stylesheet_tag: preload: true
+      endif
+
+      if enable_rtl 
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+
+    {{ content_for_header }}
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+  {% render 'wsg-custom' %}
+
+  {% comment %} --- CBJ "Sold as Pair" global messaging --- {% endcomment %}
+  <style>
+    /* Every product card image gets a persistent "Sold as Pair" chip in the top-right */
+    .product-card__image-wrapper { position: relative; }
+    .product-card__image-wrapper::before {
+      content: "✨ SOLD AS PAIR";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 3;
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      color: #8a5a00;
+      background: #fff4d6;
+      border: 1px solid #f3c969;
+      border-radius: 999px;
+      padding: 4px 10px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      font-family: inherit;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    /* Slightly tighter on mobile so it doesn't crowd product badges */
+    @media (max-width: 767.98px) {
+      .product-card__image-wrapper::before {
+        top: 8px;
+        right: 8px;
+        font-size: 9px;
+        padding: 3px 8px;
+        letter-spacing: 0.6px;
+      }
+    }
+
+    /* Product page "Sold as Pair" headline badge */
+    .cbj-pair-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #8a5a00;
+      background: linear-gradient(180deg, #fffaeb 0%, #fff4d6 100%);
+      border: 1px solid #f3c969;
+      border-radius: 999px;
+      padding: 8px 16px;
+      margin: 10px 0 16px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+    .cbj-pair-badge__icon { font-size: 16px; line-height: 1; }
+    .cbj-pair-note {
+      font-size: 12px;
+      color: #555;
+      margin: 0 0 14px;
+      line-height: 1.4;
+    }
+
+    /* Tier price pill ("£X with 3 items") shown on every product card + product page */
+    .f-price__tiered {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+      line-height: 1.2;
+      flex-basis: 100%;
+      width: 100%;
+    }
+    .f-price__tiered-chip {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #fff4d6;
+      border: 1px solid #f3c969;
+      border-radius: 999px;
+      color: #8a5a00;
+      line-height: 1.2;
+      white-space: nowrap;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+    }
+    .f-price__tiered-amount {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .f-price__tiered-condition {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    /* PRODUCT CARD layout: regular price bottom-left, tier pill pushed to the right edge */
+    .product-card .f-price {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      row-gap: 6px;
+      width: 100%;
+    }
+    .product-card .f-price__regular,
+    .product-card .f-price__sale {
+      margin: 0;
+    }
+    .product-card .f-price__tiered {
+      margin-top: 0;
+      margin-left: auto;   /* pushes the pill to the far right of the card */
+      flex-basis: auto;
+      width: auto;
+      justify-content: flex-end;
+    }
+    .product-card .f-price__tiered-chip {
+      padding: 5px 11px;
+    }
+    .product-card .f-price__tiered-amount {
+      font-size: 14px;
+    }
+    .product-card .f-price__tiered-condition {
+      font-size: 10px;
+    }
+
+    /* PRODUCT PAGE: regular price, then pill on its own line below */
+    .product .f-price,
+    .main-product .f-price,
+    .product__info-wrapper .f-price {
+      flex-wrap: wrap;
+      row-gap: 4px;
+    }
+    .product .f-price__tiered,
+    .main-product .f-price__tiered,
+    .product__info-wrapper .f-price__tiered {
+      margin-top: 10px;
+    }
+    .product .f-price__tiered-amount,
+    .main-product .f-price__tiered-amount,
+    .product__info-wrapper .f-price__tiered-amount {
+      font-size: 17px;
+    }
+    /* Product page: give the tier price its own line with clear spacing from the main price */
+    .product .f-price,
+    .main-product .f-price,
+    .product__info-wrapper .f-price {
+      flex-wrap: wrap;
+      row-gap: 4px;
+    }
+    .product .f-price__tiered,
+    .main-product .f-price__tiered,
+    .product__info-wrapper .f-price__tiered {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e5d6a8;
+      gap: 8px;
+      align-items: center;
+    }
+    .product .f-price-item--tiered,
+    .main-product .f-price-item--tiered,
+    .product__info-wrapper .f-price-item--tiered {
+      font-size: 18px;
+    }
+
+    /* Cart line-item "Sold as Pair" chip */
+    .cart-item__pair-tag {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #8a5a00;
+      background: #fff4d6;
+      border: 1px solid #f3c969;
+      border-radius: 999px;
+      padding: 2px 8px;
+      line-height: 1.2;
+    }
+
+    /* Cart line-item per-hoop price breakdown */
+    .cart-item__per-hoop-wrap {
+      margin-top: 6px;
+    }
+    .cart-item__per-hoop {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 6px 10px;
+      background: #f8f5ed;
+      border: 1px solid #ecdcb3;
+      border-radius: 8px;
+      line-height: 1.3;
+      width: fit-content;
+      max-width: 100%;
+    }
+    .cart-item__per-hoop-main {
+      font-size: 13px;
+      font-weight: 800;
+      color: #8a5a00;
+      letter-spacing: 0.2px;
+    }
+    .cart-item__per-hoop-unit {
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #8a5a00;
+      opacity: 0.85;
+    }
+    .cart-item__per-hoop-sub {
+      font-size: 10px;
+      font-weight: 500;
+      color: #6b6b6b;
+      letter-spacing: 0.2px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+</head>
+
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"
+    data-initializing
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+  {% capture header_cart_progress %}
+  <div id="header-cart-progress">
+    <div class="progress-track">
+      <div class="progress-fill"></div>
+    </div>
+    <div id="progress-steps-track"></div>
+  
+  </div>  {% endcapture %}
+<script>
+ (function () {
+  let inited = false;
+  let debounceTimer = null;
+
+  function initProgressHeader() {
+    // avoid re-attaching multiple times
+    if (inited) return;
+    inited = true;
+
+    const fill = document.querySelector('#header-cart-progress .progress-fill');
+    const container = document.getElementById('progress-steps-track');
+    const track = document.querySelector('#header-cart-progress .progress-track');
+
+    if (!fill || !container || !track) {
+      // header not yet rendered
+      inited = false;
+      return;
+    }
+
+    // store the previous width fraction so we can detect increases
+    fill.dataset.prev = fill.dataset.prev || '0';
+
+    const states = {
+      0: ['Add it: Save in style', 'Treat almost unlocked', '1 more = free gift 🎁'],
+      1: ['That 50% off hits good', 'Treat almost unlocked', '1 more = free gift 🎁'],
+      2: ['🎁 That free gift is almost yours', '1 more = free gift 🎁'],
+      3: ['That gift is yours: The magic of Black Friday ✨'],
+    };
+
+    // render labels + add .active to the right one based on item count
+    function renderSteps(texts, qty) {
+      container.innerHTML = '';
+
+      // determine which text should be active based on quantity
+      let activeText = null;
+
+      if (qty === 1) {
+        activeText = 'That 50% off hits good';
+      } else if (qty === 2) {
+        activeText = '🎁 That free gift is almost yours';
+      } else if (qty >= 3) {
+        activeText = 'That gift is yours: The magic of Black Friday ✨';
+      }
+      // qty === 0 or 1 => no activeText (no active class)
+
+      texts.forEach((txt) => {
+        const el = document.createElement('span');
+        el.className = 'progress-step';
+        el.textContent = txt;
+
+        if (activeText && txt === activeText) {
+          el.classList.add('active');
+        }
+
+        container.appendChild(el);
+      });
+    }
+
+    function applyState(qty) {
+      // progress fraction toward 3 items
+      const fraction = Math.min(qty / 3, 1); // 0..1
+      const step = Math.min(Math.floor(qty), 3); // integer step for labels (0..3)
+      const texts = states[step] || states[3];
+
+      renderSteps(texts, qty);
+
+      // smooth width change (CSS transition handles motion)
+      const prev = parseFloat(fill.dataset.prev || '0');
+      const next = fraction;
+      fill.style.width = (next * 100) + '%';
+      fill.dataset.prev = String(next);
+
+      // if progress increased noticeably, add 'pop' animation to labels
+      if (next > prev + 0.02) {
+        // small delay so DOM updates before adding pop
+        requestAnimationFrame(() => {
+          const labels = Array.from(container.querySelectorAll('.progress-step'));
+          labels.forEach((lab, i) => {
+            // stagger the pop slightly per label
+            setTimeout(() => {
+              lab.classList.add('pop');
+              // remove pop after animation ends
+              setTimeout(() => lab.classList.remove('pop'), 450);
+            }, i * 60);
+          });
+        });
+      }
+    }
+
+    function refresh() {
+      // fetch cart - robust: try/catch fetch errors
+      fetch('/cart.js', { credentials: 'same-origin' })
+        .then(r => {
+          if (!r.ok) throw new Error('Cart fetch failed');
+          return r.json();
+        })
+        .then(cart => {
+          const count = cart && typeof cart.item_count === 'number' ? cart.item_count : 0;
+          applyState(count);
+        })
+        .catch(err => {
+          // silently fail (could also console.debug)
+          console.debug('refresh cart failed', err);
+        });
+    }
+
+    // initial load
+    refresh();
+
+    // watch for add-to-cart clicks; refresh a couple times after click so async updates settle
+    document.addEventListener('click', (e) => {
+      const el = e.target.closest('[name="add"], [data-add-to-cart], .add-to-cart, .product-form--atc, button[data-add-to-cart]');
+      if (el) {
+        setTimeout(refresh, 300);
+        setTimeout(refresh, 900);
+      }
+    }, true);
+
+    // if the platform dispatches custom cart events, listen too (Shopify themes sometimes emit 'cart:updated')
+    document.addEventListener('cart:updated', refresh);
+    document.addEventListener('cart:change', refresh); // generic
+
+    // expose refresh if needed globally
+    window.headerProgressRefresh = refresh;
+  }
+
+  // attempt to init now; if header not present, wait via MutationObserver
+  initProgressHeader();
+
+  // keep a single mutation observer that tries to init again when header loads or changes
+  const headerTarget = document.body;
+  const observer = new MutationObserver((mutations) => {
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const progressExists = document.querySelector('#header-cart-progress .progress-fill');
+      if (progressExists) {
+        initProgressHeader();
+      }
+    }, 120); // small debounce to avoid thrash
+  });
+
+  observer.observe(headerTarget, { childList: true, subtree: true });
+ })();
+</script>
+
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- liquid
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+
+    {%- if settings.enable_product_compare -%}
+      <script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+  
+
+  {%- render "ecom_footer"-%}
+
+  {%- render "font-family"-%}
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  
+</body>
+</html>

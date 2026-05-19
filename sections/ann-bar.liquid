@@ -1,0 +1,351 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .ann-bar-wrapper {
+    background-color: {{ section.settings.inner_bg_color }};
+    border-radius: 8px;
+    padding: 7px 10px;
+  }
+
+  .section-{{ section.id }} .ann-bar-inner {
+    background-color: {{ section.settings.card_bg_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 8px;
+    border: 1px solid #B97AFC;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 4px;
+  }
+
+  .section-{{ section.id }} .ann-bar-left-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    padding: 5px;
+    margin-right: 60px;
+  }
+
+  .section-{{ section.id }} .ann-left-icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-{{ section.id }} .ann-left-icon img,
+  .section-{{ section.id }} .ann-right-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .section-{{ section.id }} .ann-left-text {
+    color: {{ section.settings.heading_color }};
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+  }
+
+  .section-{{ section.id }} .ann-bar-right-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-{{ section.id }} .ann-right-card {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 0.5px solid #B97AFC;
+    background: rgba(255, 255, 255, 0.60);
+  }
+
+  .section-{{ section.id }} .ann-right-card-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-{{ section.id }} .ann-right-card_text {
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .ann-bar-inner {
+      gap: 2px;
+    }
+
+    .section-{{ section.id }} .ann-bar-left-wrapper {
+        gap: 6px;
+        padding: 0;
+        max-width: fit-content;
+        margin: 0;
+    }
+
+    .section-{{ section.id }} .ann-left-text {
+        font-size: 12px;
+    }
+
+    .section-{{ section.id }} .ann-right-card_text {
+        font-size: 12px;
+    }
+
+    .section-{{ section.id }} .ann-right-card {
+        gap: 3px;
+        padding: 5px 4px;
+        border-radius: 6px;
+    }
+
+    .section-{{ section.id }} .ann-bar-right-wrapper {
+      gap: 4px;
+      max-width: 100%;
+      width: 100%;
+      flex: 1;
+    }
+
+    .section-{{ section.id }} .ann-right-card {
+      width: 100%;
+    }
+
+    .section-{{ section.id }} .ann-bar-wrapper {
+      padding: 0;
+    }
+  }
+{% endstyle %}
+
+<section class="ann-bar-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="ann-bar-wrapper">
+      <div class="ann-bar-inner">
+
+        {% if section.settings.left_text != blank or section.settings.left_icon != blank %}
+          <div class="ann-bar-left-wrapper">
+
+            {% if section.settings.left_icon != blank %}
+              <div class="ann-left-icon">
+                {{
+                  section.settings.left_icon
+                  | image_url: width: 100
+                  | image_tag:
+                    widths: '50,100,150,200',
+                    loading: 'lazy',
+                    alt: 'icon'
+                }}
+              </div>
+            {% endif %}
+
+            {% if section.settings.left_text != blank %}
+              <span class="ann-left-text">
+                {{
+                  section.settings.left_text
+                  | replace: '<p>', ''
+                  | replace: '</p>', ''
+                }}
+              </span>
+            {% endif %}
+
+          </div>
+        {% endif %}
+
+        {% assign has_cards = false %}
+
+        {% for block in section.blocks %}
+          {% if block.settings.card_text != blank %}
+            {% assign has_cards = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if has_cards %}
+          <ul class="ann-bar-right-wrapper">
+
+            {% for block in section.blocks %}
+              {% if block.settings.card_text != blank %}
+                <li class="ann-right-card" {{ block.shopify_attributes }}>
+
+                  {% if block.settings.card_icon != blank %}
+                    <div class="ann-right-card-icon">
+                      {{
+                        block.settings.card_icon
+                        | image_url: width: 100
+                        | image_tag:
+                          widths: '50,100,150,200',
+                          loading: 'lazy',
+                          alt: 'icon'
+                      }}
+                    </div>
+                  {% endif %}
+
+                  <span class="ann-right-card_text">
+                    {{
+                      block.settings.card_text
+                      | replace: '<p>', ''
+                      | replace: '</p>', ''
+                    }}
+                  </span>
+
+                </li>
+              {% endif %}
+            {% endfor %}
+
+          </ul>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "left_text",
+      "label": "Left Text",
+      "default": "<p>Free shipping on all orders</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_icon",
+      "label": "Left Icon"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "inner_bg_color",
+      "label": "Inner Wrapper Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Content BG Color",
+      "default": "#EBD8FE"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Announcement Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_icon",
+          "label": "Card Icon"
+        },
+        {
+          "type": "richtext",
+          "id": "card_text",
+          "label": "Card Text",
+          "default": "<p>24/7 Customer Support</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

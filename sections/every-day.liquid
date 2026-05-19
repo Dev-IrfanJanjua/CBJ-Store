@@ -1,0 +1,547 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .everyday-wrapper {
+    position: relative;
+    background: #fff;
+    padding: 40px 20px 40px 40px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .section-{{ section.id }} .everyday-head-content {
+    text-align: center;
+  }
+
+  .section-{{ section.id }} .everyday-head-tag {
+    margin-bottom: 4px;
+  }
+
+  .section-{{ section.id }} .everyday-head-tag_icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .section-{{ section.id }} .everyday-head-tag_text {
+    color: {{ section.settings.tag_text_color }};
+  }
+
+  .section-{{ section.id }} .everyday-head-title {
+    margin: 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-{{ section.id }} .everyday-swiper {
+    overflow: visible;
+  }
+
+  .section-{{ section.id }} .everyday-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: {{ section.settings.card_bg_color }};
+    aspect-ratio: 0.713;
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+  }
+
+
+  .section-{{ section.id }} .everyday-card_images {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .everyday-card_images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.5s ease, transform 0.6s ease;
+  }
+
+  .section-{{ section.id }} .everyday-card-primary-image,
+  .section-{{ section.id }} .everyday-card-hover-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .section-{{ section.id }} .everyday-card-hover-image {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .section-{{ section.id }} .everyday-card-text {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: absolute;
+    bottom: 17px;
+    left: 50%;
+    transform: translatex(-50%);
+    max-width: 100%;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .section-{{ section.id }} .everyday-card-text_title {
+    color: {{ section.settings.card_title_color }};
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 27.42px;
+    text-transform: uppercase;
+  }
+
+  .section-{{ section.id }} .everyday-card-text_icon {
+    width: 33px;
+    height: 22px;
+  }
+
+  .section-{{ section.id }} .everyday-card-text_icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .section-{{ section.id }} .everyday-blocks {
+        margin-right: -20px;
+    }
+
+  .section-{{ section.id }} .swiper-slide {
+    height: auto;
+  }
+
+  .section-{{ section.id }} .everyday-card-link {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+  }
+
+  .hide_desk-{{ section.id }}{
+     display: none !important; 
+    }
+
+    @media (hover: hover) and (pointer: fine){
+      .section-{{ section.id }} .everyday-card:hover {
+        box-shadow: 0px 4px #feef35;
+      }
+
+      .section-{{ section.id }} .everyday-card:hover .everyday-card-hover-image {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.03);
+      }
+
+      .section-{{ section.id }} .everyday-card:hover .everyday-card-primary-image {
+        opacity: 0;
+        transform: scale(1.03);
+      }
+
+    }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .everyday-wrapper{
+        background: transparent;
+        padding: 0;
+    }
+
+    .section-{{ section.id }} .everyday-head {
+      flex-direction: column;
+      align-items: flex-start;
+      display: none;
+    }
+
+    .section-{{ section.id }} .everyday-head-title {
+      max-width: 100%;
+    }
+
+    .section-{{ section.id }} .everyday-card_images{
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+    }
+
+    .section-{{ section.id }} .everyday-card-text {
+        position: static;
+        transform: unset;
+    }
+
+    .section-{{ section.id }} .everyday-card-text_icon {
+        display: none;
+    }
+
+    .section-{{ section.id }} .everyday-card {
+        border-radius: 0;
+        aspect-ratio: unset;
+    }
+
+    .section-{{ section.id }} .everyday-card-text_title {
+        color: #000;
+        text-align: center;
+        font-family: "Suisse Int'l";
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 10px;
+        text-transform: capitalize;
+        margin-top: 5px;
+    }
+
+    .section-{{ section.id }}{
+      display: none;
+    }
+
+    .hide_desk-{{ section.id }}{
+     display: block !important; 
+    }
+
+  }
+{% endstyle %}
+
+<section class="everyday-section section-{{ section.id }} {% if section.settings.hide_desk %} hide_desk-{{ section.id }} {% endif %} ">
+  <div class="page-width">
+    <div class="everyday-wrapper">
+
+      <div class="everyday-head">
+        <div class="everyday-head-content">
+
+          {% if section.settings.tag_text != blank %}
+            <div class="everyday-head-tag tag_tag">
+
+              {% if section.settings.tag_icon != blank %}
+                <div class="everyday-head-tag_icon tag_icon">
+                  {{
+                    section.settings.tag_icon
+                    | image_url: width: 100
+                    | image_tag:
+                      widths: '50,100',
+                      loading: 'lazy',
+                      alt: 'tag icon'
+                  }}
+                </div>
+              {% endif %}
+
+                {{ section.settings.tag_text }}
+
+            </div>
+          {% endif %}
+
+          {% if section.settings.heading != blank %}
+            <h2 class="everyday-head-title title_title">
+              {{
+                section.settings.heading
+                | replace: '<p>', ''
+                | replace: '</p>', ''
+              }}
+            </h2>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="everyday-blocks">
+        <div class="swiper everyday-swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+
+            {% for block in section.blocks %}
+              {% assign collection = block.settings.collection %}
+
+              {% assign primary_image = block.settings.primary_image %}
+              {% assign hover_image = block.settings.hover_image %}
+
+              {% if primary_image == blank and collection != blank %}
+                {% assign primary_image = collection.metafields.custom.primary_image.value %}
+              {% endif %}
+
+              {% if hover_image == blank and collection != blank %}
+                {% assign hover_image = collection.metafields.custom.hover_image.value %}
+              {% endif %}
+
+              {% if primary_image == blank and collection.featured_image != blank %}
+                {% assign primary_image = collection.featured_image %}
+              {% endif %}
+
+              {% assign collection_title = block.settings.custom_title %}
+
+              {% if collection_title == blank and collection != blank %}
+                {% assign collection_title = collection.title %}
+              {% endif %}
+
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                {% if collection != blank %}
+                  <a href="{{ collection.url }}" class="everyday-card-link">
+                {% endif %}
+
+                <div class="everyday-card">
+
+                  {% if primary_image != blank %}
+                    <div class="everyday-card_images">
+
+                      <div class="everyday-card-primary-image">
+                        {{
+                          primary_image
+                          | image_url: width: 1000
+                          | image_tag:
+                            widths: '200,300,400,500,600,700,800,900,1000',
+                            loading: 'lazy',
+                            alt: collection_title
+                        }}
+                      </div>
+
+                      {% if hover_image != blank %}
+                        <div class="everyday-card-hover-image">
+                          {{
+                            hover_image
+                            | image_url: width: 1000
+                            | image_tag:
+                              widths: '200,300,400,500,600,700,800,900,1000',
+                              loading: 'lazy',
+                              alt: collection_title
+                          }}
+                        </div>
+                      {% endif %}
+
+                    </div>
+                  {% endif %}
+
+                  <div class="everyday-card-text">
+
+                    {% if collection_title != blank %}
+                      <span class="everyday-card-text_title">
+                        {{ collection_title }}
+                      </span>
+                    {% endif %}
+
+                    {% if section.settings.collection_icon != blank %}
+                      <span class="everyday-card-text_icon">
+                        {{
+                          section.settings.collection_icon
+                          | image_url: width: 100
+                          | image_tag:
+                            widths: '50,100',
+                            loading: 'lazy',
+                            alt: 'collection icon'
+                        }}
+                      </span>
+                    {% endif %}
+
+                  </div>
+
+                </div>
+
+                {% if collection != blank %}
+                  </a>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const initEverydaySwiper = () => {
+      const slider = document.querySelector('.everyday-swiper-{{ section.id }}');
+
+      if (!slider) return;
+
+      if (slider.swiper) {
+        slider.swiper.destroy(true, true);
+      }
+
+      new Swiper(slider, {
+        slidesPerView: 3.9,
+        spaceBetween: 12,
+        speed: 1000,
+        grabCursor: true,
+        breakpoints: {
+          1025: {
+            slidesPerView: 5.1,
+            spaceBetween: 15
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initEverydaySwiper);
+    document.addEventListener('shopify:section:load', initEverydaySwiper);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Everyday Collections",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_desk",
+      "label": "Show Above in Mobile"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+      "default": "Shop Collections"
+    },
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Everyday Essentials For Every Style</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "collection_icon",
+      "label": "Collection Title Icon"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Collection Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "primary_image",
+          "label": "Primary Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Everyday Collections",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "collection_card"
+        },
+        {
+          "type": "collection_card"
+        },
+        {
+          "type": "collection_card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

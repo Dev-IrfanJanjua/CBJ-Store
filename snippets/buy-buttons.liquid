@@ -1,0 +1,448 @@
+{% comment %}
+  Renders product buy-buttons.
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - product_form_id: {String} product form id.
+  - section_id: {String} id of section to which this snippet belongs.
+
+  Usage:
+  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id %}
+{% endcomment %}
+{%- if product != blank -%}
+  {%- liquid
+    assign gift_card_recipient_feature_active = false
+    if block.settings.show_gift_card_recipient and product.gift_card?
+      assign gift_card_recipient_feature_active = true
+    endif
+
+    assign show_dynamic_checkout = false
+    if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
+      assign show_dynamic_checkout = true
+    endif
+  -%}
+  <div
+    class="product-form"
+    data-hide-errors="{{ gift_card_recipient_feature_active }}"
+    data-section-id="{{ section.id }}"
+  >
+    <div class="product-form__error-message-wrapper" role="alert" hidden>
+      <svg
+        aria-hidden="true"
+        focusable="false"
+        class="icon icon-error"
+        viewBox="0 0 13 13"
+      >
+        <circle cx="6.5" cy="6.50049" r="5.5" stroke="white" stroke-width="2"/>
+        <circle cx="6.5" cy="6.5" r="5.5" fill="#EB001B" stroke="#EB001B" stroke-width="0.7"/>
+        <path d="M5.87413 3.52832L5.97439 7.57216H7.02713L7.12739 3.52832H5.87413ZM6.50076 9.66091C6.88091 9.66091 7.18169 9.37267 7.18169 9.00504C7.18169 8.63742 6.88091 8.34917 6.50076 8.34917C6.12061 8.34917 5.81982 8.63742 5.81982 9.00504C5.81982 9.37267 6.12061 9.66091 6.50076 9.66091Z" fill="white"/>
+        <path d="M5.87413 3.17832H5.51535L5.52424 3.537L5.6245 7.58083L5.63296 7.92216H5.97439H7.02713H7.36856L7.37702 7.58083L7.47728 3.537L7.48617 3.17832H7.12739H5.87413ZM6.50076 10.0109C7.06121 10.0109 7.5317 9.57872 7.5317 9.00504C7.5317 8.43137 7.06121 7.99918 6.50076 7.99918C5.94031 7.99918 5.46982 8.43137 5.46982 9.00504C5.46982 9.57872 5.94031 10.0109 6.50076 10.0109Z" fill="white" stroke="#EB001B" stroke-width="0.7">
+      </svg>
+      <div class="product-form__error-message blocks-radius-md alert alert--error" role="alert" hidden></div>
+    </div>
+    {%- form 'product',
+      product,
+      id: product_form_id,
+      class: 'main-product-form grid gap-4',
+      data-type: 'add-to-cart-form',
+      is: 'product-form',
+      data-hide-errors: gift_card_recipient_feature_active
+    -%}
+      <input
+        type="hidden"
+        name="id"
+        value="{{ product.selected_or_first_available_variant.id }}"
+        {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+          disabled
+        {% endif %}
+        class="product-variant-id"
+      >
+      {%- liquid
+        assign check_against_inventory = true
+        if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+          assign check_against_inventory = false
+        endif
+        if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+          assign quantity_rule_soldout = true
+        endif
+      -%}
+      {%- if gift_card_recipient_feature_active -%}
+        {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+      {%- endif -%}
+
+      {%- if product.quantity_price_breaks_configured? -%}
+        <div
+          id="QuantityForm-{{ section_id }}"
+          class="{% if block.settings.show_quantity_selector %} grid gap-4{% else %} hidden{% endif %}"
+        >
+          {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
+
+          <div class="grid gap-2">
+            <div class="grid gap-3">
+              <label class="quantity__label form__label" for="Quantity-{{ section.id }}">
+                <span class="font-body-bold">{{ 'products.product.quantity.label' | t }}</span>
+
+                <span
+                  id="QuantityRulesCart-{{ section_id }}"
+                  class="quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %} relative inline-flex items-center"
+                >
+                  {%- render 'loading-spinner' -%}
+                  <span class="quantity-cart font-body-bold"
+                    >({{ 'products.product.quantity.in_cart_html' | t: quantity: cart_qty }})</span
+                  >
+                </span>
+              </label>
+              <div class="flex items-center gap-4">
+                <quantity-input class="quantity" data-section-id="{{ section_id }}" data-product-id="{{ product_id }}">
+                  <button class="quantity__button" name="minus" type="button">
+                    <span class="visually-hidden">
+                      {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                    </span>
+                    {% render 'icon-minus' %}
+                  </button>
+                  <input
+                    class="quantity__input"
+                    type="number"
+                    name="quantity"
+                    id="Quantity-{{ section.id }}"
+                    data-cart-quantity="{{ cart_qty }}"
+                    step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                    value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                    data-quantity-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                    data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                    min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                    {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                      data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                      max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                    {% endif %}
+                    inputmode="numeric"
+                    autocomplete="off"
+                    form="{{ product_form_id }}"
+                  >
+                  <button class="quantity__button" name="plus" type="button">
+                    <span class="visually-hidden">
+                      {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                    </span>
+                    {% render 'icon-plus' %}
+                  </button>
+                </quantity-input>
+
+                {%- if product.quantity_price_breaks_configured? -%}
+                  {%- liquid
+                    assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
+                    assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
+                    if cart_qty > 0
+                      assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.increment
+                    endif
+                    assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price
+                  -%}
+                  <price-per-item
+                    id="PricePerItem-{{ section_id }}"
+                    class="flex flex-wrap items-center gap-2"
+                    data-section-id="{{ section_id }}"
+                    data-product-id="{{ product_id }}"
+                    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                  >
+                    {%- if variant_price_compare -%}
+                      <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                      <span class="inline-flex items-center h-auto relative">
+                        {%- liquid
+                          if settings.currency_code_enabled
+                            echo variant_price_compare | money_with_currency
+                          else
+                            echo variant_price_compare | money
+                          endif
+                        -%}
+                      </span>
+                      <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+                    {%- endif -%}
+
+                    {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
+                      {%- if current_qty_for_volume_pricing < volume_pricing_array.last.minimum_quantity -%}
+                        {%- liquid
+                          if settings.currency_code_enabled
+                            assign variant_price = product.selected_or_first_available_variant.price | money_with_currency
+                          else
+                            assign variant_price = product.selected_or_first_available_variant.price | money
+                          endif
+                        -%}
+                        <span class="price-per-item--current price__regular whitespace-nowrap">
+                          {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
+                        </span>
+                      {%- else -%}
+                        {%- for price_break in volume_pricing_array -%}
+                          {%- if current_qty_for_volume_pricing >= price_break.minimum_quantity -%}
+                            {%- liquid
+                              if settings.currency_code_enabled
+                                assign price_break_price = price_break.price | money_with_currency
+                              else
+                                assign price_break_price = price_break.price | money
+                              endif
+                            -%}
+                            <span class="price-per-item--current price__regular whitespace-nowrap">
+                              {{- 'products.product.volume_pricing.price_at_each' | t: price: price_break_price -}}
+                            </span>
+                            {%- break -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                    {%- else -%}
+                      <span class="price-per-item--current price__regular whitespace-nowrap">
+                        {%- liquid
+                          if settings.currency_code_enabled
+                            assign variant_price = product.selected_or_first_available_variant.price | money_with_currency
+                          else
+                            assign variant_price = product.selected_or_first_available_variant.price | money
+                          endif
+                        -%}
+                        {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
+                      </span>
+                    {%- endif -%}
+                  </price-per-item>
+                {%- endif -%}
+              </div>
+            </div>
+
+            <div
+              class="quantity__rules"
+              id="QuantityRules-{{ section_id }}"
+            >
+              {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
+                <span class="divider">
+                  {{-
+                    'products.product.quantity.multiples_of'
+                    | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
+                  -}}
+                </span>
+              {%- endif -%}
+              {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
+                <span class="divider">
+                  {{-
+                    'products.product.quantity.minimum_of'
+                    | t: quantity: product.selected_or_first_available_variant.quantity_rule.min
+                  -}}
+                </span>
+              {%- endif -%}
+              {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
+                <span class="divider font-body-bold">
+                  {{-
+                    'products.product.quantity.maximum_of'
+                    | t: quantity: product.selected_or_first_available_variant.quantity_rule.max
+                  -}}
+                </span>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- if product.quantity_price_breaks_configured? -%}
+            <volume-pricing class="block parent-display blocks-radius-md" id="Volume-{{ section.id }}">
+              {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
+                <span class="caption block">{{ 'products.product.volume_pricing.title' | t }}</span>
+                <ul class="list-unstyled">
+                  <li class="blocks-radius-md">
+                    <span>{{ product.selected_or_first_available_variant.quantity_rule.min }}+</span>
+                    {%- liquid
+                      if settings.currency_code_enabled
+                        assign price = product.selected_or_first_available_variant.price | money_with_currency
+                      else
+                        assign price = product.selected_or_first_available_variant.price | money
+                      endif
+                    -%}
+                    <span data-text="{{ 'products.product.volume_pricing.price_at_each' | t: price: price }}">
+                      {{- 'products.product.volume_pricing.each' | t: money: price -}}
+                    </span>
+                  </li>
+                  {%- for price_break in product.selected_or_first_available_variant.quantity_price_breaks -%}
+                    {%- liquid
+                      if settings.currency_code_enabled
+                        assign price_break_price = price_break.price | money_with_currency
+                      else
+                        assign price_break_price = price_break.price | money
+                      endif
+                    -%}
+                    <li class="blocks-radius-md{% if forloop.index >= 3 %} show-more-item hidden{% endif %}">
+                      <span>
+                        {{- price_break.minimum_quantity -}}
+                        <span aria-hidden="true">+</span></span
+                      >
+                      <span data-text="{{ 'products.product.volume_pricing.price_at_each' | t: price: price_break_price }}">
+                        {{- 'products.product.volume_pricing.each' | t: money: price_break_price -}}
+                      </span>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                {%- if product.selected_or_first_available_variant.quantity_price_breaks.size >= 3 -%}
+                  <show-more-button>
+                    <button
+                      class="button-show-more btn--link"
+                      id="Show-More-{{ section.id }}"
+                      type="button"
+                    >
+                      <span class="label-show-more label-text"
+                        ><span aria-hidden="true">+ </span>{{ 'products.facets.show_more' | t }}
+                      </span>
+                    </button>
+                  </show-more-button>
+                {%- endif -%}
+              {%- endif -%}
+            </volume-pricing>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="product-form__buttons flex flex-wrap items-end gap-x-2 gap-y-4" id="QuantityForm-{{ section_id }}">
+        {%- if product.quantity_price_breaks_configured? != true -%}
+          {%- assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id -%}
+          <div class="product-form__quantity{% unless block.settings.show_quantity_selector %} hidden{% endunless %}">
+            <label class="quantity__label form__label visually-hidden" for="Quantity-{{ section.id }}">
+              <span class="font-body-bolder">{{ 'products.product.quantity.label' | t }}</span>
+            </label>
+            <quantity-input
+              class="quantity"
+              data-section-id="{{ section_id }}"
+              data-product-id="{{ product_id }}"
+            >
+              <button class="quantity__button" name="minus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-minus' %}
+              </button>
+              <input
+                class="quantity__input"
+                type="number"
+                name="quantity"
+                id="Quantity-{{ section.id }}"
+                data-cart-quantity="{{ cart_qty }}"
+                step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                data-quantity-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                  data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                  max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                {% endif %}
+                inputmode="numeric"
+                autocomplete="off"
+                form="{{ product_form_id }}"
+              >
+              <button class="quantity__button" name="plus" type="button">
+                <span class="visually-hidden">
+                  {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                </span>
+                {% render 'icon-plus' %}
+              </button>
+            </quantity-input>
+          </div>
+        {%- endif -%}
+        <button
+          id="ProductSubmitButton-{{ section_id }}"
+          type="submit"
+          name="add"
+          class="product-form__submit btn{% if show_dynamic_checkout %} btn--secondary{% else %} btn--primary{% endif %}"
+          {% if product.selected_or_first_available_variant.available == false or quantity_rule_soldout or product.selected_or_first_available_variant == nil %}
+            disabled
+          {% endif %}
+        >
+
+          {% comment %} ==== readabilty improved version ==== {% endcomment %}
+
+          {% liquid
+            assign button_text = 'products.product.add_to_cart' | t
+            assign show_icon = false
+            assign icon_only = false
+            assign show_custom_icon = false
+
+            if product.selected_or_first_available_variant == nil
+              assign button_text = 'products.product.unavailable' | t
+
+            elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout
+              assign button_text = 'products.product.sold_out' | t
+
+            elsif block.settings.cstm_atc
+              assign show_custom_icon = true
+              assign icon_only = true
+
+            elsif section.settings.use_atc_icon or block.settings.atc_icon
+
+              assign button_text = 'ADD'
+              assign show_icon = true
+
+            endif
+
+          %}
+
+          <span class="btn__text">
+            {% comment %} {%- if product.selected_or_first_available_variant == nil -%}
+              {{ 'products.product.unavailable' | t }}
+            {%- elsif product.selected_or_first_available_variant.available == false
+              or quantity_rule_soldout
+            -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- else -%}
+
+              {% comment %} ====== custom buy button text for collection tabs section at home page ====== {% endcomment %}
+              {% if section.settings.use_atc_icon or block.settings.atc_icon %}
+                <span class="pd-atc--icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.25062 3.66657H2.7196C2.29322 3.66657 2.0051 3.667 1.78472 3.68585C1.56938 3.70426 1.46999 3.73721 1.40751 3.77204C1.2414 3.86465 1.11196 4.01129 1.04068 4.18761C1.01388 4.25393 0.993523 4.35665 1.00198 4.57261C1.01063 4.79361 1.04597 5.07955 1.09889 5.50261L1.5659 9.23595C1.60824 9.57441 1.63682 9.80008 1.67222 9.97335C1.70636 10.1405 1.74002 10.2209 1.77367 10.2747C1.85941 10.412 1.98326 10.5213 2.1301 10.5893C2.18774 10.6161 2.27163 10.6395 2.44173 10.6526C2.61804 10.6662 2.84555 10.6665 3.18661 10.6665H8.08689C8.42796 10.6665 8.65549 10.6662 8.83182 10.6526C9.00196 10.6395 9.08582 10.6161 9.14349 10.5893C9.29036 10.5213 9.41416 10.4119 9.49989 10.2747C9.53356 10.2208 9.56722 10.1404 9.60136 9.97328C9.63676 9.80001 9.66529 9.57428 9.70762 9.23581L10.1742 5.50248C10.227 5.07941 10.2624 4.79349 10.271 4.57251C10.2794 4.35657 10.259 4.25387 10.2322 4.18755C10.161 4.01125 10.0315 3.86462 9.86542 3.77203C9.80296 3.7372 9.70356 3.70426 9.48822 3.68585C9.26789 3.667 8.97976 3.66657 8.55342 3.66657H8.02269L7.79829 5.23735C7.75922 5.51075 7.50596 5.70068 7.23262 5.66161C6.95922 5.62261 6.76929 5.36935 6.80836 5.09595L7.01256 3.66657H4.26076L4.46496 5.09595C4.50402 5.36935 4.31409 5.62261 4.0407 5.66161C3.76733 5.70068 3.51406 5.51075 3.47502 5.23735L3.25062 3.66657ZM4.11964 2.66657H7.15369C7.23836 1.77839 6.53936 1 5.63662 1C4.73396 1 4.03496 1.77839 4.11964 2.66657ZM8.15649 2.66657H8.55342H8.57516C8.97429 2.66657 9.30536 2.66656 9.57342 2.68948C9.85136 2.71325 10.1121 2.76467 10.3523 2.89857C10.7178 3.10228 11.0025 3.42485 11.1594 3.81273C11.2624 4.06768 11.2811 4.33279 11.2702 4.61152C11.2597 4.88035 11.2186 5.20888 11.1692 5.60495L11.1664 5.62648L10.6999 9.35981L10.6976 9.37848C10.6582 9.69341 10.6252 9.95768 10.5812 10.1733C10.535 10.3993 10.4702 10.609 10.3481 10.8044C10.1595 11.1064 9.88702 11.3469 9.56396 11.4967C9.35489 11.5935 9.13876 11.6319 8.90882 11.6496C8.68942 11.6666 8.42302 11.6665 8.10569 11.6665H8.08689H3.18661H3.1678C2.85045 11.6665 2.58412 11.6666 2.36474 11.6496C2.13482 11.6319 1.9187 11.5935 1.70968 11.4967C1.38664 11.347 1.11416 11.1065 0.925543 10.8045C0.803496 10.6091 0.738609 10.3995 0.692449 10.1735C0.648409 9.95795 0.615356 9.69368 0.575969 9.37875L0.573636 9.36008L0.106623 5.62675L0.103929 5.60521C0.0543827 5.20915 0.0132693 4.88055 0.0027426 4.61173C-0.00817073 4.33297 0.0104894 4.06785 0.113556 3.81287C0.270356 3.42495 0.555123 3.10233 0.920583 2.8986C1.1608 2.76468 1.42156 2.71325 1.69951 2.68949C1.96758 2.66656 2.29874 2.66657 2.69788 2.66657H2.7196H3.11681C3.03326 1.2349 4.17333 0 5.63662 0C7.09996 0 8.24002 1.2349 8.15649 2.66657Z" fill="white"/>
+                  </svg>
+                </span>
+                ADD
+              {% else %}
+                {% comment %} {{ 'products.product.add_to_cart' | t }} {% endcomment %}
+              {% endif %}
+            {%- endif -%} {% endcomment %}
+
+              {% if show_icon %}
+                <span class="pd-atc--icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.25062 3.66657H2.7196C2.29322 3.66657 2.0051 3.667 1.78472 3.68585C1.56938 3.70426 1.46999 3.73721 1.40751 3.77204C1.2414 3.86465 1.11196 4.01129 1.04068 4.18761C1.01388 4.25393 0.993523 4.35665 1.00198 4.57261C1.01063 4.79361 1.04597 5.07955 1.09889 5.50261L1.5659 9.23595C1.60824 9.57441 1.63682 9.80008 1.67222 9.97335C1.70636 10.1405 1.74002 10.2209 1.77367 10.2747C1.85941 10.412 1.98326 10.5213 2.1301 10.5893C2.18774 10.6161 2.27163 10.6395 2.44173 10.6526C2.61804 10.6662 2.84555 10.6665 3.18661 10.6665H8.08689C8.42796 10.6665 8.65549 10.6662 8.83182 10.6526C9.00196 10.6395 9.08582 10.6161 9.14349 10.5893C9.29036 10.5213 9.41416 10.4119 9.49989 10.2747C9.53356 10.2208 9.56722 10.1404 9.60136 9.97328C9.63676 9.80001 9.66529 9.57428 9.70762 9.23581L10.1742 5.50248C10.227 5.07941 10.2624 4.79349 10.271 4.57251C10.2794 4.35657 10.259 4.25387 10.2322 4.18755C10.161 4.01125 10.0315 3.86462 9.86542 3.77203C9.80296 3.7372 9.70356 3.70426 9.48822 3.68585C9.26789 3.667 8.97976 3.66657 8.55342 3.66657H8.02269L7.79829 5.23735C7.75922 5.51075 7.50596 5.70068 7.23262 5.66161C6.95922 5.62261 6.76929 5.36935 6.80836 5.09595L7.01256 3.66657H4.26076L4.46496 5.09595C4.50402 5.36935 4.31409 5.62261 4.0407 5.66161C3.76733 5.70068 3.51406 5.51075 3.47502 5.23735L3.25062 3.66657ZM4.11964 2.66657H7.15369C7.23836 1.77839 6.53936 1 5.63662 1C4.73396 1 4.03496 1.77839 4.11964 2.66657ZM8.15649 2.66657H8.55342H8.57516C8.97429 2.66657 9.30536 2.66656 9.57342 2.68948C9.85136 2.71325 10.1121 2.76467 10.3523 2.89857C10.7178 3.10228 11.0025 3.42485 11.1594 3.81273C11.2624 4.06768 11.2811 4.33279 11.2702 4.61152C11.2597 4.88035 11.2186 5.20888 11.1692 5.60495L11.1664 5.62648L10.6999 9.35981L10.6976 9.37848C10.6582 9.69341 10.6252 9.95768 10.5812 10.1733C10.535 10.3993 10.4702 10.609 10.3481 10.8044C10.1595 11.1064 9.88702 11.3469 9.56396 11.4967C9.35489 11.5935 9.13876 11.6319 8.90882 11.6496C8.68942 11.6666 8.42302 11.6665 8.10569 11.6665H8.08689H3.18661H3.1678C2.85045 11.6665 2.58412 11.6666 2.36474 11.6496C2.13482 11.6319 1.9187 11.5935 1.70968 11.4967C1.38664 11.347 1.11416 11.1065 0.925543 10.8045C0.803496 10.6091 0.738609 10.3995 0.692449 10.1735C0.648409 9.95795 0.615356 9.69368 0.575969 9.37875L0.573636 9.36008L0.106623 5.62675L0.103929 5.60521C0.0543827 5.20915 0.0132693 4.88055 0.0027426 4.61173C-0.00817073 4.33297 0.0104894 4.06785 0.113556 3.81287C0.270356 3.42495 0.555123 3.10233 0.920583 2.8986C1.1608 2.76468 1.42156 2.71325 1.69951 2.68949C1.96758 2.66656 2.29874 2.66657 2.69788 2.66657H2.7196H3.11681C3.03326 1.2349 4.17333 0 5.63662 0C7.09996 0 8.24002 1.2349 8.15649 2.66657Z" fill="white"/>
+                  </svg>
+                </span>
+              {% endif %}
+              {% if show_custom_icon %}
+                <span class="pdp-essential-atc_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M14.7088 12.377L13.6779 5.19953C13.6199 4.79583 13.4092 4.42699 13.0846 4.16095C12.7601 3.8949 12.3421 3.74839 11.9076 3.74839H10.7732V3.19702C10.7732 1.43417 9.24343 0 7.36305 0C5.48267 0 3.95286 1.43417 3.95286 3.19702V3.74839H2.8185C2.384 3.74839 1.96596 3.8949 1.64143 4.16095C1.31689 4.42696 1.10622 4.79583 1.04822 5.19953L0.0173136 12.377C-0.0534813 12.87 0.0937001 13.3284 0.442904 13.7027C0.792109 14.0772 1.25709 14.2751 1.7876 14.2751H12.9385C13.469 14.2751 13.934 14.0772 14.2833 13.7027C14.6324 13.3283 14.7796 12.8699 14.7088 12.377ZM4.96376 3.19702C4.96376 1.95675 6.04009 0.947723 7.36305 0.947723C8.68601 0.947723 9.76231 1.95675 9.76231 3.19702V3.74839H4.96376V3.19702ZM13.5223 13.0789C13.3663 13.2461 13.1754 13.3274 12.9385 13.3274H1.7876C1.55076 13.3274 1.35983 13.2461 1.20386 13.0789C1.04796 12.9117 0.987561 12.7235 1.01915 12.5035L2.05008 5.32599C2.10249 4.961 2.42567 4.69612 2.8185 4.69612H3.95286V6.33505C3.95286 6.59674 4.17918 6.80892 4.45831 6.80892C4.73745 6.80892 4.96376 6.59674 4.96376 6.33505V4.69612H9.76231V6.33505C9.76231 6.59674 9.98862 6.80892 10.2678 6.80892C10.5469 6.80892 10.7732 6.59674 10.7732 6.33505V4.69612H11.9076C12.3004 4.69612 12.6236 4.961 12.676 5.32599L13.7069 12.5034C13.7385 12.7235 13.6781 12.9118 13.5223 13.0789Z" fill="black"/>
+                    <ellipse cx="12.8868" cy="11.9418" rx="3.41589" ry="3.41589" fill="black"/>
+                    <path d="M14.7616 11.67H13.3533V10.2614C13.3533 10.1635 13.3144 10.0695 13.2452 10.0003C13.1759 9.931 13.082 9.89209 12.984 9.89209C12.8861 9.89209 12.7922 9.931 12.7229 10.0003C12.6536 10.0695 12.6147 10.1635 12.6147 10.2614V11.6697H11.2065C11.1085 11.6697 11.0146 11.7086 10.9453 11.7778C10.8761 11.8471 10.8372 11.941 10.8372 12.039C10.8372 12.1369 10.8761 12.2309 10.9453 12.3001C11.0146 12.3694 11.1085 12.4083 11.2065 12.4083H12.6147V13.8165C12.6147 13.9145 12.6536 14.0084 12.7229 14.0777C12.7922 14.1469 12.8861 14.1858 12.984 14.1858C13.082 14.1858 13.1759 14.1469 13.2452 14.0777C13.3144 14.0084 13.3533 13.9145 13.3533 13.8165V12.4083H14.7616C14.8596 12.4083 14.9535 12.3694 15.0227 12.3001C15.092 12.2309 15.1309 12.1369 15.1309 12.039C15.1309 11.941 15.092 11.8471 15.0227 11.7778C14.9535 11.7086 14.8596 11.6697 14.7616 11.6697V11.67Z" fill="#F6F6F6"/>
+                  </svg>
+                </span>
+              {% endif %}
+              {% unless icon_only %}
+                {{ button_text }}
+              {% endunless %}
+          </span>
+          {% if block.settings.show_icon %}
+              <span class="pdp-atc_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.34382 7.41418H6.3075C5.4754 7.41418 4.91309 7.41499 4.48301 7.45053C4.06277 7.48525 3.86879 7.54738 3.74686 7.61306C3.42268 7.78769 3.17007 8.06422 3.03097 8.39672C2.97866 8.52177 2.93893 8.71548 2.95543 9.12272C2.97232 9.53948 3.04129 10.0787 3.14456 10.8765L4.05598 17.9165C4.13859 18.5548 4.19438 18.9803 4.26345 19.3071C4.33009 19.6222 4.39577 19.7739 4.46145 19.8754C4.62878 20.1343 4.87047 20.3403 5.15704 20.4687C5.26953 20.5191 5.43325 20.5632 5.76522 20.588C6.10929 20.6136 6.5533 20.6143 7.21891 20.6143H16.7822C17.4478 20.6143 17.8918 20.6136 18.236 20.588C18.568 20.5632 18.7317 20.5191 18.8442 20.4687C19.1308 20.3403 19.3724 20.1342 19.5397 19.8753C19.6054 19.7737 19.6712 19.6221 19.7378 19.307C19.8069 18.9802 19.8625 18.5545 19.9452 17.9163L20.8556 10.8762C20.9588 10.0784 21.0278 9.53925 21.0445 9.12253C21.0611 8.71534 21.0212 8.52166 20.9689 8.39661C20.8299 8.06414 20.5772 7.78764 20.2531 7.61304C20.1312 7.54736 19.9372 7.48525 19.517 7.45053C19.087 7.41499 18.5247 7.41418 17.6926 7.41418H16.6569L16.2189 10.3762C16.1427 10.8918 15.6484 11.25 15.115 11.1763C14.5814 11.1028 14.2108 10.6252 14.287 10.1096L14.6855 7.41418H9.3152L9.7137 10.1096C9.78994 10.6252 9.41927 11.1028 8.88572 11.1763C8.35223 11.25 7.85796 10.8918 7.78175 10.3762L7.34382 7.41418ZM9.03978 5.52845H14.961C15.1262 3.85358 13.762 2.38573 12.0003 2.38573C10.2387 2.38573 8.87453 3.85358 9.03978 5.52845ZM16.918 5.52845H17.6926H17.7351C18.514 5.52843 19.1601 5.52842 19.6833 5.57164C20.2257 5.61646 20.7345 5.71342 21.2033 5.96592C21.9165 6.35007 22.4722 6.95836 22.7783 7.68979C22.9795 8.17056 23.0159 8.67048 22.9947 9.1961C22.9741 9.70303 22.894 10.3226 22.7974 11.0694L22.7921 11.11L21.8816 18.1501L21.8771 18.1853C21.8002 18.7792 21.7358 19.2775 21.6499 19.6842C21.5599 20.1103 21.4333 20.5058 21.1951 20.8742C20.827 21.4437 20.2953 21.8973 19.6648 22.1797C19.2568 22.3623 18.835 22.4346 18.3862 22.4681C17.9581 22.5001 17.4382 22.5 16.8189 22.5H16.7822H7.21891H7.1822C6.56287 22.5 6.04311 22.5001 5.61496 22.4681C5.16625 22.4346 4.74448 22.3623 4.33657 22.1797C3.70612 21.8974 3.17437 21.4439 2.80627 20.8745C2.56808 20.506 2.44145 20.1107 2.35137 19.6846C2.26542 19.278 2.20091 18.7797 2.12405 18.1858L2.11949 18.1506L1.20808 11.1105L1.20283 11.0699C1.10613 10.3231 1.0259 9.70341 1.00535 9.19649C0.984054 8.67082 1.02047 8.17088 1.22161 7.69005C1.52762 6.95854 2.08336 6.35017 2.79659 5.96599C3.26538 5.71345 3.77427 5.61647 4.31672 5.57166C4.83988 5.52842 5.48616 5.52843 6.26512 5.52845H6.3075H7.08269C6.91964 2.82869 9.14456 0.5 12.0003 0.5C14.8561 0.5 17.081 2.82869 16.918 5.52845Z" fill="white"/>
+                </svg>
+              </span>
+            {% endif %}
+
+          {%- render 'loading-spinner' -%}
+        </button>
+        {%- if show_dynamic_checkout -%}
+          {{ form | payment_button }}
+        {%- endif -%}
+      </div>
+      <div class="product-form__error-message blocks-radius-md alert alert--error" role="alert" hidden></div>
+    {%- endform -%}
+  </div>
+{%- else -%}
+  <div class="product-form">
+    <div class="form product-form__buttons flex flex-wrap items-end gap-x-2 gap-y-4">
+      <button
+        type="submit"
+        name="add"
+        class="product-form__submit button button--full-width button--primary"
+        disabled
+      >
+        {{ 'products.product.sold_out' | t }}
+      </button>
+    </div>
+  </div>
+{%- endif -%}

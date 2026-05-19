@@ -1,0 +1,506 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .about-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .section-{{ section.id }} .about-wrapper-content {
+    position: relative;
+    border-radius: 20px;
+    padding: 56px 56px 56px 33px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+    background-color: {{ section.settings.content_bg_color }};
+  }
+
+  .section-{{ section.id }} .about-content-head {
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-{{ section.id }} .about-head-tag {
+        margin-bottom: 12px;
+    }
+
+  .section-{{ section.id }} .about-head-title {
+    margin: 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-{{ section.id }} .about-sub-text {
+    font-family: "Suisse Int'l";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 24px;
+    max-width: 711px;
+    color: {{ section.settings.text_color }};
+  }
+
+  .section-{{ section.id }} .about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+    width: fit-content;
+  }
+
+  .section-{{ section.id }} .btn_icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+
+  .section-{{ section.id }} .btn_icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .section-{{ section.id }} .about-content-abs_img {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+    max-width: 70px;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .section-{{ section.id }} .about-content-abs_img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .section-{{ section.id }} .about-wrapper-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: calc(100% - 60%);
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .about-main_image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-{{ section.id }} .about-main_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-{{ section.id }} .about-abs-review {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 12px;
+    background: #fff;
+    border-radius: 4px;
+    min-width: 180px;
+  }
+
+  .section-{{ section.id }} .about-review-image {
+    display: block;
+    max-width: 86px;
+    width: 1000%;
+    height: auto;
+  }
+
+  .section-{{ section.id }} .about-review-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .section-{{ section.id }} span.about-review-_text {
+        color: var(--color-orange-12, #231D1A);
+        font-family: "Suisse Int'l";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 450;
+        line-height: 16px;
+    }
+
+  .section-{{ section.id }} .about-image_text-abs {
+    position: absolute;
+    left: 44px;
+    bottom: 20px;
+    margin: 0;
+    z-index: 2;
+    border-radius: 8px;
+    border: 0.4px solid #FFF;
+    background: rgba(0, 0, 0, 0.10);
+    backdrop-filter: blur(20px);
+    right: 44px;
+    text-align: center;
+    padding: 5px 26px;
+    font-family: "Faculty Glyphic";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: {{ section.settings.image_text_color }};
+}
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .about-wrapper {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .section-{{ section.id }} .about-wrapper-content {
+        padding: 30px 13px;
+        border-radius: 12px;
+        gap: 17px;
+    }
+
+    .section-{{ section.id }} .about-sub-text {
+      font-size: 16px;
+    }
+
+    .section-{{ section.id }} .about-content-abs_img {
+        right: 24px;
+        bottom: 5.5px;
+    }
+
+    .section-{{ section.id }} .about-wrapper-image-wrapper {
+        border-radius: 12px;
+        max-width: 100%;
+        aspect-ratio: 0.881;
+    }
+
+    .section-{{ section.id }} .about-image_text-abs {
+        left: 24px;
+        bottom: 20px;
+        right: 24px;
+        padding: 10px 14px;
+    }
+    
+    .section-{{ section.id }} .about_main_img-desk{
+      display: none !important;
+    }
+
+    .section-{{ section.id }} .about_main_img-mob{
+      display: block !important;
+    }
+
+  }
+{% endstyle %}
+
+<section class="about-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="about-wrapper">
+
+      <div class="about-wrapper-content">
+
+        <div class="about-content-head">
+
+          {% if section.settings.tag_icon != blank %}
+            <div class="about-head-tag tag_tag">
+              <div class="tag_icon">
+                {{
+                  section.settings.tag_icon
+                  | image_url: width: 100
+                  | image_tag:
+                    widths: '50,100',
+                    loading: 'lazy',
+                    alt: 'tag icon'
+                }}
+              </div>
+              {{ section.settings.tag_text }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.heading != blank %}
+            <h2 class="about-head-title title_title">
+              {{
+                section.settings.heading
+                | replace: '<p>', ''
+                | replace: '</p>', ''
+              }}
+            </h2>
+          {% endif %}
+
+        </div>
+
+        {% if section.settings.text != blank %}
+          <div class="about-sub-text">
+            {{ section.settings.text 
+                | replace: '<p>', ''
+                | replace: '</p>', ''
+            }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="about-btn btn_btn">
+
+            <span>
+              {{ section.settings.button_label }}
+            </span>
+
+            {% if section.settings.button_icon != blank %}
+              <span class="btn_icon">
+                {{
+                  section.settings.button_icon
+                  | image_url: width: 100
+                  | image_tag:
+                    widths: '50,100',
+                    loading: 'lazy',
+                    alt: 'button icon'
+                }}
+              </span>
+            {% endif %}
+
+          </a>
+        {% endif %}
+
+        {% if section.settings.content_abs_image != blank %}
+          <div class="about-content-abs_img">
+            {{
+              section.settings.content_abs_image
+              | image_url: width: 600
+              | image_tag:
+                widths: '100,200,300,400,500,600',
+                loading: 'lazy',
+                alt: 'content image'
+            }}
+          </div>
+        {% endif %}
+
+      </div>
+
+      <div class="about-wrapper-image-wrapper">
+
+        {% if section.settings.main_image != blank %}
+          <div class="about-main_image">
+            {{
+              section.settings.main_image
+              | image_url: width: 1200
+              | image_tag:
+                widths: '200,300,400,500,600,700,800,900,1000,1200',
+                loading: 'lazy',
+                alt: 'main image',
+                class: 'about_main_img-desk'
+            }}
+            {{
+              section.settings.main_image_mob
+              | image_url: width: 1200
+              | image_tag:
+                widths: '200,300,400,500,600,700,800,900,1000,1200',
+                loading: 'lazy',
+                alt: 'main image',
+                class: 'about_main_img-mob',
+                style: 'display : none;'
+            }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.review_image != blank %}
+          <div class="about-abs-review">
+            <span class="about-review-image">
+              {{
+                section.settings.review_image
+                | image_url: width: 400
+                | image_tag:
+                  widths: '100,200,300,400',
+                  loading: 'lazy',
+                  alt: 'review image'
+              }}
+            </span>
+            <span class="about-review-_text">
+                {{ section.settings.review_text }}
+            </span>
+          </div>
+        {% endif %}
+
+        {% if section.settings.image_text != blank %}
+          <div class="about-image_text-abs">
+            {{ section.settings.image_text }}
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>About Our Brand</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Content Text",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_icon",
+      "label": "Button Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "content_abs_image",
+      "label": "Content Absolute Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image_mob",
+      "label": "Main Image Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_image",
+      "label": "Review Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "review_text",
+      "label": "Review Text"
+    },
+    {
+      "type": "text",
+      "id": "image_text",
+      "label": "Image Bottom Text",
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#444444"
+    },
+    {
+      "type": "color",
+      "id": "image_text_color",
+      "label": "Image Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

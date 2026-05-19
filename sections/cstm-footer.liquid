@@ -1,0 +1,754 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-wrapper {
+    background-color: {{ section.settings.footer_card_bg }};
+    border-radius: 20px;
+    padding: 56px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-head {
+    display: grid;
+    grid-template-columns: minmax(350px, 586px) 1fr;
+    align-items: flex-start;
+  }
+
+  .section-{{ section.id }} .cstm-footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-logo {
+    margin-bottom: 20px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-logo img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .section-{{ section.id }} .cstm-footer-text-logo {
+    color: {{ section.settings.logo_text_color }};
+    margin: 0;
+    font-family: Sora;
+    font-size: 55.304px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -2.514px;
+    display: inline-block;
+  }
+
+  .section-{{ section.id }} .cstm-footer-subtitle {
+    color: {{ section.settings.subtitle_color }};
+    margin: 0;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    max-width: 347px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-socials {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.social_icon_color }};
+    transition: 0.3s ease;
+    width: 24px;
+    height: 24px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-social-link svg,
+  .section-{{ section.id }} .cstm-footer-social-link img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .section-{{ section.id }} .cstm-footer-social-link:hover {
+    opacity: 0.7;
+  }
+
+  .section-{{ section.id }} .cstm-footer-menus {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .section-{{ section.id }} .cstm-footer-menu-title {
+    color: {{ section.settings.menu_heading_color }};
+    margin: 0px 0 20px;
+    font-family: "Suisse Int'l";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .section-{{ section.id }} .cstm-footer-menu-title * {
+    margin: 0;
+    color: inherit;
+  }
+
+  .section-{{ section.id }} .cstm-footer-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-menu-list a {
+    text-decoration: none;
+    color: {{ section.settings.menu_link_color }};
+    transition: 0.3s ease;
+    color: #FFF;
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 120%;
+  }
+
+  .section-{{ section.id }} .cstm-footer-menu-list a:hover {
+    opacity: 0.7;
+  }
+
+  .section-{{ section.id }} .cstm-footer-bottom {
+    border-top: 1px solid {{ section.settings.border_color }};
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .section-{{ section.id }} .cstm-footer-copyright {
+    margin: 0;
+    color: {{ section.settings.copyright_color }};
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  .section-{{ section.id }} .cstm-footer-payments {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .section-{{ section.id }} .cstm-footer-payments svg {
+    width: 42px;
+    height: auto;
+  }
+
+  .section-{{ section.id }} .cstm-footer-accordion-icon {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-wrapper {
+        padding: 32px 13px;
+        border-radius: 12px;
+        gap: 14px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-head {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-left {
+        gap: 20px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menus {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .section-{{ section.id }} .cstm-footer-text-logo {
+        font-size: 34px;
+        line-height: 48px;
+        letter-spacing: -1.2px;
+        text-align: center;
+    }
+
+    .section-{{ section.id }} .cstm-footer-subtitle {
+        text-align: center;
+    }
+
+    .section-{{ section.id }} .cstm-footer-socials {
+        justify-content: center;
+        margin: 0;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        text-align: left;
+        border-bottom: 1px solid #FFF;
+        padding: 21px 0;
+        transition: all 0.4s ease;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu-title {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .section-{{ section.id }} .cstm-footer-accordion-icon {
+        color: {{ section.settings.menu_heading_color }};
+        display: block;
+        transition: 0.3s ease;
+        width: 12px;
+        height: 12px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-accordion-icon svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu-list {
+        gap: 12px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu-list a {
+        font-size: 12px;
+        line-height: 100%;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu.active .cstm-footer-accordion-icon {
+      transform: rotate(180deg);
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      padding-top: 0;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu.active .cstm-footer-menu-button {
+        margin-bottom: 18px;
+    }
+
+    .section-{{ section.id }} .cstm-footer-menu-list.two-column {
+      grid-template-columns: 1fr;
+    }
+
+    .section-{{ section.id }} .cstm-footer-bottom {
+      flex-direction: column;
+    }
+
+    .section-{{ section.id }} .cstm-footer-copyright {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .section-{{ section.id }} ul.list.list-payment {
+        justify-content: center;
+    }
+
+  }
+{% endstyle %}
+
+<section class="cstm-footer-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="cstm-footer-wrapper">
+
+      <div class="cstm-footer-head">
+
+        <div class="cstm-footer-left">
+
+          {% if section.settings.logo != blank %}
+            <a class="cstm-footer-logo" href="/">
+              {{
+                section.settings.logo
+                | image_url: width: 600
+                | image_tag:
+                  widths: '100,200,300,400,500,600',
+                  loading: 'lazy',
+                  alt: 'footer logo'
+              }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.logo_text != blank %}
+            <a class="cstm-footer-text-logo title_title" href="/">
+              {{ section.settings.logo_text }}
+            </a>
+          {% endif %}
+
+          {% if section.settings.subtitle != blank %}
+            <p class="cstm-footer-subtitle">
+              {{ section.settings.subtitle }}
+            </p>
+          {% endif %}
+
+          {% if section.blocks.size > 0 %}
+            <div class="cstm-footer-socials">
+              {% for block in section.blocks %}
+                {% if block.type == 'social' %}
+                  {% if block.settings.social_link != blank and block.settings.social_link != blank %}
+                    <a
+                      href="{{ block.settings.social_link }}"
+                      class="cstm-footer-social-link"
+                      {% if block.settings.open_new_tab %}
+                        target="_blank"
+                      {% endif %}
+                      {{ block.shopify_attributes }}
+                    >
+                        {{ block.settings.social_icon | image_url: width: 300 | image_tag:
+                            widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                            alt: "image",
+                            loading: "lazy"
+                        }}
+                    </a>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+        </div>
+
+        <div class="cstm-footer-menus">
+
+          {% for block in section.blocks %}
+            {% if block.type == 'menu' %}
+
+              <div class="cstm-footer-menu" {{ block.shopify_attributes }}>
+
+                <div class="cstm-footer-menu-button">
+                  {% if block.settings.menu_title != blank %}
+                    <div class="cstm-footer-menu-title title_title">
+                      {{
+                        block.settings.menu_title
+                        | replace: '<p>', ''
+                        | replace: '</p>', ''
+                      }}
+                    </div>
+                  {% endif %}
+
+                  <span class="cstm-footer-accordion-icon">
+                    <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.99805 8.50586L5.5498 8.05762L0.487305 2.99512L0.0390625 2.54687L0.935547 1.65039L1.38379 2.09863L5.99805 6.73925L10.6123 2.125L11.0605 1.67676L11.957 2.54687L11.5088 2.99512L6.44629 8.05762L5.99805 8.50586Z" fill="white"/>
+                    </svg>
+                  </span>
+                </div>
+
+                <div class="cstm-footer-menu-content">
+                  {% assign footer_menu = linklists[block.settings.menu].links %}
+
+                  {% if footer_menu != blank %}
+                    <ul class="cstm-footer-menu-list {% if block.settings.enable_two_column %}two-column{% endif %}">
+                      {% for link in footer_menu %}
+                        <li>
+                          <a href="{{ link.url }}">
+                            {{ link.title }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+
+              </div>
+
+            {% endif %}
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+      <div class="cstm-footer-bottom">
+
+        {% if section.settings.copyright_text != blank %}
+          <p class="cstm-footer-copyright">
+            {{ section.settings.copyright_text }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.show_payment_icons %}
+          <div class="cstm-footer-payments">
+                <span class="visually-hidden">{{ 'general.payment.methods' | t }}</span>
+                <ul class="list list-payment" role="list">
+                    {%- for type in shop.enabled_payment_types -%}
+                    <li class="list-payment__item">
+                        {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                    </li>
+                    {%- endfor -%}
+                </ul>
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% comment %} <script>
+  (() => {
+    const initFooterAccordion = () => {
+      const section = document.querySelector('.section-{{ section.id }}');
+
+      if (!section) return;
+
+      const items = section.querySelectorAll('.cstm-footer-menu');
+
+      if (window.innerWidth > 768) {
+        items.forEach((item) => {
+          item.classList.add('active');
+        });
+        return;
+      }
+
+      items.forEach((item, index) => {
+        const button = item.querySelector('.cstm-footer-menu-button');
+
+        if (index === 0) {
+          item.classList.add('active');
+        }
+
+        button.addEventListener('click', () => {
+          item.classList.toggle('active');
+        });
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initFooterAccordion);
+    document.addEventListener('shopify:section:load', initFooterAccordion);
+  })();
+</script> {% endcomment %}
+
+<script>
+(() => {
+
+  const initFooterAccordion = () => {
+
+    const section = document.querySelector('.section-{{ section.id }}');
+
+    if (!section) return;
+
+    const isMobile = window.innerWidth <= 768;
+
+    const items = section.querySelectorAll('.cstm-footer-menu');
+
+    if (!isMobile) {
+      items.forEach((item) => {
+        item.classList.add('active');
+
+        const content = item.querySelector('.cstm-footer-menu-content');
+
+        if (content) {
+          content.style.maxHeight = 'unset';
+        }
+      });
+
+      return;
+    }
+
+    items.forEach((item) => {
+
+      item.classList.remove('active');
+
+      const content = item.querySelector('.cstm-footer-menu-content');
+
+      if (content) {
+        content.style.maxHeight = null;
+      }
+    });
+
+    {% if section.settings.open_first_menu_mobile %}
+      if (items.length > 0) {
+        const firstItem = items[0];
+        const firstContent = firstItem.querySelector('.cstm-footer-menu-content');
+
+        firstItem.classList.add('active');
+
+        if (firstContent) {
+          firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+        }
+      }
+    {% endif %}
+
+    items.forEach((item) => {
+
+      const button = item.querySelector('.cstm-footer-menu-button');
+      const content = item.querySelector('.cstm-footer-menu-content');
+
+      if (!button || !content) return;
+
+      button.addEventListener('click', () => {
+
+        const isActive = item.classList.contains('active');
+
+        items.forEach((otherItem) => {
+
+          otherItem.classList.remove('active');
+
+          const otherContent = otherItem.querySelector('.cstm-footer-menu-content');
+
+          if (otherContent) {
+            otherContent.style.maxHeight = null;
+          }
+        });
+
+        if (!isActive) {
+
+          item.classList.add('active');
+
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initFooterAccordion);
+  document.addEventListener('shopify:section:load', initFooterAccordion);
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Footer Section",
+  "settings": [
+    {
+        "type": "checkbox",
+        "id": "open_first_menu_mobile",
+        "label": "Open First Menu On Mobile",
+        "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "logo_text",
+      "label": "Logo Text"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Implant-grade titanium piercing jewellery for everyday wear – comfortable, safe, and effortlessly stylish."
+    },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2026 Camden piercing. All rights reserved."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show Payment Icons",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "footer_card_bg",
+      "label": "Footer Card Background",
+      "default": "#1E1715"
+    },
+    {
+      "type": "color",
+      "id": "logo_text_color",
+      "label": "Logo Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#B8B8B8"
+    },
+    {
+      "type": "color",
+      "id": "social_icon_color",
+      "label": "Social Icon Color",
+      "default": "#F7EA22"
+    },
+    {
+      "type": "color",
+      "id": "menu_heading_color",
+      "label": "Menu Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "menu_link_color",
+      "label": "Menu Link Color",
+      "default": "#D7D7D7"
+    },
+    {
+      "type": "color_background",
+      "id": "copyright_color",
+      "label": "Copyright Color",
+      "default": "#B8B8B8"
+    },
+    {
+      "type": "color_background",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#3A312F"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "Social Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "social_icon",
+          "label": "Social SVG/Icon"
+        },
+        {
+          "type": "url",
+          "id": "social_link",
+          "label": "Social Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_new_tab",
+          "label": "Open in New Tab",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Footer Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu Title",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_two_column",
+          "label": "Enable Two Column Menu",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Footer Section",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "menu"
+        },
+        {
+          "type": "menu"
+        },
+        {
+          "type": "menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
