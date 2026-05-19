@@ -392,15 +392,15 @@ img.swip-img-c {
 
 </style>
 
-<section class="trust-by section-{{ section.id }}-padding {% if section.settings.pdp %}pdp-video{% endif %} pdp-section" id="trust">
+<section class="trust-by fade-in-section section-{{ section.id }}-padding {% if section.settings.pdp %}pdp-video{% endif %} pdp-section" id="trust">
   <div class="page-width">
     <div class="trust-by-wrapper">
         <div class="top-sec">
           {% if section.settings.head_text %}
-            <div class="live-heading csp-img">{{ section.settings.head_text | replace: '<p>', '' |replace: '</p>', '' }}</div>
+            <div class="live-heading fade-in-up csp-img">{{ section.settings.head_text | replace: '<p>', '' |replace: '</p>', '' }}</div>
           {% endif %}
           {% if section.settings.des_text %}
-            <div class="des-text csp-img">{{ section.settings.des_text }}</div>
+            <div class="des-text fade-in-up csp-img">{{ section.settings.des_text }}</div>
           {% endif %}
         </div>
         <div class="bottom-sec csp-img">
@@ -408,7 +408,7 @@ img.swip-img-c {
             <div class="swiper-wrapper">
               {% for block in section.blocks %}
                 <div class="swiper-slide" data-slide-index="{{ forloop.index0 }}">
-                  <div class="vedio-container" data-video-index="{{ forloop.index0 }}">
+                  <div class="vedio-container fade-in-item" data-video-index="{{ forloop.index0 }}">
                     {% comment %} {% render 'play' %} {% endcomment %}
                      {% comment %} {% if section.settings.eye_icon != blank %} {% endcomment %}
                          <div class="video_slider-eye-icon">

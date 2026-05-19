@@ -4,23 +4,36 @@
 
 <div class="pdp-essential-card">
 
-  <a
-    href="{{ current_product.url }}"
-    class="pdp-essential-image"
-  >
+    {% assign hover_image = current_product.images[1] | default: current_product.featured_image %}
+    <a
+        href="{{ current_product.url }}"
+        class="pdp-essential-image"
+    >
+        {% if current_product.featured_image != blank %}
 
-    {% if current_product.featured_image != blank %}
-      {{
-        current_product.featured_image
-        | image_url: width: 500
-        | image_tag:
-          loading: 'lazy',
-          widths: '120,180,250,350,500',
-          alt: current_product.title
-      }}
-    {% endif %}
+            {{
+            current_product.featured_image
+            | image_url: width: 500
+            | image_tag:
+                class: 'pdp-essential-primary-image',
+                loading: 'lazy',
+                widths: '120,180,250,350,500',
+                alt: current_product.title
+            }}
 
-  </a>
+            {{
+            hover_image
+            | image_url: width: 500
+            | image_tag:
+                class: 'pdp-essential-hover-image',
+                loading: 'lazy',
+                widths: '120,180,250,350,500',
+                alt: current_product.title
+            }}
+
+        {% endif %}
+
+    </a>
 
   <div class="pdp-essential-content">
 
@@ -61,22 +74,60 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
-    justify-content: space-between;
+    width: 100%;
 }
 
 a.pdp-essential-image {
-    display: block;
-    width: 100%;
-    height: 162px;
-    border-radius: 6px;
-    overflow: hidden;
-    background: #fff;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 162px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
 }
 
-a.pdp-essential-image img{
-    width: 100%;
-    height: 100%;
-    display: block;
+a.pdp-essential-image img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.6s ease;
+}
+
+/* Base states */
+.pdp-essential-primary-image {
+  opacity: 1;
+  z-index: 1;
+}
+
+.pdp-essential-hover-image {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Hover */
+@media (hover: hover) and (pointer: fine) {
+
+  .pdp-essential-image:hover .pdp-essential-hover-image {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+
+  .pdp-essential-image:hover .pdp-essential-primary-image {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+
 }
 
 h4.pdp-essential-title a,
@@ -87,6 +138,13 @@ h4.pdp-essential-title {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    min-height: 55px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 span.pdp-essential-price, 
@@ -130,6 +188,14 @@ span.pdp-essential-atc_icon svg{
     height: 100%;
     object-fit: contain;
     display: block;
+}
+
+@media screen and (max-width: 768px){
+
+    a.pdp-essential-image{
+        height: 150px;
+    }
+
 }
 
 {% endstyle %}

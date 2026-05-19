@@ -48,7 +48,7 @@ h4.pdp-icon-list-item-title {
     font-family: "Suisse Int'l";
     font-size: 13px;
     font-style: normal;
-    font-weight: bold;
+    font-weight: normal;
     line-height: 15.923px;
     text-transform: capitalize;
 }
@@ -61,7 +61,7 @@ p.pdp-icon-list-item-subtitle {
     font-weight: 300;
     line-height: 15.923px;
     text-transform: capitalize;
-    margin: 5px 0 0;
+    margin: 1px 0 0;
 }
 
 li.pdp-icon-list-item {
@@ -136,6 +136,8 @@ ul.pdp-icon-list {
     font-style: normal;
     font-weight: 500;
     line-height: 14px;
+    text-transform: lowercase;
+    opacity: 1;
 }
 
 .cstm-product__blocks .product__block--price {
@@ -189,7 +191,7 @@ ul.pdp-icon-list {
 .cstm-product__blocks .product__block--variant_picker .product-form__input--button input[type=radio]:checked+label,
 .cstm-product__blocks .product__block--variant_picker .product-form__input label:hover {
     background: #F8E8FF !important;
-    color: #000;
+    color: #000 !important;
 }
 
 .cstm-product__blocks .product__block.product__block--buy_buttons {
@@ -236,6 +238,7 @@ ul.pdp-icon-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding-right: 0;
 }
 
 ul.pdp_shipping-bar-cards {
@@ -403,7 +406,7 @@ h4.pdp_shipping-bar-card-title {
 /* === gellery ==== */
 
 .cstm_pdp_sec-inner .product__thumbs-container {
-    border-radius: 21px;
+    border-radius: 16px;
 }
 
 .cstm_pdp_sec-inner .product__media-gallery-viewer {
@@ -586,7 +589,7 @@ h3.sticky-atc-bar__product-title {
     fill: #000 !important;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 990px){
 
 .cstm_pdp_sec-inner {
     padding: 10px 0!important;
@@ -707,6 +710,7 @@ h4.pdp_shipping-bar-card-title {
 .pdp_upsell-block {
     border-radius: 16px;
     padding: 30px 13px;
+    padding-right: 0;
 }
 
 h3.pdp_upsell-title {
@@ -762,5 +766,13 @@ h3.sticky-atc-bar__product-title {
     max-width: 100%;
     width: 100%;
 }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px){
+
+    .cstm_pdp_sec-inner .product__media-gallery-viewer-wrap{
+        margin: 0 !important;
+    }
 
 }

@@ -9,7 +9,7 @@
 
 %}
 
-<div class="cstm-pd-card fade-in-item card-{{ card_unique_id }}">
+<div class="cstm-pd-card card-{{ card_unique_id }}">
 
   <div class="cstm-pd-media">
 
@@ -223,6 +223,10 @@
     padding: 12px 15px;
 }
 
+.card-{{ card_unique_id }} h3.pd_title{
+  min-height: 44px;
+}
+
 .card-{{ card_unique_id }} h3.pd_title a,
 .card-{{ card_unique_id }} h3.pd_title {
     color: #001116;
@@ -328,6 +332,25 @@
     font-weight: 500;
     line-height: 20px;
     text-transform: uppercase;
+}
+
+.cstm-pd-card h3.pd_title a {
+    color: #001116;
+    font-family: "Suisse Int'l";
+    font-size: 15px !important;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 18.571px !important;
+    text-transform: capitalize;
+}
+
+.cstm-pd-card span.pd-org-price span {
+    color: #000;
+    font-family: "Suisse Int'l";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 @media screen and (max-width: 768px){

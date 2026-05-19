@@ -217,7 +217,7 @@
               "11-cz-segment-hoop-in-silver-titanium",
               "3-bezel-set-rectangles-cz-threadless-labret-in-silver-titanium",
               "3-lines-woven-web-v-shape-segment-hoop-in-silver-titanium",
-              "3-star-cz-hinged-belly-in-silver-titanium"
+              "4-ab-cz-stone-cluster-top-nipple-barbell-titanium-1"
             ]
           }
         },
@@ -931,26 +931,29 @@
       "block_order": [
         "judge_me_reviews_review_widget_8HHzBY"
       ],
+      "custom_css": [
+        "section {background: #eee;}"
+      ],
       "settings": {
         "include_margins": true,
         "padding_top": 0,
         "padding_bottom": 0
       }
     },
-    "17790980066aea09e0": {
+    "apps_JR8NLL": {
       "type": "apps",
       "blocks": {
-        "instafeed_app_block_rNPrbz": {
+        "instafeed_app_block_zNKw8P": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "title": "Follow us on Instagram",
             "title_color": "",
-            "title_size_v2": 42,
+            "title_size_v2": 28,
             "alignment": "center",
-            "instafeed_margin_top": 40,
-            "instafeed_margin_bottom": 40,
-            "instafeed_margin_sides": 30,
-            "show_instagram_link": true,
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
             "link_alignment": "center",
             "link_color": "#0b0b0b",
             "background_color": "#eeeeee",
@@ -960,7 +963,7 @@
         }
       },
       "block_order": [
-        "instafeed_app_block_rNPrbz"
+        "instafeed_app_block_zNKw8P"
       ],
       "settings": {
         "include_margins": true,
@@ -1232,7 +1235,7 @@
     "related_products_YHwFUL",
     "collapsible_tabs_zgFYFm",
     "17635503795286441d",
-    "17790980066aea09e0",
+    "apps_JR8NLL",
     "multicolumn_icon_RKVjMU",
     "newsletter_jWVYMb",
     "scrolling_gallery_image_UmHTwf"

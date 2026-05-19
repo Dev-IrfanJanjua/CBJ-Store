@@ -8365,7 +8365,7 @@ body #insta-feed {
 }
 
 #insta-feed h2 {
-    font-size: 42px!important;
+    /* font-size: 42px!important; */
     color: #001116 !important;
     font-family: "Clash Display" !important;
     font-style: normal !important;
@@ -8378,26 +8378,25 @@ body #insta-feed {
 .instafeed-new-layout-item.image-loaded {
     border-radius: 20px !important;
     overflow: hidden !important;
-    height: 500px !important;
-}
 
-.instafeed-new-layout-container {
-    height: 500px !important;
 }
 
 .instafeed-new-layout-container .instafeed-new-arrow {
     display: none !important;
 }
 
+
 @media screen and (max-width: 768px){
 
-  body #insta-feed {
-    padding: 30px 13px!important;
-    border-radius: 12px!important;
+  #insta-feed h2 {
+    font-size: 28px !important;
+    line-height: 32px !important;
+    letter-spacing: -.6px !important;
+    margin-bottom: 24px !important;
 }
 
 .instafeed-new-layout-item.image-loaded {
-    min-width: 100%;
+    border-radius: 12px !important;
 }
 
 }
@@ -8450,4 +8449,85 @@ body #insta-feed {
   transform: none;
 
   transition-delay: calc(var(--i) * var(--stagger));
+}
+
+/* ==== cart count ==== */
+
+cart-count.cart-count.cart-count--absolute {
+    background: #FFD633;
+    color: var(--pixel-to-premium-theme-lovable-app-cocoa-brown, var(--color-orange-12, #231D1A));
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    width: 15px;
+    height: 15px;
+    left: 15px;
+}
+
+.product-form__submit:before{
+  display: none;
+}
+
+.product-form__submit .btn__text{
+  color: #fff !important;
+}
+
+.product-form__submit{
+  transition: all 0.3s ease;
+}
+
+.product-form__submit:hover{
+  transform: scale(1.01);
+}
+
+.product-form__submit:hover .btn__text{
+  color: #fff;
+}
+
+/* ====== app reviews ==== */
+
+.section.section-app {
+    background: #eee;
+}
+
+.shopify-app-block {
+    background: #fff;
+    border-radius: 20px;
+}
+
+.shopify-section:has(.jdgm-widget) {
+    background: #eee !important;
+    padding-bottom: 20px !important;
+}
+
+.jdgm-widget.jdgm-widget {
+    display: block;
+    margin: 0 !important;
+    max-width: 100% !important;
+}
+
+div#judgeme_product_reviews a, 
+div#judgeme_product_reviews p, 
+div#judgeme_product_reviews h6,
+div#judgeme_product_reviews h5,
+div#judgeme_product_reviews h4,
+div#judgeme_product_reviews h3,
+div#judgeme_product_reviews h2,
+div#judgeme_product_reviews h1{
+    font-family: "Suisse Int'l" !important;
+}
+
+@media screen and (max-width: 768px){
+
+.shopify-app-block {
+    border-radius: 12px;
+}  
+
+.jdgm-rev-widg {
+    padding: 24px 16px !important;
+}
+
 }
