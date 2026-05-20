@@ -292,6 +292,10 @@ a.mega_content-subtitle:hover{
     opacity: 0.7;
 }
 
+.cstm-header .menu-drawer__footer {
+    display: none;
+}
+
 
 @media screen and (max-width: 768px){
 
@@ -319,7 +323,7 @@ a.mega_content-subtitle:hover{
 }
 
 .cstm-header .header__buttons {
-    gap: 30px;
+    gap: 8px;
 }
 
 .cstm-header a.account-button {
@@ -358,13 +362,13 @@ a.mega_content-subtitle:hover{
 
 .cstm-header .accordion-details summary.menu-drawer__item-link.menu-drawer__item-link-heading,
 .cstm-header li.menu-drawer__item.menu-drawer__item--product_list > a.menu-drawer__item-link {
-    color: #828282;
-    font-family: "Faculty Glyphic";
+    color: #000;
+    font-family: Faculty Glyphic;
     font-size: 14px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 16.8px;
-    letter-spacing: 0.08px;
+    letter-spacing: .08px;
     text-transform: uppercase;
 }
 
@@ -375,6 +379,7 @@ a.mega_content-subtitle:hover{
     font-style: normal;
     font-weight: 400;
     line-height: 36px;
+    opacity: 0.7;
 }
 
 .cstm-header .accordion-details li.menu-drawer__item {

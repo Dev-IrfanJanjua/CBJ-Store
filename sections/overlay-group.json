@@ -17,13 +17,13 @@
         "after_care_HiWL8y": {
           "type": "after_care",
           "settings": {
+            "cstm_cart__atc": true,
             "tag_text": "Before Checkout",
             "title": "Add Aftercare <strong>Essentials</strong>",
             "poducts": [
               "11-cz-segment-hoop-in-silver-titanium",
               "3-bezel-set-rectangles-cz-threadless-labret-in-silver-titanium",
               "3-lines-woven-web-v-shape-segment-hoop-in-silver-titanium",
-              "3-star-cz-hinged-belly-in-silver-titanium",
               "4-ab-cz-stone-cluster-top-nipple-barbell-titanium-1",
               "4-ab-cz-stone-cluster-top-nipple-barbell-titanium",
               "4-rainbow-cz-stone-cluster-top-nipple-barbell-titanium"
@@ -39,7 +39,7 @@
         "show_cart_note": false,
         "show_shipping_rates_calculator": false,
         "show_cart_coupon": false,
-        "show_free_shipping_goal": false,
+        "show_free_shipping_goal": true,
         "enable_cart_recommendations": false,
         "cart_recommendations_color_scheme": "scheme-inverse",
         "cart_recommendations_heading": "Pair Well With",

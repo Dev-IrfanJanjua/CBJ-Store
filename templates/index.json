@@ -130,7 +130,7 @@
         "desktop_padding_top": 12,
         "desktop_padding_bottom": 12,
         "mobile_padding_top": 10,
-        "mobile_padding_bottom": 10
+        "mobile_padding_bottom": 0
       }
     },
     "cjb_hero_f4KABY": {
@@ -181,9 +181,9 @@
         "heading_color": "#ffffff",
         "text_color": "#ffffff",
         "review_text_color": "#ffffff",
-        "desktop_padding_top": 20,
+        "desktop_padding_top": 12,
         "desktop_padding_bottom": 12,
-        "mobile_padding_top": 20,
+        "mobile_padding_top": 10,
         "mobile_padding_bottom": 10
       }
     },
@@ -332,10 +332,10 @@
         "arrow_border_color": "rgba(0,0,0,0)",
         "view_all_color": "#000000",
         "card_bg_color": "#f8e8ff",
-        "desktop_padding_top": 20,
+        "desktop_padding_top": 12,
         "desktop_padding_bottom": 12,
-        "mobile_padding_top": 20,
-        "mobile_padding_bottom": 10
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
       }
     },
     "about_section_RURN7a": {
@@ -592,8 +592,8 @@
         "block_text_color": "#000000",
         "desktop_padding_top": 12,
         "desktop_padding_bottom": 12,
-        "mobile_padding_top": 10,
-        "mobile_padding_bottom": 10
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
       }
     },
     "cstm_collection_grid_zRDK4g": {
@@ -727,8 +727,8 @@
       "settings": {
         "padding_top_desktop": 12,
         "padding_bottom_desktop": 12,
-        "padding_top_mobile": 20,
-        "padding_bottom_mobile": 48,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 12,
         "bg_color": "#eeeeee",
         "bg_image_desktop": "shopify://shop_images/us_vs_them_1.png",
         "tag_text": "US VS THEM",
