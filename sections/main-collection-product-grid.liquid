@@ -42,8 +42,11 @@
   show_divider: section.settings.show_section_divider,
   divider_width: section.settings.divider_width
 %}
+
+{{ 'cstm-collection.css' | asset_url | stylesheet_tag: preload: true }}
+
 <div
-  class="collection section--padding page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }}"
+  class=" {% if section.settings.cstm_style %} cstm-collection-section {% endif %} collection section--padding page-width page-width--{{ section.settings.container }} color-{{ section.settings.color_scheme }}"
   style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
 >
   {%- paginate collection.products by products_to_display -%}
@@ -53,17 +56,19 @@
           <div class="collection__toolbar-left flex md:items-center flex-col md:flex-row">
             <div data-facet-loading class="md:order-last">
               {%- render 'loading-spinner' -%}
-              <p id="ProductCount" class="m-0 text-subtext" role="status">
-                {%- liquid
-                  if collection.results_count
-                    echo 'products.facets.filters_selected' | t: terms: collection.terms, count: collection.results_count
-                  elsif collection.products_count == collection.all_products_count
-                    echo 'products.facets.product_count_simple' | t: count: collection.products_count
-                  else
-                    echo 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count
-                  endif
-                -%}
-              </p>
+              {% unless section.settings.cstm_style %}
+                <p id="ProductCount" class="m-0 text-subtext" role="status">
+                  {%- liquid
+                    if collection.results_count
+                      echo 'products.facets.filters_selected' | t: terms: collection.terms, count: collection.results_count
+                    elsif collection.products_count == collection.all_products_count
+                      echo 'products.facets.product_count_simple' | t: count: collection.products_count
+                    else
+                      echo 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count
+                    endif
+                  -%}
+                </p>
+              {% endunless %}
             </div>
             {%- if enable_filtering -%}
               {%- render 'facets-drawer',
@@ -72,6 +77,36 @@
                 filter_type: filter_type
               -%}
             {%- endif -%}
+          </div>
+          <div class="col-discount-cards">
+            {% for block in section.blocks %}
+              {% if block.type == 'dis_card' and block.settings.title != blank %}
+                <div class="col-discount-card" style="background: {{ block.settings.bg_clr }};">
+                  <div class="col-discount-card_text">
+                    <span class="col_qty" style="color:{{ block.settings.text_clr }};">
+                      {{ block.settings.qty }}
+                    </span>
+                    <span class="col_svg">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="10" viewBox="0 0 22 10" fill="none">
+                        <path d="M16.9321 9.35621C16.9321 7.50234 18.269 5.87837 20.9419 4.48296C18.2683 3.32145 16.9321 1.82647 16.9321 0" stroke="{{ block.settings.text_clr }}" stroke-width="0.988395" stroke-linejoin="round"/>
+                        <path d="M20 4.79443L0 4.79443" stroke="{{ block.settings.text_clr }}" stroke-width="0.988395"/>
+                      </svg>
+                    </span>
+                    <span class="col_disc-title" style="color:{{ block.settings.text_clr }};">
+                      {{ block.settings.title }}
+                    </span>
+                  </div>
+                  {% if block.settings.icon != blank %}
+                    <div class="col-discount-card_icon">
+                      {{ block.settings.icon | image_url: width: 160 | image_tag:
+                          alt: "image",
+                          loading: "lazy"
+                      }}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
           </div>
           <div class="collection__toolbar-right flex items-end md:items-center flex-col md:flex-row">
             {%- if settings.enable_product_compare -%}
@@ -118,6 +153,19 @@
                 </button>
               </layout-switcher>
             {%- endif -%}
+          </div>
+          <div class="col_results_mob" style="display: none;">
+            <p id="ProductCount" class="m-0 text-subtext" role="status">
+              {%- liquid
+                if collection.results_count
+                  echo 'products.facets.filters_selected' | t: terms: collection.terms, count: collection.results_count
+                elsif collection.products_count == collection.all_products_count
+                  echo 'products.facets.product_count_simple' | t: count: collection.products_count
+                else
+                  echo 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count
+                endif
+              -%}
+            </p>
           </div>
         </div>
       </div>
@@ -214,7 +262,16 @@
               {%- endfor -%}
 
               <div class="f-column product-column">
-                {%- render 'card-product',
+                {%- render 'cstm-pd-card',
+                  product_card_product: product,
+                  parent_color_scheme: section.settings.color_scheme,
+                  enable_compare_checkbox: true,
+                  image_sizes: image_sizes,
+                  unique_id: section.id,
+                  section_index: 2,
+                  index: forloop.index
+                -%}
+                {% comment %} {%- render 'card-product',
                   product: product,
                   parent_color_scheme: section.settings.color_scheme,
                   enable_compare_checkbox: true,
@@ -222,7 +279,7 @@
                   section_id: section.id,
                   section_index: 2,
                   index: forloop.index
-                -%}
+                -%} {% endcomment %}
                 {% assign current_position = current_position | plus: 1 %}
               </div>
 
@@ -263,7 +320,7 @@
           </div>
           {%- liquid
             if paginate.pages > 1
-              render 'pagination', paginate: paginate, type: section.settings.pagination
+              render 'pagination', paginate: paginate, type: section.settings.pagination, section: section
             endif
           -%}
         </div>
@@ -277,6 +334,18 @@
   "name": "t:sections.main-collection-product-grid.name",
   "class": "collection-section",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "cstm_style",
+      "label": "Enable Custom Stylling",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_atc_icon",
+      "label": "Use Custom ATC Button",
+      "default": true
+    },
     {
       "type": "select",
       "id": "container",
@@ -535,6 +604,37 @@
     }
   ],
   "blocks": [
+    {
+      "type": "dis_card",
+      "name": "Discount Card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_clr",
+          "label": "BG Color"
+        },
+        {
+          "type": "color",
+          "id": "text_clr",
+          "label": "Text Color"
+        },
+        {
+          "type": "text",
+          "id": "qty",
+          "label": "Buy Quantity"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    },
     {
       "type": "image_card",
       "name": "t:general.image_card.label",

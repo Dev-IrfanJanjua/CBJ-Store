@@ -307,6 +307,7 @@ h4.pdp_shipping-bar-card-title {
 
 .cstm-product__blocks .cbj-shipping-widget {
     margin: 0 0 24px;
+    display: none;
 }
 
 .cstm-product__blocks .product__block--collapsible_tab {

@@ -41,7 +41,7 @@
   <div
     class="cstm-pd-content"
     {% if card_bg != blank %}
-      style="background-color: {{ card_bg }};"
+      style="background-color: {{ card_bg | default: '#F8E8FF' }};"
     {% endif %}
   >
 
@@ -217,6 +217,7 @@
 
 .card-{{ card_unique_id }} .cstm-pd-content {
     border-radius: 8px;
+    background: #F8E8FF;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -342,6 +343,11 @@
     font-weight: 450;
     line-height: 18.571px !important;
     text-transform: capitalize;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    word-break: break-word;
 }
 
 .cstm-pd-card span.pd-org-price span {
@@ -371,6 +377,10 @@
     font-size: 12px !important;
 }
 
+.cstm-pd-card h3.pd_title a{
+  -webkit-line-clamp: 2;
+}
+  
 }
 
 {% endstyle %}

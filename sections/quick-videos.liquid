@@ -385,7 +385,7 @@ img.swip-img-c {
     padding: 0;
 }
 
-.section-{{ section.id }}-padding:has(.vp-overlay[style*="display: flex"]) .bottom-sec {
+body:has(.vp-overlay[style*="display: flex"]) .bottom-sec {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -455,7 +455,9 @@ img.swip-img-c {
     </div>
   </div>
 
-  <!-- VIDEO POPUP -->
+</section>
+
+<!-- VIDEO POPUP -->
     <div class="vp-overlay" id="vpOverlay-{{ section.id }}" style="display:none;">
         <div class="vp-modal">
             <button class="vp-close" id="vpClose-{{ section.id }}">&#x2715;</button>
@@ -468,8 +470,6 @@ img.swip-img-c {
             </video>
         </div>
     </div>
-
-</section>
 
 {% comment %} <script>
     (function() {

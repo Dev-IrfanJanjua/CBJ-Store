@@ -180,30 +180,30 @@
                         <span class="progress-msg-icon">
                           {% render 'cstm_cart-icon' %}
                         </span>
-                        <span class="progress-msg-text"><strong>Add 1 more</strong> for 25% off</span>
+                        <span class="progress-msg-text"> 👍 One More = 25% OFF</span>
                       {%- when 2 -%}
                         <span class="progress-msg-icon">
                           {% render 'cstm_cart-icon' %}
                         </span>
-                        <span class="progress-msg-text"><strong>Add 1 more</strong> for 40% off</span>
+                        <span class="progress-msg-text"> 😃 One More = 40% OFF</span>
                       {%- else -%}
                         <span class="progress-msg-icon">
                           {% render 'cstm_cart-icon' %}
                         </span>
-                        <span class="progress-msg-text"><strong>OMG — you're getting 40% off!</strong></span>
+                        <span class="progress-msg-text"> 😍 40% OFF  Applied</span>
                     {%- endcase -%}
                   </div>
     
                   <div class="cart-tier-container">
                     <!-- Tier 1 -->
-                    <div class="tier-bar {% if tier1_active %}tier-active{% endif %}">
+                    <div class="tier-bar {% if tier1_active %}tier-bar_1-active tier-active{% endif %}">
                       <span class="tier-bar_icon">
                         {% render 'cstm_cart-icon' %}
                       </span>
                       25% OFF
                     </div>
                     <!-- Tier 2 -->
-                    <div class="tier-bar {% if tier2_active %}tier-active{% endif %}">
+                    <div class="tier-bar {% if tier2_active %}tier-bar_2-active tier-active{% endif %}">
                       <span class="tier-bar_icon">
                         {% render 'cstm_cart-icon' %}
                       </span>
@@ -1401,7 +1401,7 @@
     border: 1px solid #B97AFC;
     background: #EBD8FE;
     padding: 2px 4px;
-    max-width: fit-content;
+    max-width: 395px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -1464,6 +1464,10 @@ span.progress-msg-text {
 .tier-bar.tier-active {
     background-color: #EBD8FE !important;
     color: #001116 !important;
+}
+
+.tier-bar.tier-bar_1-active {
+    display: none;
 }
 
 .drawer__header-inner.cart-drawer__header {
@@ -1772,8 +1776,109 @@ span.btn__cstm-icon svg{
   font-weight: 700;
 }
 
+.cart-progress-message--tier1-close,
+.cart-progress-message--tier1-unlocked {
+    border-radius: 6px;
+    background: #FFD633;
+    padding: 5px 7px 5px 5px;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.cart-progress-message--tier1-close{
+  background: #B97AFC;
+  min-width: fit-content;
+}
+
+.cart-progress-message--maxed{
+  border-radius: 6px;
+  background: #00B67A;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.cart-progress-message--maxed span.progress-msg-text{
+  margin-right: 18px;
+}
+
+.cart-progress-message--maxed span.progress-msg-text,
+.cart-progress-message--tier1-close span.progress-msg-text {
+    color: #fff;
+}
+
+.cart-progress-message--maxed svg path,
+.cart-progress-message--tier1-close svg path {
+    stroke: #fff;
+}
+
+.cart-progress-message--maxed svg path:first-of-type,
+.cart-progress-message--tier1-close svg path:first-of-type {
+    fill: #fff;
+    stroke: unset;
+}
+
+.camden-cart-widgets_inner:has(.cart-progress-message--maxed),
+.camden-cart-widgets_inner:has(.cart-progress-message--tier1-close),
+.camden-cart-widgets_inner:has(.cart-progress-message--tier1-unlocked) {
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+
+.camden-cart-widgets_inner:has(.cart-progress-message--maxed) .tier-bar{
+  display: none;
+}
+
+.camden-cart-widgets_inner:has(.cart-progress-message--tier1-close) .tier-bar,
+.camden-cart-widgets_inner:has(.cart-progress-message--tier1-unlocked) .tier-bar {
+    border-radius: 6px;
+    background: rgba(185, 122, 252, 0.29);
+    border: 0;
+    padding: 5px 8px;
+}
+
 .cart_free-shipping-wrapper progress-bar.progress-bar {
     display: none;
+}
+
+.cart-drawer__empty p.h4 {
+    font-size: 20px;
+    line-height: 120%;
+    color: #000;
+    font-family: "Clash Display" !important;
+    font-weight: 600;
+}
+
+.cart-drawer__empty .text-subtext {
+    color: #333;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 22px;
+}
+
+.cart-drawer__empty a.btn.btn--primary {
+    border-radius: 42px;
+    background: #000;
+}
+
+.cart-drawer__empty a.btn.btn--primary:hover{
+  transform: scale(1.01);
+}
+
+.cart-drawer__empty a.btn.btn--primary:before{
+  display: none;
+}
+
+.cart-drawer__empty a.btn.btn--primary span.btn__text {
+    color: var(--White, #FFF);
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 17.8px;
+    text-transform: uppercase;
 }
 
 @media screen and (max-width: 768px){

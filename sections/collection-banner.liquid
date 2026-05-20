@@ -1,0 +1,355 @@
+{% style %}
+  .col-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.section_bg_color }};
+    overflow: hidden;
+  }
+
+  .col-section-{{ section.id }} .col-wrapper {
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 30px 20px;
+    padding-right: 0;
+  }
+
+  .col-section-{{ section.id }} .col-blocks {
+    overflow: hidden;
+  }
+
+  .col-section-{{ section.id }} .col-swiper {
+    overflow: visible;
+  }
+
+  .col-section-{{ section.id }} .swiper-slide {
+    width: auto;
+    height: auto;
+  }
+
+  .col-section-{{ section.id }} .col-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+  }
+
+  .col-section-{{ section.id }} .col-card_images {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 4px solid transparent;
+    transition: all 0.3s ease;
+    aspect-ratio: 1;
+  }
+
+  .col-section-{{ section.id }} .col-card.active .col-card_images {
+    border-color: #FEEF35;
+  }
+
+  .col-section-{{ section.id }} .col-card_images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.35s ease, transform 0.4s ease;
+  }
+
+  .col-section-{{ section.id }} .col-primary-image,
+  .col-section-{{ section.id }} .col-hover-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .col-section-{{ section.id }} .col-hover-image {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .col-section-{{ section.id }} .col_divider {
+    display: block !important;
+    padding-inline: 25px;
+    background: #fff;
+}
+
+.col-section-{{ section.id }} .col_divider-fill {
+    display: block !important;
+    height: 1px;
+    background: #eee;
+}
+
+  @media (hover: hover) and (pointer: fine) {
+    .col-section-{{ section.id }} .col-card:hover .col-hover-image {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .col-section-{{ section.id }} .col-card:hover .col-primary-image {
+      opacity: 0;
+    }
+
+    .col-section-{{ section.id }} .col-card:hover .col-card_images img {
+      transform: scale(1.04);
+    }
+  }
+
+  .col-section-{{ section.id }} .col-card_title {
+    color: #000;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 12.961px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.259px;
+    text-transform: capitalize;
+  }
+
+  @media screen and (max-width: 768px) {
+    .col-section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+     .col-section-{{ section.id }} .col-wrapper {
+        border-radius: 12px 12px 0 0;
+        padding: 16px 13px 25px;
+        padding-right: 0;
+    }
+
+    .col-section-{{ section.id }} .col-card_title {
+        font-size: 10px;
+    }
+
+    .col-section-{{ section.id }} .col_divider {
+        display: none !important;
+    }
+
+  }
+{% endstyle %}
+
+<section class="col-section-{{ section.id }}">
+  <div class="page-width">
+    <div class="col-wrapper">
+
+      <div class="col-blocks">
+        <div class="swiper col-swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+
+            {% for block in section.blocks %}
+              {% assign collection = block.settings.collection %}
+
+              {% assign primary_image = block.settings.primary_image %}
+              {% assign hover_image = block.settings.hover_image %}
+
+              {% if primary_image == blank and collection.featured_image != blank %}
+                {% assign primary_image = collection.featured_image %}
+              {% endif %}
+
+              {% assign collection_title = block.settings.title %}
+
+              {% if collection_title == blank and collection != blank %}
+                {% assign collection_title = collection.title %}
+              {% endif %}
+
+              {% assign is_active = false %}
+
+              {% if collection != blank and request.path contains collection.url %}
+                {% assign is_active = true %}
+              {% endif %}
+
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                {% if collection != blank %}
+                  <a
+                    href="{{ collection.url }}"
+                    class="col-card {% if is_active %}active{% endif %}"
+                  >
+                {% else %}
+                  <div class="col-card">
+                {% endif %}
+
+                  <div class="col-card_images">
+
+                    {% if primary_image != blank %}
+                      <div class="col-primary-image">
+                        {{
+                          primary_image
+                          | image_url: width: 300
+                          | image_tag:
+                            widths: '100,150,200,250,300',
+                            loading: 'lazy',
+                            alt: collection_title
+                        }}
+                      </div>
+                    {% endif %}
+
+                    {% if hover_image != blank %}
+                      <div class="col-hover-image">
+                        {{
+                          hover_image
+                          | image_url: width: 300
+                          | image_tag:
+                            widths: '100,150,200,250,300',
+                            loading: 'lazy',
+                            alt: collection_title
+                        }}
+                      </div>
+                    {% endif %}
+
+                  </div>
+
+                  {% if collection_title != blank %}
+                    <span class="col-card_title">
+                      {{ collection_title }}
+                    </span>
+                  {% endif %}
+
+                {% if collection != blank %}
+                  </a>
+                {% else %}
+                  </div>
+                {% endif %}
+              </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col_divider">
+        <div class="col_divider-fill"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (() => {
+    const initColSwiper = () => {
+      const slider = document.querySelector('.col-swiper-{{ section.id }}');
+
+      if (!slider) return;
+
+      if (slider.swiper) {
+        slider.swiper.destroy(true, true);
+      }
+
+      new Swiper(slider, {
+        slidesPerView: 3.5,
+        spaceBetween: 12,
+        speed: 1000,
+        grabCursor: true,
+
+        breakpoints: {
+          0: {
+            slidesPerView: 3.5,
+            spaceBetween: 12
+          },
+
+          768: {
+            slidesPerView: 6.5,
+            spaceBetween: 14
+          },
+
+          1024: {
+            slidesPerView: 9.9,
+            spaceBetween: 16
+          }
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', initColSwiper);
+    document.addEventListener('shopify:section:load', initColSwiper);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#eee"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "primary_image",
+          "label": "Primary Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Banner"
+    }
+  ]
+}
+{% endschema %}

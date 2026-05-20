@@ -79,8 +79,8 @@
         "apply_error_message": "The discount code cannot be applied to your cart."
       },
       "free_shipping": {
-        "remaining_html": "Spend {{ remaining_amount }} more to reach free shipping!",
-        "congratulations_html": "You are eligible for free shipping."
+        "remaining_html": "Spend {{ remaining_amount }} more and get free shipping!",
+        "congratulations_html": "🎉 Congratulations. You will have free shipping on your order!"
       },
       "shipping_calculator": {
         "title": "Estimate Shipping",
@@ -297,8 +297,8 @@
         "other": "{{ product_count }} of {{ count }} products"
       },
       "product_count_simple": {
-        "one": "{{ count }} product",
-        "other": "{{ count }} products"
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
       },
       "sort_by_label": "Sort by",
       "to": "To"

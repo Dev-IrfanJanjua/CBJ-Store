@@ -1,26 +1,80 @@
-<label for="SortBy-{{ context }}" class="text-nowrap {{ label_class }}">
-  {{- 'products.facets.sort_by_label' | t -}}
-  :</label
->
+{% unless section.settings.cstm_style %}
+  <label for="SortBy-{{ context }}" class="text-nowrap {{ label_class }}">
+    {{- 'products.facets.sort_by_label' | t -}}
+    :</label
+  >
+{% endunless %}
+
+{% if section.settings.cstm_style %}
+  <div class="col_results_desk">
+    <p id="ProductCount" class="m-0 text-subtext" role="status">
+      {%- liquid
+        if collection.results_count
+          echo 'products.facets.filters_selected' | t: terms: collection.terms, count: collection.results_count
+        elsif collection.products_count == collection.all_products_count
+          echo 'products.facets.product_count_simple' | t: count: collection.products_count
+        else
+          echo 'products.facets.product_count' | t: product_count: collection.products_count, count: collection.all_products_count
+        endif
+      -%}
+    </p>
+  </div>
+{% endif %}
+
 <div class="select w-auto facet-short flex items-center gap-2 flex-grow">
   {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
-  <select
-    name="sort_by"
-    class="form-control form-control--select"
-    id="SortBy-{{ context }}"
-    aria-describedby="a11y-refresh-page-message"
-    is="facet-short"
-  >
-    {%- for option in results.sort_options -%}
+
+  {% if section.settings.cstm_style %}
+    <select
+      name="sort_by"
+      class="form-control form-control--select"
+      id="SortBy-{{ context }}"
+      aria-describedby="a11y-refresh-page-message"
+      is="facet-short"
+    >
+  
       <option
-        value="{{ option.value | escape }}"
-        {% if option.value == sort_by %}
-          selected="selected"
+        value=""
+        disabled
+        {% if sort_by == blank %}
+          selected
         {% endif %}
       >
-        {{ option.name | escape }}
+        Sort By
       </option>
-    {%- endfor -%}
-  </select>
+  
+      {%- for option in results.sort_options -%}
+        <option
+          value="{{ option.value | escape }}"
+          {% if option.value == sort_by %}
+            selected="selected"
+          {% endif %}
+        >
+          {{ option.name | escape }}
+        </option>
+      {%- endfor -%}
+  
+    </select>
+  {% else %}
+    <select
+      name="sort_by"
+      class="form-control form-control--select"
+      id="SortBy-{{ context }}"
+      aria-describedby="a11y-refresh-page-message"
+      is="facet-short"
+    >
+      {%- for option in results.sort_options -%}
+        <option
+          value="{{ option.value | escape }}"
+          {% if option.value == sort_by %}
+            selected="selected"
+          {% endif %}
+        >
+          {{ option.name | escape }}
+        </option>
+      {%- endfor -%}
+    </select>
+  {% endif %}
+
   {% render 'icon-caret-down', size: '2xs' %}
 </div>

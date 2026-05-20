@@ -1,0 +1,351 @@
+.collection-section,
+.cstm-collection-section {
+    background: #eee;
+}
+
+.cstm-collection-section .collection__content {
+    border-radius: 20px;
+    background: #FFF;
+    padding: 40px 30px;
+}
+
+.cstm-collection-section .collection__content .cstm-pd-card h3.pd_title a {
+    font-size: 17.2px !important;
+    line-height: 21.1px !important;
+}
+
+.cstm-collection-section .collection__content .cstm-pd-card span.pd-org-price span {
+    font-size: 15px;
+}
+
+.cstm-collection-section .collection__content p.pd-message {
+    font-size: 13px !important;
+    line-height: 13px !important;
+}
+
+.cstm-collection-section a.pagination__item {
+    color: #000;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 18.404px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.368px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    min-width: 30px;
+    height: 30px;
+    padding-inline: 2px;
+}
+
+.cstm-collection-section a.pagination__item:hover:not(.pagination__item-arrow) {
+    background: #00000022;
+}
+
+.cstm-collection-section a.pagination__item.pagination__item--current {
+    border-radius: 3px;
+    background: #000;
+    color: #fff;
+}
+
+.cstm-collection-section .pagination__item--previous {
+    padding-right: clamp(10px, 4.5vw, 240px) !important;
+}
+
+.cstm-collection-section .pagination__item--next {
+    padding-left: clamp(10px, 4.5vw, 240px) !important;
+}
+
+.col-discount-card_icon {
+    max-width: 30px;
+    width: 100%;
+    height: 30px;
+    flex-shrink: 0;
+}
+
+.col-discount-card_icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.col-discount-card_text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+span.col_qty {
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    min-width: fit-content;
+}
+
+span.col_disc-title {
+    font-family: "Suisse Int'l";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    min-width: fit-content;
+}
+
+.col-discount-card {
+    border-radius: 6.535px;
+    box-shadow: 1.623px 1.623px 0 0 #000;
+    display: flex;
+    align-items: center;
+    padding: 10px 13px;
+    gap: 20px;
+}
+
+.col-discount-cards {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cstm-collection-section select#SortBy-collection {
+    border-radius: 3px;
+    border: 0.815px solid #B1B1B1;
+    padding: 10px;
+    color: #0B0B0B;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    padding-right: 35px;
+    outline: none;
+    box-shadow: none;
+}
+
+.cstm-collection-section p#ProductCount {
+    color: #0B0B0B;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    min-width: fit-content;
+}
+
+.cstm-collection-section div#SortByContainer {
+    gap: 20px;
+}
+
+.cstm-collection-section .facet-drawer-button {
+    border-radius: 56px;
+    background: #231D1A;
+    padding: 10px 27px;
+}
+
+.cstm-collection-section .facet-drawer-button:before{
+    display: none;
+}
+
+.cstm-collection-section .facet-drawer-button span.btn__text {
+    color: #FFF;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.cstm-collection-section .collection__toolbar {
+    padding: 30px 20px;
+    border-radius: 0 0 20px 20px;
+}
+
+/* ==== drawer ==== */
+
+.cstm-collection-section .drawer__content {
+    background: #eee;
+}
+
+.cstm-collection-section .drawer__header-inner {
+    padding: 16px 16px 10px;
+}
+
+.cstm-collection-section summary.accordion-details__summary span.h6 {
+    color: #000;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.32px;
+    text-transform: capitalize;
+}
+
+.cstm-collection-section .accordion-details__content input {
+    border-radius: 2px;
+    border: 0.686px solid #000;
+    box-shadow: none;
+    outline: none;
+}
+
+.cstm-collection-section .accordion-details__content span.count,
+.cstm-collection-section .accordion-details__content span.reversed-link__text {
+    color: #272727;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.32px;
+    text-transform: capitalize;
+    opacity: 1;
+}
+
+.cstm-collection-section details.accordion-details.facet-accordion-details {
+    border-radius: 8px;
+    background: #FFF;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+
+.cstm-collection-section .facet-accordion-details .accordion-details__summary {
+    padding: 0;
+}
+
+.cstm-collection-section details.accordion-details.facet-accordion-details[open] summary.accordion-details__summary {
+    padding-bottom: 20px;
+}
+
+.cstm-collection-section .parent-row span.reversed-link__text {
+    color: #272727;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400 !important;
+    line-height: 120%;
+    letter-spacing: -0.32px;
+    text-transform: capitalize;
+}
+
+.cstm-collection-section .drawer__sticky.drawer__sticky--bottom {
+    padding: 17px 23px;
+}
+
+.cstm-collection-section .drawer__sticky.drawer__sticky--bottom button.btn.btn--primary {
+    border-radius: 28px;
+    background: #000;
+    padding: 18px 56px;
+}
+
+.cstm-collection-section .drawer__sticky.drawer__sticky--bottom button.btn.btn--primary:hover{
+    transform: scale(1.01);
+}
+
+.cstm-collection-section .drawer__sticky.drawer__sticky--bottom button.btn.btn--primary:before{
+    display: none;
+}
+
+.cstm-collection-section .drawer__sticky.drawer__sticky--bottom button.btn.btn--primary span.btn__text {
+    color: #FFF;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.3px;
+    text-transform: capitalize;
+}
+
+.cstm-collection-section details.accordion-details.facet-accordion-details summary.accordion-details__summary svg {
+    transition: all 0.3s ease;
+}
+
+.cstm-collection-section details.accordion-details.facet-accordion-details[open] summary.accordion-details__summary svg {
+    transform: rotate(180deg);
+}
+
+.cstm-collection-section .facet-accordion-details .accordion-details__content {
+    padding: 0;
+    margin: 0;
+}
+
+@media screen and (max-width: 769px){
+
+.cstm-collection-section .collection__content {
+    border-radius: 12px;
+    padding: 15px 7px;
+}
+
+.cstm-collection-section .collection__content p.pd-message {
+    display: none;
+}
+
+.cstm-collection-section .pd-buttons{
+    padding: 3px !important;
+}
+
+.cstm-collection-section .collection__content .cstm-pd-card h3.pd_title a {
+    font-size: 14px!important;
+    line-height: 16px!important;
+}
+
+.cstm-collection-section h3.pd_title{
+    min-height: unset !important;
+}
+
+.cstm-collection-section .cstm-pd-content{
+    gap: 8px !important;
+}
+
+div#ProductsList {
+    gap: 16px 6px !important;
+}
+
+
+/* ==== drawer ==== */
+
+.cstm-collection-section div#SortByContainer {
+    display: flex;
+}
+
+.cstm-collection-section .col_results_desk{
+    display: none !important;
+}
+
+div#SortByContainerMobile {
+    display: none;
+}
+
+.cstm-collection-section .collection__toolbar {
+    padding: 0px 13px 5px;
+    border-radius: 0 0 12px 12px;
+    row-gap: 25px;
+}
+
+.cstm-collection-section .col_results_mob{
+    display: block!important;
+    width: 100%;
+    text-align: center;
+}
+
+.cstm-collection-section p#ProductCount {
+    color: #707070;
+    padding-block: 11px;
+}
+
+}
+
+@media screen and (max-width: 1024px){
+
+.col-discount-cards {
+    display: none;
+}
+
+}

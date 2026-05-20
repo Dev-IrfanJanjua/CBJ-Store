@@ -37,8 +37,12 @@
               href="{{ paginate.previous.url }}{{ anchor }}"
               class="pagination__item pagination__item--previous pagination__item-arrow motion-reduce"
             >
-              {% render 'icon-caret-left', size: 'extra-small' %}
-              <span>{{ 'general.pagination.previous' | t }}</span>
+              {% if section.settings.cstm_style %}
+                {% render 'cstm-pagination-prev' %}
+              {% else %}
+                {% render 'icon-caret-left', size: 'extra-small' %}
+                <span>{{ 'general.pagination.previous' | t }}</span>
+              {% endif %}
             </a>
           </li>
         {%- endif -%}
@@ -77,8 +81,12 @@
               href="{{ paginate.next.url }}{{ anchor }}"
               class="pagination__item pagination__item--next pagination__item-arrow motion-reduce"
             >
-              <span>{{ 'general.pagination.next' | t }}</span>
-              {% render 'icon-caret-right', size: 'extra-small' %}
+              {% if section.settings.cstm_style %}
+                {% render 'cstm-pagination-next' %}
+              {% else %}
+                <span>{{ 'general.pagination.next' | t }}</span>
+                {% render 'icon-caret-right', size: 'extra-small' %}
+              {% endif %}
             </a>
           </li>
         {%- endif -%}

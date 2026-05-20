@@ -8269,7 +8269,7 @@ body.search-template #MainContent,
 /*** Custom CSS ***/
 div#fsb_container {display: none !important;}
 .shopify-section:has(.promotion-banner) {background: #121e2c;}
-.shopify-section:has(.jdgm-widget) {background: #121e2c;}
+/* .shopify-section:has(.jdgm-widget) {background: #121e2c;} */
 .jdgm-videos-carousel .jdgm-title {color: #fff;}
 .jdgm-videos-carousel .jdgm-star {color: #fff;}
 .product-template .shopify-section:has(.jdgm-widget) {background: #fff;}
@@ -8498,7 +8498,7 @@ cart-count.cart-count.cart-count--absolute {
     border-radius: 20px;
 }
 
-.shopify-section:has(.jdgm-widget) {
+.shopify-section:has(.jdgm-widget):not(.Product-Main-section) {
     background: #eee !important;
     padding-bottom: 20px !important;
 }
@@ -8530,4 +8530,9 @@ div#judgeme_product_reviews h1{
     padding: 24px 16px !important;
 }
 
+}
+
+
+body:has(.vp-overlay[style*="display: flex"]) {
+  overflow: hidden;
 }
