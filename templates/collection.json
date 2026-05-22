@@ -11,6 +11,7 @@
   "sections": {
     "breadcrumbs_Gxg9wp": {
       "type": "breadcrumbs",
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "text_alignment": "start",
@@ -35,6 +36,7 @@
       "block_order": [
         "collection_info_zUNyKV"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "fixed",
@@ -198,9 +200,173 @@
         "divider_width": "fixed"
       }
     },
+    "collection_banner_9Qh8RW": {
+      "type": "collection-banner",
+      "blocks": {
+        "item_yiXHHp": {
+          "type": "item",
+          "settings": {
+            "collection": "all-products",
+            "title": "All",
+            "primary_image": "shopify://shop_images/Ellipse_577.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_3.png"
+          }
+        },
+        "item_6mgMUV": {
+          "type": "item",
+          "settings": {
+            "collection": "blue-septum-rings",
+            "title": "Nose & Septum",
+            "primary_image": "shopify://shop_images/Ellipse_577_1.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_3.png"
+          }
+        },
+        "item_MDep6p": {
+          "type": "item",
+          "settings": {
+            "collection": "blue-nose-rings",
+            "title": "Nose Studs",
+            "primary_image": "shopify://shop_images/Ellipse_577_2.png",
+            "hover_image": "shopify://shop_images/Ellipse_577.png"
+          }
+        },
+        "item_Pr6JL6": {
+          "type": "item",
+          "settings": {
+            "collection": "belly",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_3.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        },
+        "item_8KpMjj": {
+          "type": "item",
+          "settings": {
+            "collection": "belly",
+            "title": "Belly Bars",
+            "primary_image": "shopify://shop_images/Ellipse_577_4.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_6.png"
+          }
+        },
+        "item_YEzgJU": {
+          "type": "item",
+          "settings": {
+            "collection": "black-nose-rings",
+            "title": "Nose & Septum",
+            "primary_image": "shopify://shop_images/Ellipse_577_5.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_6.png"
+          }
+        },
+        "item_bawf7e": {
+          "type": "item",
+          "settings": {
+            "collection": "blue-helix-earrings",
+            "title": "Natural",
+            "primary_image": "shopify://shop_images/Ellipse_577_6.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_4.png"
+          }
+        },
+        "item_LkdymF": {
+          "type": "item",
+          "settings": {
+            "collection": "black-edition",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_8.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        },
+        "item_LGWWCP": {
+          "type": "item",
+          "settings": {
+            "collection": "black-edition",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_8.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        },
+        "item_FBBWWN": {
+          "type": "item",
+          "settings": {
+            "collection": "black-edition",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_8.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        },
+        "item_DfJhfV": {
+          "type": "item",
+          "settings": {
+            "collection": "black-edition",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_8.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        },
+        "item_bryDPg": {
+          "type": "item",
+          "settings": {
+            "collection": "black-edition",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_8.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        },
+        "item_Bff3EF": {
+          "type": "item",
+          "settings": {
+            "collection": "black-edition",
+            "title": "Segment Rings",
+            "primary_image": "shopify://shop_images/Ellipse_577_8.png",
+            "hover_image": "shopify://shop_images/Ellipse_577_1.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_yiXHHp",
+        "item_6mgMUV",
+        "item_MDep6p",
+        "item_Pr6JL6",
+        "item_8KpMjj",
+        "item_YEzgJU",
+        "item_bawf7e",
+        "item_LkdymF",
+        "item_LGWWCP",
+        "item_FBBWWN",
+        "item_DfJhfV",
+        "item_bryDPg",
+        "item_Bff3EF"
+      ],
+      "name": "Collection Banner",
+      "settings": {
+        "padding_top": 12,
+        "padding_bottom": 0,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 0
+      }
+    },
     "product-grid": {
       "type": "main-collection-product-grid",
       "blocks": {
+        "dis_card_p7dmra": {
+          "type": "dis_card",
+          "settings": {
+            "bg_clr": "#b97afc",
+            "text_clr": "#ffffff",
+            "qty": "Buy 2",
+            "title": "GET 25% OFF",
+            "icon": "shopify://shop_images/Component_1_4.svg"
+          }
+        },
+        "dis_card_HVPjGD": {
+          "type": "dis_card",
+          "settings": {
+            "bg_clr": "#feef35",
+            "text_clr": "#000000",
+            "qty": "Buy3",
+            "title": "GET 40% OFF",
+            "icon": "shopify://shop_images/Component_1_5.svg"
+          }
+        },
         "image_card_mwkyJy": {
           "type": "image_card",
           "disabled": true,
@@ -236,27 +402,31 @@
         }
       },
       "block_order": [
+        "dis_card_p7dmra",
+        "dis_card_HVPjGD",
         "image_card_mwkyJy"
       ],
       "custom_css": [],
       "settings": {
+        "cstm_style": true,
+        "use_atc_icon": true,
         "container": "fixed",
         "color_scheme": "scheme-1",
         "products_per_page": 16,
         "columns_desktop": 4,
-        "column_gap": "medium",
-        "row_gap": "inherit",
+        "column_gap": "extra-small",
+        "row_gap": "medium",
         "pagination": "number",
         "enable_filtering": true,
         "enable_color_swatch": true,
-        "filter_type": "vertical",
+        "filter_type": "drawer",
         "expand_filter_groups": "Color,Size,Brand,Price,Availability,Product type",
         "enable_sorting": true,
-        "enable_layout_switching": true,
+        "enable_layout_switching": false,
         "columns_mobile": "2",
         "padding_top": 28,
         "padding_bottom": 28,
-        "show_section_divider": true,
+        "show_section_divider": false,
         "divider_width": "fixed"
       }
     },
@@ -537,6 +707,7 @@
         "text_iHjctx",
         "text_VVGaDE"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-14",
         "direction": "left",
@@ -550,6 +721,7 @@
     },
     "custom_liquid_TRa4BW": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "t:sections.custom-liquid.name",
       "settings": {
         "custom_liquid": "{% if collection.description != blank %}\n<div style=\"max-width: 800px; margin: 60px auto 40px; padding: 30px 20px; background: #ffffff; color: #1a1a1a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.8;\">\n  {{ collection.description }}\n</div>\n{% endif %}",
@@ -563,6 +735,7 @@
     "breadcrumbs_Gxg9wp",
     "banner",
     "collection_list_slider_6qbNfj",
+    "collection_banner_9Qh8RW",
     "product-grid",
     "rich_text_LBBELW",
     "buttons_with_icon_CrE8jr",
