@@ -34,6 +34,7 @@
         },
         "badges": {
           "type": "badges",
+          "disabled": true,
           "settings": {
             "show_soldout_badge": true,
             "show_sale_badge": true,

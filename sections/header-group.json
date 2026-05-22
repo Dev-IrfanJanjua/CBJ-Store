@@ -109,6 +109,7 @@
         "card_DcAY8p",
         "card_PNbQ7G"
       ],
+      "disabled": true,
       "name": "Announcement Bar",
       "settings": {
         "left_text": "<p>Add 2+ items to unlock 25% off</p>",

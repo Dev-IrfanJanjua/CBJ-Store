@@ -9,8 +9,251 @@
  */
 {
   "sections": {
+    "faqs_section_Qji3Xr": {
+      "type": "faqs-section",
+      "blocks": {
+        "faq_group_AmtMF8": {
+          "type": "faq_group",
+          "settings": {
+            "tab_label": "page-faqs-block-title",
+            "faq_q_1": "How do I track my order?",
+            "faq_a_1": "<p>How do I track my order?</p>",
+            "faq_q_2": "How do I initiate a return or exchange?",
+            "faq_a_2": "<p>How do I initiate a return or exchange?</p>",
+            "faq_q_3": "Can I cancel or edit my order?",
+            "faq_a_3": "<p>Can I cancel or edit my order?</p>",
+            "faq_q_4": "Can I exchange instead of return?",
+            "faq_a_4": "<p>Can I exchange instead of return?</p>",
+            "faq_q_5": "Is Fourth Youth vegan and cruelty-free?",
+            "faq_a_5": "<p>Is Fourth Youth vegan and cruelty-free?</p>",
+            "faq_q_6": "How long does a refund take?",
+            "faq_a_6": "<p>How long does a refund take?</p>",
+            "faq_q_7": "I didn’t receive all of my order — what now?",
+            "faq_a_7": "<p>I didn’t receive all of my order — what now?</p>",
+            "faq_q_8": "What is your returns policy?",
+            "faq_a_8": "<p>What is your returns policy?</p>",
+            "faq_q_9": "",
+            "faq_a_9": "",
+            "faq_q_10": "",
+            "faq_a_10": "",
+            "faq_q_11": "",
+            "faq_a_11": "",
+            "faq_q_12": "",
+            "faq_a_12": "",
+            "faq_q_13": "",
+            "faq_a_13": "",
+            "faq_q_14": "",
+            "faq_a_14": "",
+            "faq_q_15": "",
+            "faq_a_15": "",
+            "faq_q_16": "",
+            "faq_a_16": "",
+            "faq_q_17": "",
+            "faq_a_17": "",
+            "faq_q_18": "",
+            "faq_a_18": "",
+            "faq_q_19": "",
+            "faq_a_19": "",
+            "faq_q_20": "",
+            "faq_a_20": ""
+          }
+        },
+        "faq_group_UA73hM": {
+          "type": "faq_group",
+          "settings": {
+            "tab_label": "Product & Care",
+            "faq_q_1": "How do I track my order? Support",
+            "faq_a_1": "<p>How do I track my order?</p>",
+            "faq_q_2": "How do I initiate a return or exchange? Support",
+            "faq_a_2": "<p>How do I initiate a return or exchange?</p>",
+            "faq_q_3": "Can I cancel or edit my order? Support",
+            "faq_a_3": "<p>Can I cancel or edit my order?</p>",
+            "faq_q_4": "Can I exchange instead of return? Support",
+            "faq_a_4": "<p>Can I exchange instead of return?</p>",
+            "faq_q_5": "Is Fourth Youth vegan and cruelty-free? Support",
+            "faq_a_5": "<p>Is Fourth Youth vegan and cruelty-free? </p>",
+            "faq_q_6": "How long does a refund take? Support",
+            "faq_a_6": "<p>How long does a refund take?</p>",
+            "faq_q_7": "I didn’t receive all of my order — what now? Support",
+            "faq_a_7": "<p>I didn’t receive all of my order — what now?</p>",
+            "faq_q_8": "What is your returns policy? Support",
+            "faq_a_8": "<p>What is your returns policy?</p>",
+            "faq_q_9": "",
+            "faq_a_9": "",
+            "faq_q_10": "",
+            "faq_a_10": "",
+            "faq_q_11": "",
+            "faq_a_11": "",
+            "faq_q_12": "",
+            "faq_a_12": "",
+            "faq_q_13": "",
+            "faq_a_13": "",
+            "faq_q_14": "",
+            "faq_a_14": "",
+            "faq_q_15": "",
+            "faq_a_15": "",
+            "faq_q_16": "",
+            "faq_a_16": "",
+            "faq_q_17": "",
+            "faq_a_17": "",
+            "faq_q_18": "",
+            "faq_a_18": "",
+            "faq_q_19": "",
+            "faq_a_19": "",
+            "faq_q_20": "",
+            "faq_a_20": ""
+          }
+        },
+        "faq_group_fXthVQ": {
+          "type": "faq_group",
+          "settings": {
+            "tab_label": "Customer Support",
+            "faq_q_1": "How do I track my order? Care",
+            "faq_a_1": "<p>How do I track my order?</p>",
+            "faq_q_2": "How do I initiate a return or exchange? Care",
+            "faq_a_2": "<p>How do I initiate a return or exchange?</p>",
+            "faq_q_3": "Can I cancel or edit my order? Care",
+            "faq_a_3": "<p>Can I cancel or edit my order?</p>",
+            "faq_q_4": "Can I exchange instead of return? Care",
+            "faq_a_4": "<p>Can I exchange instead of return?</p>",
+            "faq_q_5": "Is Fourth Youth vegan and cruelty-free? Care",
+            "faq_a_5": "<p>Is Fourth Youth vegan and cruelty-free? </p>",
+            "faq_q_6": "How long does a refund take? Care",
+            "faq_a_6": "<p>How long does a refund take?</p>",
+            "faq_q_7": "I didn’t receive all of my order — what now? Care",
+            "faq_a_7": "<p>I didn’t receive all of my order — what now?</p>",
+            "faq_q_8": "What is your returns policy? Care",
+            "faq_a_8": "<p>What is your returns policy?</p>",
+            "faq_q_9": "",
+            "faq_a_9": "",
+            "faq_q_10": "",
+            "faq_a_10": "",
+            "faq_q_11": "",
+            "faq_a_11": "",
+            "faq_q_12": "",
+            "faq_a_12": "",
+            "faq_q_13": "",
+            "faq_a_13": "",
+            "faq_q_14": "",
+            "faq_a_14": "",
+            "faq_q_15": "",
+            "faq_a_15": "",
+            "faq_q_16": "",
+            "faq_a_16": "",
+            "faq_q_17": "",
+            "faq_a_17": "",
+            "faq_q_18": "",
+            "faq_a_18": "",
+            "faq_q_19": "",
+            "faq_a_19": "",
+            "faq_q_20": "",
+            "faq_a_20": ""
+          }
+        }
+      },
+      "block_order": [
+        "faq_group_AmtMF8",
+        "faq_group_UA73hM",
+        "faq_group_fXthVQ"
+      ],
+      "name": "FAQ Section",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "section_bg_color": "#eeeeee",
+        "title_clr": "#000000",
+        "content_bg_color": "#ffffff",
+        "content_border_radius": 12,
+        "ques_block_bg": "#f6f6f6",
+        "ques_block_bg_active": "#ebd8fe",
+        "ques_block_border_active": "#000000",
+        "tab_bg_color": "#ffffff",
+        "tab_text_color": "#262626",
+        "tab_border_color": "#00000033",
+        "tab_active_bg_color": "#000000",
+        "tab_active_text_color": "#ffffff",
+        "faq_divider_color": "",
+        "faq_question_color": "#141414",
+        "faq_question_hover_color": "#000000",
+        "faq_answer_color": "#141414"
+      }
+    },
+    "faq_cards_R69DKQ": {
+      "type": "faq-cards",
+      "blocks": {
+        "card_fWrHKy": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_4.svg",
+            "title": "Free Shipping",
+            "subtitle": "on orders above 200",
+            "bottom_image": "shopify://shop_images/SVG.png",
+            "image_width": 72,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "card_KNL8Jy": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_5.svg",
+            "title": "Secure Payment",
+            "subtitle": "Safe Shopping Guaranteed",
+            "bottom_image": "shopify://shop_images/Group_1707478891.png",
+            "image_width": 156,
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "card_cbWQDp": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/SVG_6.svg",
+            "title": "Easy Returns & Exchange",
+            "subtitle": "Returns made easy",
+            "image_width": 72,
+            "button_text": "Returns",
+            "button_link": "shopify://policies/refund-policy"
+          }
+        },
+        "card_4rgtjV": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_8.svg",
+            "title": "Satisfaction Guaranteed",
+            "subtitle": "Quality you can trust",
+            "image_width": 72,
+            "button_text": "Learn more",
+            "button_link": "shopify://policies/privacy-policy"
+          }
+        }
+      },
+      "block_order": [
+        "card_fWrHKy",
+        "card_KNL8Jy",
+        "card_cbWQDp",
+        "card_4rgtjV"
+      ],
+      "name": "FAQs Card Section",
+      "settings": {
+        "section_bg_color": "#eeeeee",
+        "content_bg_color": "#ffffff",
+        "content_border_radius": 10,
+        "title_color": "#000000",
+        "subtitle_color": "#000000",
+        "button_text_color": "#595d61",
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60
+      }
+    },
     "breadcrumbs_RzgTi9": {
       "type": "breadcrumbs",
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "text_alignment": "start",
@@ -37,6 +280,7 @@
             "text": "<p>We offer fast and reliable shipping options to ensure your order.</p>",
             "text_size": "text-base",
             "button_label": "Learn More",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -57,6 +301,7 @@
             "text": "<p>Shop confidently with our easy, hassle-free returns policy.</p>",
             "text_size": "text-base",
             "button_label": "Learn More",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -77,6 +322,7 @@
             "text": "<p>Safe and secure payment methods for your peace of mind.</p>",
             "text_size": "text-base",
             "button_label": "Learn More",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -97,6 +343,7 @@
             "text": "<p>Quality assured with our limited warranty on select products.</p>",
             "text_size": "text-base",
             "button_label": "Learn More",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -117,6 +364,7 @@
             "text": "<p>Stay updated on your order's journey from our warehouse to your door.</p>",
             "text_size": "text-base",
             "button_label": "Learn More",
+            "button_link": "",
             "button_style": "btn--primary",
             "button_icon": "none"
           }
@@ -129,6 +377,7 @@
         "column_efzrcV",
         "column_f876QF"
       ],
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "color_scheme": "scheme-1",
@@ -167,6 +416,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "fixed",
@@ -246,6 +496,7 @@
         "collapsible_item_n78gVi",
         "collapsible_item_PPefFd"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "container": "narrow",
@@ -350,6 +601,7 @@
         "collapsible_item_DGi3rB",
         "collapsible_item_e3AFh9"
       ],
+      "disabled": true,
       "settings": {
         "container": "narrow",
         "color_scheme": "",
@@ -440,6 +692,7 @@
         "collapsible_item_tWNUeL",
         "collapsible_item_WdQxcf"
       ],
+      "disabled": true,
       "settings": {
         "container": "narrow",
         "color_scheme": "",
@@ -550,6 +803,7 @@
         "text_zQqqQD",
         "text_RjpD6r"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "direction": "left",
@@ -563,6 +817,8 @@
     }
   },
   "order": [
+    "faqs_section_Qji3Xr",
+    "faq_cards_R69DKQ",
     "breadcrumbs_RzgTi9",
     "multicolumn_icon_Xp8nB6",
     "main",

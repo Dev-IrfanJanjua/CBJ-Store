@@ -9,8 +9,135 @@
  */
 {
   "sections": {
+    "contact_cards_8kb8hU": {
+      "type": "contact-cards",
+      "blocks": {
+        "card_UXzApM": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147228986.svg",
+            "title": "Call us at:",
+            "link_text": "01494424435",
+            "link_url": "tel:01494424435"
+          }
+        },
+        "card_wMcY3N": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147228987.svg",
+            "title": "Email us at:",
+            "link_text": "enquiries@camdenbodyjewellery.co.uk",
+            "link_url": "mailto:enquiries@camdenbodyjewellery.co.uk"
+          }
+        },
+        "card_ttLbnh": {
+          "type": "card",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147228988.svg",
+            "title": "Shop Time",
+            "link_text": "Monday to Friday - 9 AM – 5 PM",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_UXzApM",
+        "card_wMcY3N",
+        "card_ttLbnh"
+      ],
+      "name": "Contact Cards",
+      "settings": {
+        "section_bg": "#eee",
+        "card_bg": "#fff",
+        "title_color": "#000000",
+        "link_color": "#000000",
+        "columns_desktop": 3,
+        "columns_mobile": 1,
+        "desktop_padding_top": 24,
+        "desktop_padding_bottom": 24,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 24
+      }
+    },
+    "contact_section_mrXgkL": {
+      "type": "contact-section",
+      "blocks": {
+        "subject_xMKcPV": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Order status"
+          }
+        },
+        "subject_NVmLMT": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Questions/Issues around your order"
+          }
+        },
+        "subject_JnBUEi": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Product question"
+          }
+        },
+        "subject_qxY6Ld": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Feedback"
+          }
+        },
+        "subject_XXJCbr": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Report an issue"
+          }
+        },
+        "subject_FpN3W8": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Request refund"
+          }
+        },
+        "subject_EikgXG": {
+          "type": "subject",
+          "settings": {
+            "subject_text": "Other"
+          }
+        }
+      },
+      "block_order": [
+        "subject_xMKcPV",
+        "subject_NVmLMT",
+        "subject_JnBUEi",
+        "subject_qxY6Ld",
+        "subject_XXJCbr",
+        "subject_FpN3W8",
+        "subject_EikgXG"
+      ],
+      "name": "CBJ Contact Section",
+      "settings": {
+        "image": "shopify://shop_images/Frame_2147243200_2.png",
+        "heading": "Send Us a Message",
+        "select_icon": "shopify://shop_images/Vector_7.svg",
+        "button_text": "SUBMIT",
+        "section_bg": "#eee",
+        "form_bg": "#fff",
+        "field_bg": "#F2F2F2",
+        "heading_color": "#111111",
+        "label_color": "#111111",
+        "input_color": "#757575",
+        "placeholder_color": "#757575",
+        "button_bg": "#231D1A",
+        "button_text_color": "#ffffff",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 20,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 10
+      }
+    },
     "breadcrumbs_xYaBHj": {
       "type": "breadcrumbs",
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "text_alignment": "start",
@@ -20,6 +147,7 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "custom_css": [
         ".rich-text {max-width: 70rem;}"
       ],
@@ -214,6 +342,7 @@
         "text_dGmg9m",
         "text_3nRwMg"
       ],
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-3",
         "direction": "left",
@@ -227,6 +356,8 @@
     }
   },
   "order": [
+    "contact_cards_8kb8hU",
+    "contact_section_mrXgkL",
     "breadcrumbs_xYaBHj",
     "main",
     "form",

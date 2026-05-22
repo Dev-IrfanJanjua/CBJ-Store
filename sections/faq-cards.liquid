@@ -1,0 +1,355 @@
+{% style %}
+
+  .faqs-card-section.section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+}
+
+    .section-{{ section.id }} .faqs-card-wrapper {
+        background-color: {{ section.settings.content_bg_color }};
+        border-radius: {{ section.settings.content_border_radius }}px;
+        padding: 48px;
+    }
+
+    .section-{{ section.id }} .faqs-card-cards {
+        display: flex;
+        gap: 50px;
+        align-items: center;
+        justify-content: center;
+    }
+
+  .section-{{ section.id }} .faqs-card-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 21px;
+    min-width: 201px;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-icon {
+    max-width: 70px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-title {
+    margin: 0;
+    color: {{ section.settings.title_color }};
+    text-align: center;
+    font-family: "Faculty Glyphic";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19.2px;
+    margin-bottom: 6px;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-subtitle {
+    margin: 0;
+    color: {{ section.settings.subtitle_color }};
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 15.6px;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-bottom {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-image {
+    max-width: var(--width);
+    width: 100%;
+    height: auto;
+    display: inline-block;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-btn {
+    color: {{ section.settings.button_text_color }};
+    transition: all 0.3s ease;
+    text-align: center;
+    font-family: "Suisse Int'l";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 15.6px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
+
+  .section-{{ section.id }} .faqs-card-card-btn:hover {
+    opacity: 0.7;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .faqs-card-section.section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+  .section-{{ section.id }} .faqs-card-cards {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .section-{{ section.id }} .faqs-card-wrapper {
+    padding: 40px 20px;
+  }
+
+  }
+{% endstyle %}
+
+<section class="faqs-card-section fade-in-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="faqs-card-wrapper">
+
+      {% if section.blocks.size > 0 %}
+        <div class="faqs-card-cards">
+
+          {% for block in section.blocks %}
+            <div
+              class="faqs-card-card fade-in-item"
+              {{ block.shopify_attributes }}
+            >
+
+              {% if block.settings.icon != blank %}
+                <div class="faqs-card-card-icon fade-in-left">
+                  {{
+                    block.settings.icon
+                    | image_url: width: 100
+                    | image_tag:
+                      widths: '50,100,150,200',
+                      loading: 'lazy',
+                      alt: block.settings.title
+                  }}
+                </div>
+              {% endif %}
+
+              <div class="faqs-card-card-content fade-in-left">
+
+                {% if block.settings.title != blank %}
+                  <h3 class="faqs-card-card-title">
+                    {{ block.settings.title }}
+                  </h3>
+                {% endif %}
+
+                {% if block.settings.subtitle != blank %}
+                  <div class="faqs-card-card-subtitle">
+                    {{ block.settings.subtitle }}
+                  </div>
+                {% endif %}
+
+              </div>
+
+              {% if block.settings.bottom_image != blank or block.settings.button_text != blank %}
+                <div class="faqs-card-card-bottom fade-in-left">
+
+                  {% if block.settings.bottom_image != blank %}
+                    <div class="faqs-card-card-image" style="--width: {{ block.settings.image_width }}px;">
+                      {{
+                        block.settings.bottom_image
+                        | image_url: width: 1000
+                        | image_tag:
+                          widths: '100,200,300,400',
+                          loading: 'lazy',
+                          alt: block.settings.title
+                      }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+                    <a
+                      href="{{ block.settings.button_link }}"
+                      class="faqs-card-card-btn"
+                    >
+                      {{ block.settings.button_text }}
+                    </a>
+                  {% endif %}
+
+                </div>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQs Card Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "content_border_radius",
+      "label": "Content Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "image_picker",
+          "id": "bottom_image",
+          "label": "Bottom Image"
+        },
+        {
+            "type": "range",
+            "id": "image_width",
+            "label": "Bottom Image Width",
+            "min": 40,
+            "max": 200,
+            "step": 2,
+            "unit": "px",
+            "default": 72
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQs Card Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

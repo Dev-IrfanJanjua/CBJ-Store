@@ -1,0 +1,997 @@
+{% comment %}
+  ============================================================
+  PAGE FAQ SECTION — page-faq-section.liquid
+  Senior Shopify Liquid Section
+  ============================================================
+{% endcomment %}
+
+{% style %}
+  /* ── Root & Section ──────────────────────────────────── */
+  .page-faq-section.section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  .section-{{ section.id }} .page-faqs-wrapper{
+    background-color: {{ section.settings.content_bg_color }};
+    border-radius: {{ section.settings.content_border_radius }}px;
+    padding: 27px 11px 49px;
+  }
+
+  .section-{{ section.id }} .page-faqs-title{
+    color: {{ section.settings.title_clr }};
+    text-align: center;
+    font-family: "Faculty Glyphic";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0 29px;
+  }
+
+  /* ── Tabs Bar ────────────────────────────────────────── */
+.page-faqs-tabs-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    margin-bottom: 29px;
+    justify-content: start;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    margin-right: -20px;
+    padding-right: 20px;
+    margin-left: -11px;
+    padding-left: 11px;
+}
+
+  .page-faqs-tab-btn {
+    border: 1px solid {{ section.settings.tab_border_color }};
+    background-color: {{ section.settings.tab_bg_color }};
+    color: {{ section.settings.tab_text_color }};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 11px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease;
+    min-width: fit-content;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "Suisse Int'l";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    height: unset;
+  }
+
+  .page-faqs-tab-btn:hover,
+  .page-faqs-tab-btn[aria-selected="true"] {
+    background-color: {{ section.settings.tab_active_bg_color }};
+    color: {{ section.settings.tab_active_text_color }};
+    border-color: {{ section.settings.tab_active_bg_color }};
+  }
+
+  /* ── FAQ Blocks ──────────────────────────────────────── */
+  .page-faqs-block {
+    display: none;
+  }
+
+  .page-faqs-block.is-visible {
+    display: block;
+  }
+
+  /* ── FAQ List ────────────────────────────────────────── */
+  .page-faqs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* ── FAQ Item ────────────────────────────────────────── */
+  .page-faqs-item {
+    {% if section.settings.faq_divider_color != blank %}
+        border-bottom: 1px solid {{ section.settings.faq_divider_color }};
+    {% endif %}
+  }
+
+  /* ── FAQ Question Button ─────────────────────────────── */
+  .page-faqs-question {
+    color: {{ section.settings.faq_question_color }};
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+    gap: 16px;
+    transition: all 0.3s ease;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 23px;
+    align-items: center;
+    height: unset;
+    white-space: normal;
+  }
+
+  li.page-faqs-item.is-open .page-faqs-question {
+    padding-bottom: 24px;
+}
+
+  .page-faqs-question:hover {
+    color: {{ section.settings.faq_question_hover_color }};
+  }
+
+  /* ── FAQ Chevron ─────────────────────────────────────── */
+  .page-faqs-chevron {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    color: {{ section.settings.faq_question_color }};
+  }
+
+  .page-faqs-item.is-open .page-faqs-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* ── FAQ Answer (animated height) ───────────────────── */
+  .page-faqs-answer-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+  }
+
+  .page-faqs-item.is-open .page-faqs-answer-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .page-faqs-answer-inner {
+    overflow: hidden;
+  }
+
+  .page-faqs-answer {
+    color: {{ section.settings.faq_answer_color }};
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Suisse Int'l";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 22.4px;
+  }
+
+  .page-faqs-answer p:first-child { margin-top: 0; }
+  .page-faqs-answer p:last-child  { margin-bottom: 0; }
+
+  .section-{{ section.id }} li.page-faqs-item {
+    border-radius: 8px;
+    background: {{ section.settings.ques_block_bg }};
+    padding: 20px;
+    border: 1px solid {{ section.settings.ques_block_bg }};
+    max-width: 100%;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.section-{{ section.id }} li.page-faqs-item:hover{
+    background: {{ section.settings.ques_block_bg_active }};
+}
+
+li.page-faqs-item.is-open {
+    border-color: {{ section.settings.ques_block_border_active }};
+    background: {{ section.settings.ques_block_bg_active }};
+}
+
+.page-faqs-block-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+  @media screen and (min-width: 768px) {
+    .page-faq-section.section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+
+    .page-faqs-tab-btn {
+        padding: 21px 50px;
+        font-size: 16px;
+        line-height: 1;
+        border-radius: 8px;
+    }
+
+    .page-faqs-tabs-bar{
+        margin-bottom: 46px;
+        justify-content: center;
+        margin-right: 0;
+        gap: 16px;
+    }
+
+  .section-{{ section.id }} li.page-faqs-item {
+    padding: 20px;
+}
+
+.page-faqs-block-inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(15px, 3.13vw, 45px);
+}
+
+.section-{{ section.id }} .page-faqs-title{
+    margin: 0 0 46px;
+  }
+
+.section-{{ section.id }} .page-faqs-wrapper{
+    padding: 49px 34px;
+  }
+    
+  }
+
+
+{% endstyle %}
+
+<section
+  class="page-faq-section fade-in-section section-{{ section.id }}"
+  aria-label="FAQ"
+  data-section-id="{{ section.id }}"
+>
+  <div class="page-width">
+    <div class="page-faqs-wrapper">
+        {% if section.settings.title != blank %}
+            <h2 class="page-faqs-title fade-in-up">{{ section.settings.title }}</h2>
+        {% endif %}
+
+      {%- comment -%} ── Build tab list from blocks ── {%- endcomment -%}
+      {%- assign faq_blocks = section.blocks | where: "type", "faq_group" -%}
+
+      {%- if faq_blocks.size > 0 -%}
+
+        {%- comment -%} ── TABS BAR ── {%- endcomment -%}
+        <nav class="page-faqs-tabs-bar" role="tablist" aria-label="FAQ categories">
+          {%- for block in faq_blocks -%}
+            {%- assign tab_id = 'page-faqs-panel-' | append: block.id -%}
+            <button
+              class="page-faqs-tab-btn fade-in-item"
+              role="tab"
+              aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+              data-tab-target="{{ block.id }}"
+              aria-controls="{{ tab_id }}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.tab_label | escape }}
+            </button>
+          {%- endfor -%}
+        </nav>
+
+        {%- comment -%} ── FAQ BLOCKS ── {%- endcomment -%}
+        <div class="page-faqs-panels" id="page-faqs-panel-all">
+
+          {%- for block in faq_blocks -%}
+            {%- assign panel_id = 'page-faqs-panel-' | append: block.id -%}
+            <div
+              class="page-faqs-block {% if forloop.first %}is-visible{% endif %}"
+              id="{{ panel_id }}"
+              data-block-id="{{ block.id }}"
+              role="tabpanel"
+            >
+              <div class="page-faqs-block-inner">
+                {%- comment -%} ── FAQ Items ── {%- endcomment -%}
+                {% comment %} <ul class="page-faqs-list">
+
+                  {%- for i in (1..20) -%}
+                    {%- assign q_key = 'faq_q_' | append: i -%}
+                    {%- assign a_key = 'faq_a_' | append: i -%}
+                    {%- assign q_val = block.settings[q_key] -%}
+                    {%- assign a_val = block.settings[a_key] -%}
+
+                    {%- if q_val != blank and a_val != blank -%}
+                      {%- assign item_id = section.id | append: '-' | append: block.id | append: '-faq-' | append: i -%}
+                      <li class="page-faqs-item" data-faq-item>
+                        <button
+                          class="page-faqs-question"
+                          aria-expanded="false"
+                          aria-controls="page-faqs-answer-{{ item_id }}"
+                          id="page-faqs-question-{{ item_id }}"
+                          data-faq-trigger
+                        >
+                          <span>{{ q_val | escape }}</span>
+                          <svg class="page-faqs-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </button>
+
+                        <div
+                          class="page-faqs-answer-wrap"
+                          id="page-faqs-answer-{{ item_id }}"
+                          role="region"
+                          aria-labelledby="page-faqs-question-{{ item_id }}"
+                        >
+                          <div class="page-faqs-answer-inner">
+                            <div class="page-faqs-answer">
+                              {{ a_val }}
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                </ul> {% endcomment %}
+
+                <ul class="page-faqs-list fade-in-item">
+
+                    {%- for i in (1..20) -%}
+
+                    {%- assign is_odd = i | modulo: 2 -%}
+
+                    {%- if is_odd == 1 -%}
+
+                        {%- assign q_key = 'faq_q_' | append: i -%}
+                        {%- assign a_key = 'faq_a_' | append: i -%}
+                        {%- assign q_val = block.settings[q_key] -%}
+                        {%- assign a_val = block.settings[a_key] -%}
+
+                        {%- if q_val != blank and a_val != blank -%}
+
+                        {%- assign item_id = section.id | append: '-' | append: block.id | append: '-faq-' | append: i -%}
+
+                        <li class="page-faqs-item fade-in-item" data-faq-item>
+
+                            <button
+                            class="page-faqs-question"
+                            aria-expanded="false"
+                            aria-controls="page-faqs-answer-{{ item_id }}"
+                            id="page-faqs-question-{{ item_id }}"
+                            data-faq-trigger
+                            >
+                            <span>{{ q_val | escape }}</span>
+
+                            <svg class="page-faqs-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            </button>
+
+                            <div
+                            class="page-faqs-answer-wrap"
+                            id="page-faqs-answer-{{ item_id }}"
+                            role="region"
+                            aria-labelledby="page-faqs-question-{{ item_id }}"
+                            >
+                            <div class="page-faqs-answer-inner">
+                                <div class="page-faqs-answer">
+                                {{ a_val }}
+                                </div>
+                            </div>
+                            </div>
+
+                        </li>
+
+                        {%- endif -%}
+
+                    {%- endif -%}
+
+                    {%- endfor -%}
+
+                </ul>
+
+                <ul class="page-faqs-list fade-in-item">
+
+                    {%- for i in (1..20) -%}
+
+                    {%- assign is_even = i | modulo: 2 -%}
+
+                    {%- if is_even == 0 -%}
+
+                        {%- assign q_key = 'faq_q_' | append: i -%}
+                        {%- assign a_key = 'faq_a_' | append: i -%}
+                        {%- assign q_val = block.settings[q_key] -%}
+                        {%- assign a_val = block.settings[a_key] -%}
+
+                        {%- if q_val != blank and a_val != blank -%}
+
+                        {%- assign item_id = section.id | append: '-' | append: block.id | append: '-faq-' | append: i -%}
+
+                        <li class="page-faqs-item fade-in-item" data-faq-item>
+
+                            <button
+                            class="page-faqs-question"
+                            aria-expanded="false"
+                            aria-controls="page-faqs-answer-{{ item_id }}"
+                            id="page-faqs-question-{{ item_id }}"
+                            data-faq-trigger
+                            >
+                            <span>{{ q_val | escape }}</span>
+
+                            <svg class="page-faqs-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                            </button>
+
+                            <div
+                            class="page-faqs-answer-wrap"
+                            id="page-faqs-answer-{{ item_id }}"
+                            role="region"
+                            aria-labelledby="page-faqs-question-{{ item_id }}"
+                            >
+                            <div class="page-faqs-answer-inner">
+                                <div class="page-faqs-answer">
+                                {{ a_val }}
+                                </div>
+                            </div>
+                            </div>
+
+                        </li>
+
+                        {%- endif -%}
+
+                    {%- endif -%}
+
+                    {%- endfor -%}
+
+                </ul>
+
+              </div>{%- comment -%} /.page-faqs-block-inner {%- endcomment -%}
+            </div>{%- comment -%} /.page-faqs-block {%- endcomment -%}
+          {%- endfor -%}
+
+        </div>{%- comment -%} /.page-faqs-panels {%- endcomment -%}
+
+      {%- endif -%}
+
+    </div>{%- comment -%} /.page-faqs-wrapper {%- endcomment -%}
+  </div>{%- comment -%} /.page-width {%- endcomment -%}
+</section>
+
+<script>
+(function () {
+  var section = document.querySelector('.page-faq-section.section-{{ section.id }}');
+  if (!section) return;
+
+  /* ── TAB SWITCHING ─────────────────────────────────── */
+  var tabBtns  = section.querySelectorAll('[data-tab-target]');
+  var allBlocks = section.querySelectorAll('.page-faqs-block');
+
+  function showTab(target) {
+
+        tabBtns.forEach(function (btn) {
+            btn.setAttribute(
+            'aria-selected',
+            btn.dataset.tabTarget === target ? 'true' : 'false'
+            );
+        });
+
+        allBlocks.forEach(function (block) {
+            block.classList.toggle(
+            'is-visible',
+            block.dataset.blockId === target
+            );
+        });
+    }
+
+  tabBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      showTab(btn.dataset.tabTarget);
+    });
+  });
+
+  /* ── FAQ ACCORDION ─────────────────────────────────── */
+  section.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-faq-trigger]');
+    if (!trigger) return;
+
+    var item    = trigger.closest('[data-faq-item]');
+    var isOpen  = item.classList.contains('is-open');
+
+    /* Close all in same list */
+    var list = item.closest('.page-faqs-list');
+    list.querySelectorAll('[data-faq-item].is-open').forEach(function (openItem) {
+      openItem.classList.remove('is-open');
+      openItem.querySelector('[data-faq-trigger]').setAttribute('aria-expanded', 'false');
+    });
+
+    /* Toggle clicked */
+    if (!isOpen) {
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "class": "page-faq-section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "title",
+        "label": "Section Title"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding — Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Section Padding — Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Section Background"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background Color",
+      "default": "#f5f0e8"
+    },
+    {
+      "type": "header",
+      "content": "Content Background"
+    },
+    {
+      "type": "color",
+      "id": "title_clr",
+      "label": "Title Color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "content_border_radius",
+      "label": "Content Border Radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Question Block"
+    },
+    {
+      "type": "color",
+      "id": "ques_block_bg",
+      "label": "Question Block Background",
+      "default": "#F6F6F6"
+    },
+    {
+      "type": "color",
+      "id": "ques_block_bg_active",
+      "label": "Question Active Block Background",
+      "default": "#EBD8FE"
+    },
+    {
+      "type": "color",
+      "id": "ques_block_border_active",
+      "label": "Question Active Block Border",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Tab Buttons"
+    },
+    {
+      "type": "color",
+      "id": "tab_bg_color",
+      "label": "Tab Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_text_color",
+      "label": "Tab Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color_background",
+      "id": "tab_border_color",
+      "label": "Tab Border Color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_bg_color",
+      "label": "Active Tab Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_text_color",
+      "label": "Active Tab Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Block Title"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Items"
+    },
+    {
+      "type": "color_background",
+      "id": "faq_divider_color",
+      "label": "Divider Color",
+      "default": "#c8c2b4"
+    },
+    {
+      "type": "color",
+      "id": "faq_question_color",
+      "label": "Question Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "faq_question_hover_color",
+      "label": "Question Hover Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "faq_answer_color",
+      "label": "Answer Text Color",
+      "default": "#444444"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_group",
+      "name": "FAQ Group (Tab)",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Button Label",
+          "default": "About Us"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 1"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_1",
+          "label": "Question 1"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_1",
+          "label": "Answer 1"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 2"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_2",
+          "label": "Question 2"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_2",
+          "label": "Answer 2"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 3"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_3",
+          "label": "Question 3"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_3",
+          "label": "Answer 3"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 4"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_4",
+          "label": "Question 4"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_4",
+          "label": "Answer 4"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 5"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_5",
+          "label": "Question 5"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_5",
+          "label": "Answer 5"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 6"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_6",
+          "label": "Question 6"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_6",
+          "label": "Answer 6"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 7"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_7",
+          "label": "Question 7"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_7",
+          "label": "Answer 7"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 8"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_8",
+          "label": "Question 8"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_8",
+          "label": "Answer 8"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 9"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_9",
+          "label": "Question 9"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_9",
+          "label": "Answer 9"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 10"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_10",
+          "label": "Question 10"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_10",
+          "label": "Answer 10"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 11"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_11",
+          "label": "Question 11"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_11",
+          "label": "Answer 11"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 12"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_12",
+          "label": "Question 12"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_12",
+          "label": "Answer 12"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 13"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_13",
+          "label": "Question 13"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_13",
+          "label": "Answer 13"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 14"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_14",
+          "label": "Question 14"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_14",
+          "label": "Answer 14"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 15"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_15",
+          "label": "Question 15"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_15",
+          "label": "Answer 15"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 16"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_16",
+          "label": "Question 16"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_16",
+          "label": "Answer 16"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 17"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_17",
+          "label": "Question 17"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_17",
+          "label": "Answer 17"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 18"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_18",
+          "label": "Question 18"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_18",
+          "label": "Answer 18"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 19"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_19",
+          "label": "Question 19"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_19",
+          "label": "Answer 19"
+        },
+        {
+          "type": "header",
+          "content": "FAQ Item 20"
+        },
+        {
+          "type": "text",
+          "id": "faq_q_20",
+          "label": "Question 20"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_a_20",
+          "label": "Answer 20"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "category": "Pages"
+    }
+  ]
+}
+{% endschema %}

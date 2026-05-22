@@ -9,8 +9,136 @@
  */
 {
   "sections": {
+    "img_text_about_us_7eB8LQ": {
+      "type": "img-text-about-us",
+      "name": "Image Text Section",
+      "settings": {
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "tag_text": "About the Brand",
+        "description": "<p><strong>Camden Piercing is all about celebrating individuality, creativity, and confidence. Every piece is crafted with care from implant-grade titanium, ensuring c</strong>omfort, durability, and suitability for sensitive skin. Whether you’re building a minimal everyday stack or experimenting with bold, statement looks, our jewellery is designed to fit seamlessly into your lifestyle.<br/><br/><br/>Our mission is to make high-quality, stylish piercing jewellery accessible, empowering you to express yourself with ease and confidence.”</p>",
+        "image": "shopify://shop_images/Frame_2147243200.png",
+        "image_position": "right",
+        "section_bg": "#eee",
+        "content_bg": "#fff",
+        "description_color": "#717171",
+        "description_color_strng": "#000000",
+        "tag_color": "#001116",
+        "desktop_padding_top": 20,
+        "desktop_padding_bottom": 20,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "icon_card_PFrxt3": {
+      "type": "icon-card",
+      "blocks": {
+        "card_tEgg4q": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/icon.svg_-_2025-12-12T160758.015_2_1.svg",
+            "card_title": "Titanium only",
+            "card_subtitle": "Crafted from pure implant-grade titanium for durability and everyday wear."
+          }
+        },
+        "card_gkQmfX": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/Frame_3.svg",
+            "card_title": "Light weight",
+            "card_subtitle": "Comfortable to wear all day without irritation."
+          }
+        },
+        "card_iDAKdA": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/SVG_3.svg",
+            "card_title": "Hypoallergenic",
+            "card_subtitle": "Safe for sensitive skin and irritation-prone piercings."
+          }
+        },
+        "card_KjiD9k": {
+          "type": "card",
+          "settings": {
+            "card_image": "shopify://shop_images/Frame_4.svg",
+            "card_title": "Waterproof",
+            "card_subtitle": "Designed to withstand showering, swimming, and daily use."
+          }
+        }
+      },
+      "block_order": [
+        "card_tEgg4q",
+        "card_gkQmfX",
+        "card_iDAKdA",
+        "card_KjiD9k"
+      ],
+      "name": "Icon Cards",
+      "settings": {
+        "section_bg": "#eee",
+        "card_bg": "#fff",
+        "title_color": "#000000",
+        "subtitle_color": "#454545",
+        "columns_desktop": 4,
+        "columns_mobile": 1,
+        "desktop_padding_top": 14,
+        "desktop_padding_bottom": 34,
+        "mobile_padding_top": 4,
+        "mobile_padding_bottom": 24
+      }
+    },
+    "img_text_about_us_HwLpDe": {
+      "type": "img-text-about-us",
+      "name": "Image Text Section",
+      "settings": {
+        "tag_icon": "shopify://shop_images/Vector_1.svg",
+        "tag_text": "Founder",
+        "description": "<p><strong>Our founder started Camden Piercing with one mission: to create high-quality, stylish, and accessible piercing jewellery for everyone. With a passion for design, </strong>comfort, and everyday wear, he envisioned pieces that are versatile, durable, and safe for sensitive skin. Every design is guided by care, craftsmanship, and attention to detail, ensuring each piece is not just jewellery, but a personal statement.<br/><br/>His focus on titanium, comfort, and thoughtful design ensures that Camden pieces fit seamlessly into any lifestyle.”</p>",
+        "image": "shopify://shop_images/Frame_2147243200_1.png",
+        "image_position": "left",
+        "section_bg": "#eee",
+        "content_bg": "#fff",
+        "description_color": "#717171",
+        "description_color_strng": "#000000",
+        "tag_color": "#001116",
+        "desktop_padding_top": 20,
+        "desktop_padding_bottom": 20,
+        "mobile_padding_top": 10,
+        "mobile_padding_bottom": 10
+      }
+    },
+    "apps_N3WBEg": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_gc8Bex": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Follow us on Instagram",
+            "title_color": "",
+            "title_size_v2": 28,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "center",
+            "link_color": "#0b0b0b",
+            "background_color": "#eeeeee",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_gc8Bex"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "breadcrumbs_DgnWDV": {
       "type": "breadcrumbs",
+      "disabled": true,
       "settings": {
         "container": "fixed",
         "text_alignment": "start",
@@ -64,6 +192,7 @@
         "heading_Y9MMVQ",
         "text_7h6LaE"
       ],
+      "disabled": true,
       "custom_css": [
         ".rich-text {max-width: 88rem; margin: 0 auto;}"
       ],
@@ -838,6 +967,10 @@
     }
   },
   "order": [
+    "img_text_about_us_7eB8LQ",
+    "icon_card_PFrxt3",
+    "img_text_about_us_HwLpDe",
+    "apps_N3WBEg",
     "breadcrumbs_DgnWDV",
     "main",
     "rich_text_kyFd96",

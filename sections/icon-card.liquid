@@ -1,0 +1,257 @@
+{% style %}
+  .section-{{ section.id }} {
+    background: {{ section.settings.section_bg }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .icon-card-wrapper {
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .icon-card__cards {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: 20px;
+  }
+
+  .section-{{ section.id }} .icon-card__card {
+    background: {{ section.settings.card_bg }};
+    padding: 32px 23px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: all 0.3s ease;
+  }
+
+  .section-{{ section.id }} .icon-card__card:hover {
+        transform: scale(1.01);
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+  .section-{{ section.id }} .icon-card__card-title {
+    color: {{ section.settings.title_color }};
+    margin: 0;
+    font-family: "Suisse Int'l";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 139%;
+  }
+
+  .section-{{ section.id }} .icon-card__card-subtitle {
+    color: {{ section.settings.subtitle_color }};
+    margin: 0;
+    font-family: "Suisse Int'l";
+    font-size: clamp(15px, 1.11vw, 16px);
+    font-style: normal;
+    font-weight: 450;
+    line-height: 148%;
+  }
+
+  .section-{{ section.id }} .icon-card__card-img {
+    width: 100px;
+    height: auto;
+    display: block;
+  }
+
+  .section-{{ section.id }} .icon-card__card-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  @media screen and (max-width: 990px) {
+
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .icon-card__cards {
+      grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    }
+    
+    .section-{{ section.id }} .icon-card__card {
+        gap: 10px;
+    }
+
+  }
+{% endstyle %}
+
+<section class="icon-card-section fade-in-section section-{{ section.id }}">
+  <div class="page-width">
+
+    <div class="icon-card-wrapper">
+
+      {% if section.blocks.size > 0 %}
+        <div class="icon-card__cards">
+
+          {% for block in section.blocks %}
+            <div class="icon-card__card fade-in-item" {{ block.shopify_attributes }}>
+
+              {% if block.settings.card_image != blank %}
+                <div class="icon-card__card-img">
+                  {{
+                    block.settings.card_image
+                    | image_url: width: 600
+                    | image_tag:
+                      widths: '200,300,400,500,600',
+                      loading: 'lazy',
+                      alt: block.settings.card_title
+                  }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.card_title != blank %}
+                <h4 class="icon-card__card-title fade-in-up">
+                  {{ block.settings.card_title }}
+                </h4>
+              {% endif %}
+
+              {% if block.settings.card_subtitle != blank %}
+                <p class="icon-card__card-subtitle fade-in-up">
+                  {{ block.settings.card_subtitle }}
+                </p>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Icon Cards",
+  "settings": [
+    {
+      "type": "color_background",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color_background",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Desktop Columns",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Mobile Columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card Image"
+        },
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "card_subtitle",
+          "label": "Card Subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Cards",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
