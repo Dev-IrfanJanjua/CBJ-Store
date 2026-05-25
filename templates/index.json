@@ -169,8 +169,8 @@
       ],
       "name": "CBJ Hero Section",
       "settings": {
-        "desktop_bg_image": "shopify://shop_images/Frame_2147243022.png",
-        "mobile_bg_image": "shopify://shop_images/Frame_2147243022_2.png",
+        "desktop_bg_image": "shopify://shop_images/Frame_2147243022_3.webp",
+        "mobile_bg_image": "shopify://shop_images/Frame_2147243022_4.webp",
         "review_image": "shopify://shop_images/Frame_2147240982.svg",
         "review_text": "<strong>4.8</strong> (238+) Reviews",
         "heading": "<p>Piercing Jewellery, <br/><strong>Better in Titanium</strong></p>",
@@ -195,8 +195,8 @@
           "settings": {
             "collection": "daith-jewellery",
             "custom_title": "Nose & Septum jewelry",
-            "primary_image": "shopify://shop_images/Container_5.png",
-            "hover_image": "shopify://shop_images/Container_6.png"
+            "primary_image": "shopify://shop_images/Container_11.webp",
+            "hover_image": "shopify://shop_images/Container_12.webp"
           }
         },
         "collection_card_fbDFHE": {
@@ -204,8 +204,8 @@
           "settings": {
             "collection": "black-nose-studs",
             "custom_title": "Nose Studs",
-            "primary_image": "shopify://shop_images/Container_6.png",
-            "hover_image": "shopify://shop_images/Container_5.png"
+            "primary_image": "shopify://shop_images/Container_12.webp",
+            "hover_image": "shopify://shop_images/Container_11.webp"
           }
         },
         "collection_card_h6FVJy": {
@@ -213,8 +213,8 @@
           "settings": {
             "collection": "ball-closure-rings-captive-bead-rings",
             "custom_title": "Segment Rings",
-            "primary_image": "shopify://shop_images/Container_7.png",
-            "hover_image": "shopify://shop_images/Container_9.png"
+            "primary_image": "shopify://shop_images/Container_13.webp",
+            "hover_image": "shopify://shop_images/Container_15.webp"
           }
         },
         "collection_card_pLFWzG": {
@@ -222,8 +222,8 @@
           "settings": {
             "collection": "belly",
             "custom_title": "Belly Bars",
-            "primary_image": "shopify://shop_images/Container_8.png",
-            "hover_image": "shopify://shop_images/Container_8.png"
+            "primary_image": "shopify://shop_images/Container_14.webp",
+            "hover_image": "shopify://shop_images/Container_14.webp"
           }
         },
         "collection_card_LaC3kc": {
@@ -231,8 +231,8 @@
           "settings": {
             "collection": "daith-jewellery",
             "custom_title": "Nose & Septum jewelry",
-            "primary_image": "shopify://shop_images/Container_9.png",
-            "hover_image": "shopify://shop_images/Container_6.png"
+            "primary_image": "shopify://shop_images/Container_15.webp",
+            "hover_image": "shopify://shop_images/Container_12.webp"
           }
         },
         "collection_card_dXAhEh": {
@@ -240,8 +240,8 @@
           "settings": {
             "collection": "daith-jewellery",
             "custom_title": "Nose & Septum jewelry",
-            "primary_image": "shopify://shop_images/Container_5.png",
-            "hover_image": "shopify://shop_images/Container_6.png"
+            "primary_image": "shopify://shop_images/Container_11.webp",
+            "hover_image": "shopify://shop_images/Container_12.webp"
           }
         },
         "collection_card_AndGir": {
@@ -249,8 +249,8 @@
           "settings": {
             "collection": "black-nose-studs",
             "custom_title": "Nose Studs",
-            "primary_image": "shopify://shop_images/Container_6.png",
-            "hover_image": "shopify://shop_images/Container_5.png"
+            "primary_image": "shopify://shop_images/Container_12.webp",
+            "hover_image": "shopify://shop_images/Container_11.webp"
           }
         },
         "collection_card_xmqdM3": {
@@ -258,8 +258,8 @@
           "settings": {
             "collection": "ball-closure-rings-captive-bead-rings",
             "custom_title": "Segment Rings",
-            "primary_image": "shopify://shop_images/Container_7.png",
-            "hover_image": "shopify://shop_images/Container_9.png"
+            "primary_image": "shopify://shop_images/Container_13.webp",
+            "hover_image": "shopify://shop_images/Container_15.webp"
           }
         },
         "collection_card_RXemNG": {
@@ -267,8 +267,8 @@
           "settings": {
             "collection": "belly",
             "custom_title": "Belly Bars",
-            "primary_image": "shopify://shop_images/Container_8.png",
-            "hover_image": "shopify://shop_images/Container_8.png"
+            "primary_image": "shopify://shop_images/Container_14.webp",
+            "hover_image": "shopify://shop_images/Container_14.webp"
           }
         },
         "collection_card_9FcWAD": {
@@ -276,8 +276,8 @@
           "settings": {
             "collection": "daith-jewellery",
             "custom_title": "Nose & Septum jewelry",
-            "primary_image": "shopify://shop_images/Container_9.png",
-            "hover_image": "shopify://shop_images/Container_6.png"
+            "primary_image": "shopify://shop_images/Container_15.webp",
+            "hover_image": "shopify://shop_images/Container_12.webp"
           }
         }
       },
@@ -350,8 +350,8 @@
         "button_link": "#",
         "button_icon": "shopify://shop_images/long-arrow_1.svg",
         "content_abs_image": "shopify://shop_images/Vector_2.svg",
-        "main_image": "shopify://shop_images/Customer_wearing_Camden_piercing_jewellery.png",
-        "main_image_mob": "shopify://shop_images/Customer_wearing_Camden_piercing_jewellery_1.png",
+        "main_image": "shopify://shop_images/Customer_wearing_Camden_piercing_jewellery_2.webp",
+        "main_image_mob": "shopify://shop_images/Customer_wearing_Camden_piercing_jewellery_3.webp",
         "review_image": "shopify://shop_images/Img.svg",
         "review_text": "<strong>4.8</strong> (238+)",
         "image_text": "50,000+ customers wear Camden Candy",
@@ -581,8 +581,8 @@
         "tag_icon": "shopify://shop_images/Vector_1.svg",
         "heading": "<p>Why Camden does <strong>titanium only</strong></p>",
         "subtitle": "We keep it simple: one better material, made for everyday comfort and wear.",
-        "main_image": "shopify://shop_images/image_14.png",
-        "main_image_mob": "shopify://shop_images/image_14_1.png",
+        "main_image": "shopify://shop_images/image_14_2.webp",
+        "main_image_mob": "shopify://shop_images/image_14_3.webp",
         "section_bg_color": "#eeeeee",
         "heading_color": "#000000",
         "text_color": "#000000",
@@ -603,7 +603,7 @@
           "type": "collection_block",
           "settings": {
             "collection": "ball-closure-rings-captive-bead-rings",
-            "custom_image": "shopify://shop_images/Frame_2147243062.png",
+            "custom_image": "shopify://shop_images/Frame_2147243062_1.webp",
             "custom_title": "<p>Sale</p>"
           }
         },
@@ -611,7 +611,7 @@
           "type": "collection_block",
           "settings": {
             "collection": "anti-tragus",
-            "custom_image": "shopify://shop_images/Frame_2147243060.png",
+            "custom_image": "shopify://shop_images/Frame_2147243060_1.webp",
             "custom_title": "<p>Best Seller</p>"
           }
         },
@@ -619,7 +619,7 @@
           "type": "collection_block",
           "settings": {
             "collection": "barbells",
-            "custom_image": "shopify://shop_images/Frame_2147243061.png",
+            "custom_image": "shopify://shop_images/Frame_2147243061_1.webp",
             "custom_title": "<p>New In</p>"
           }
         }
@@ -730,7 +730,7 @@
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 12,
         "bg_color": "#eeeeee",
-        "bg_image_desktop": "shopify://shop_images/us_vs_them_1.png",
+        "bg_image_desktop": "shopify://shop_images/us_vs_them_2.webp",
         "tag_text": "US VS THEM",
         "tag_icon": "shopify://shop_images/Vector_1.svg",
         "title": "<p><strong>Why Camden</strong> Is Different From The Others</p>",
