@@ -38,7 +38,12 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-    {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {% comment %} {{ 'custom.css' | asset_url | stylesheet_tag }} {% endcomment %}
+
+     <link rel="preload" href="{{ 'custom.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
+    </noscript>
 
     <title>
       {{- page_title -}}

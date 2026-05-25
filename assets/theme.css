@@ -8274,7 +8274,7 @@ div#fsb_container {display: none !important;}
 .jdgm-videos-carousel .jdgm-star {color: #fff;}
 .product-template .shopify-section:has(.jdgm-widget) {background: #fff;}
 .header_tag { display: flex; background: #fff; padding: 4px; gap: 7px; border-radius: 10px; }
-.cbj_tag { background: #b9bfe9; border-radius: 7px; padding: 7px 10px; font-weight: 500; font-size: 13px; line-height: 100%; color: #121e2c; font-family: 'Bricolage Grotesque'; }
+/* .cbj_tag { background: #b9bfe9; border-radius: 7px; padding: 7px 10px; font-weight: 500; font-size: 13px; line-height: 100%; color: #121e2c; font-family: 'Bricolage Grotesque'; } */
 .product-specs {border: 1px solid #d9d9d9;border-radius: 18px;}
 .product-specs-item {display: flex;}
 .product-specs-item:not(:last-child) {border-bottom: 1px solid #d9d9d9;}
@@ -8286,7 +8286,7 @@ div#fsb_container {display: none !important;}
 /*** Quantiy Break ****/
 .bundle-options__item {align-items: center;justify-content: space-between;}
 .left-bundle {display: flex; align-items: center; gap: 9px;}
-.left-bundle h4 { font-family: 'Bricolage Grotesque'; font-size: 15px; }
+/* .left-bundle h4 { font-family: 'Bricolage Grotesque'; font-size: 15px; } */
 .bundle-options__item { align-items: center; justify-content: space-between; padding: 25px 12px; border: 1px solid #e1d6d6; border-radius: 12px; cursor: pointer;}
 .bundle-options{ gap: 15px; display: flex; flex-direction: column; }
 .bundle-options__item input:is([type=radio]):after { width: 12px; height: 12px; background: #fff; transform: none; top: 3px; left: 3px; }
@@ -8295,8 +8295,8 @@ label.bundle-options__item:has(input:is([type=checkbox],[type=radio]):checked) {
 
 /*** gift bars ***/
 #header-cart-progress .progress-fill {height:100%; width:0%; background:#ff5ddf; transition:width .4s ease;}
-div#progress-steps-track { display: flex; gap: 5px; background: #121e2c; padding: 5px; border-radius: 6px; font-family: 'Bricolage Grotesque'; border: 1px solid #28384a; }
-span.progress-step { background: #b9bfe9; font-family: 'Bricolage Grotesque' !important; padding: 5px 10px; border-radius: 5px; font-weight: 500; font-size: 13px; line-height: 100%; letter-spacing: 0%; color: #121e2c; }
+/* div#progress-steps-track { display: flex; gap: 5px; background: #121e2c; padding: 5px; border-radius: 6px; font-family: 'Bricolage Grotesque'; border: 1px solid #28384a; }
+span.progress-step { background: #b9bfe9; font-family: 'Bricolage Grotesque' !important; padding: 5px 10px; border-radius: 5px; font-weight: 500; font-size: 13px; line-height: 100%; letter-spacing: 0%; color: #121e2c; } */
 #header-cart-progress .progress-bar {display: none;}
 @media (max-width:767px){
 #header-cart-progress .progress-steps-wrap { display:none; }
